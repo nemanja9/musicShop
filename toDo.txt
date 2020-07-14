@@ -1,0 +1,9 @@
+validacija (Spring validator)
+ograniciti pristup stranama (ROLE_ADMIN, ROLE_USER)
+internacionalizacija projekta
+
+
+password da se enkriptuje u tabeli
+
+sutra radim login
+poyy
