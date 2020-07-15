@@ -1072,8 +1072,9 @@ a {
   top: 0;
   opacity: 0;
 }
-.inCart{
+#inCart{
     background-color: #ee4266;
+    border-radius: 20px;
 }
 
 p{

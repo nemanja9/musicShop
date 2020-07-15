@@ -27,8 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Table(name = "products")
 public class ProductEntity implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "products")
-    @TableGenerator(name = "products", table = "gen_id", pkColumnName = "pk_gen", valueColumnName = "value_gen", initialValue = 0, allocationSize = 1)   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id", unique = true, nullable = false)
     private int productId;
     

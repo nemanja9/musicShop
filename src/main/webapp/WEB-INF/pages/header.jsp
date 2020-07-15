@@ -92,13 +92,13 @@
                         <div class="icons">
                             <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
                             <a href="${pageContext.request.contextPath}/cart" class="icons-btn d-inline-block bag">
-                                <span class="icon-shopping-bag" id="inCart"></span>
+                                <span class="icon-shopping-bag" <c:if test="${fn:startsWith(currrentAdress, 'cart')}"> id="inCart" </c:if> ></span>
                                 <c:if test = "${sessionScope.cart.size() > 0 }">
                                     <span class="number"><c:out value="${sessionScope.cart.size()}" /></span>
                                 </c:if>
                             </a>
 
-
+                            
                         </div>
                         <div class="header__top__right__language">
                             <c:set var="context" value="${pageContext.request.contextPath}" />
