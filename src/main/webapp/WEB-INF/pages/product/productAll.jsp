@@ -121,12 +121,4 @@
     </div>
 </div>
 
-
-<div>
-    <a href="<c:url value="/product/add"/>">Add new product</a>
-</div>
-<div>
-    <a href="<c:url value="/index.jsp"/>">Back to home page</a>
-</div>
-
 <%@include file="../footer.jsp" %>

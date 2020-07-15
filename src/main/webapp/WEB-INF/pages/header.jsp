@@ -57,8 +57,14 @@
                                     <li class=" <c:if test="${empty currrentAdress}">active </c:if>>">
                                         <a href="${pageContext.request.contextPath}">Početna</a>
                                     </li>
-                                    <li class="<c:if test="${fn:startsWith(currrentAdress, 'product')}">active  </c:if>>">
-                                        <a href="<c:url value="/product/all"/>">Proizvodi</a></li>
+                                    <li class="has-children <c:if test="${fn:startsWith(currrentAdress, 'product')}">active </c:if>>">
+                                        <a href="<c:url value="/product/all"/>">Proizvodi</a>
+                                        <ul class="dropdown">
+                                            <li><a href="${pageContext.request.contextPath}/product/all">Svi proizvodi</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/product/add">Dodavanje proizvoda</a></li>
+
+                                        </ul>
+                                    </li>
 
                                     <li class="<c:if test="${fn:startsWith(currrentAdress, 'contact')}">active  </c:if>>">
                                         <a href="<c:url value="/contact"/>">Kontakt</a></li>
