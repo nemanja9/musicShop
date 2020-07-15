@@ -20,6 +20,15 @@ public class ProductDto {
     private String price;
     private String manufacturer;
     private String description;
+    private String imgPath;
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
     private MultipartFile img;
 
     public ProductDto() {

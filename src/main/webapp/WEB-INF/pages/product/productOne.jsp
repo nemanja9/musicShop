@@ -18,7 +18,7 @@
           <div class="col-md-6">
             <div class="item-entry">
               <a href="#" class="product-item md-height bg-gray d-block">
-                <img src="http://localhost:8080/musicshop/resursi/images/${requestScope.productDto.getProductId()}.png" alt="Image" class="img-fluid">
+                <img src="${pageContext.request.contextPath}/resursi/images${requestScope.productDto.getImgPath()}" alt="Image" class="img-fluid">
                 
               </a>
               

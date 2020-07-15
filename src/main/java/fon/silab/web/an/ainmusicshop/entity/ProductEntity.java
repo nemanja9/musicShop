@@ -45,6 +45,17 @@ public class ProductEntity implements Serializable{
     @Column(name = "price", nullable = false, length = 50)
     private String price;
     
+    @Column(name = "imgPath", nullable = false, length = 250)
+    private String imgPath;
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+    
 
     
     @Column(name = "description", nullable = true, length = 256)

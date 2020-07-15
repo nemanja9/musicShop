@@ -185,10 +185,22 @@ public class ProductController {
             model.addAttribute("productDto", new ProductDto());
             MultipartFile image = productDto.getImg();
             String rootDirectory = session.getServletContext().getRealPath("/");
-            Path path = Paths.get(rootDirectory + "/resursi/images/" + id + ".png");
-            File file = new File(path.toString());
+            Path path = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + ".png");
+            
+            if(new File(path.toString()).exists())
+            for (int i = 1; i < Integer.MAX_VALUE ; i++) {
+                Path tesan = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + "("+ i +")" + ".png");
+                if(!new File(tesan.toString()).exists()){
+                    path = tesan;
+                    break;
+                }
+            }
+             
+             File file = new File(path.toString());
             image.transferTo(file);
-
+            productDto.setImgPath(path.toString().split("images")[1]);
+            System.out.println("IMG PATH JE " + productDto.getImgPath());
+            
             productService.save(productDto);
             model.addAttribute("message", "Uspesno ste uneli proizvod " + productDto.getProductName() + "!");
 

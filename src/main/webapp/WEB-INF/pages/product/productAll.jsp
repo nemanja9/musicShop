@@ -38,7 +38,7 @@
                     <c:forEach items="${requestScope.allProducts}" var="p">
                         <div class="col-lg-6 col-md-6 item-entry mb-4">
                             <a href="${pageContext.request.contextPath}/product/${p.getProductId()}" class="product-item md-height bg-gray d-block">
-                                <img src="http://localhost:8080/musicshop/resursi/images/${p.getProductId()}.png" alt="Image" class="img-fluid">
+                                <img src="${pageContext.request.contextPath}/resursi/images${p.getImgPath()}" alt="Image" class="img-fluid">
                             </a>
                             <h2 class="item-title"><a href="#">${p.getProductName()}</a></h2>
                             <strong class="item-price">${p.getPrice()} $</strong>
