@@ -34,7 +34,7 @@
                   <tr>
                     <td class="product-thumbnail">
                       <img
-                        src="${pageContext.request.contextPath}/resursi/images${requestScope.productDto.getImgPath()}"
+                        src="${pageContext.request.contextPath}/resursi/images${i.getProduct().getImgPath()}"
                         alt="Image" class="img-fluid">
                     </td>
                     <td class="product-name">

@@ -12,16 +12,16 @@ package fon.silab.web.an.ainmusicshop.dto;
 public class OrderItemDto {
     
     private int itemId;
-    private OrderDto orderDto;
+    private int orderId;
     private ProductDto product;
     private int quantity;
 
     public OrderItemDto() {
     }
 
-    public OrderItemDto(int itemId, OrderDto orderDto, ProductDto product, int quantity) {
+    public OrderItemDto(int itemId, int orderDto, ProductDto product, int quantity) {
         this.itemId = itemId;
-        this.orderDto = orderDto;
+        this.orderId = orderDto;
         this.product = product;
         this.quantity = quantity;
     }
@@ -34,13 +34,15 @@ public class OrderItemDto {
         this.itemId = itemId;
     }
 
-    public OrderDto getOrderDto() {
-        return orderDto;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrderDto(OrderDto orderDto) {
-        this.orderDto = orderDto;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
+
+   
 
     public ProductDto getProduct() {
         return product;
@@ -60,8 +62,10 @@ public class OrderItemDto {
 
     @Override
     public String toString() {
-        return "OrderItemDto{" + "itemId=" + itemId + ", orderDto=" + orderDto + ", product=" + product + ", quantity=" + quantity + '}';
+        return "OrderItemDto{" + "itemId=" + itemId + ", orderId=" + orderId + ", product=" + product + ", quantity=" + quantity + '}';
     }
+
+    
     
     
     

@@ -13,12 +13,18 @@ import org.springframework.web.servlet.ModelAndView;
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.PayPalRESTException;
 import fon.silab.web.an.ainmusicshop.dto.OrderDto;
+import fon.silab.web.an.ainmusicshop.dto.UserDto;
+import fon.silab.web.an.ainmusicshop.entity.OrderEntity;
+import fon.silab.web.an.ainmusicshop.service.OrderItemService;
+import fon.silab.web.an.ainmusicshop.service.OrderService;
 import fon.silab.web.an.ainmusicshop.service.impl.PaymentServices;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -30,6 +36,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/PayPal")
 public class PaymentController {
 
+    private final OrderService orderService;
+    private final OrderItemService orderItemService; 
+
+    @Autowired
+    public PaymentController(OrderService orderService, OrderItemService orderItemService) {
+        this.orderService = orderService;
+        this.orderItemService = orderItemService;
+    }
+    
+    
     
     
     @PostMapping(path = "/openPayPal")
@@ -60,6 +76,20 @@ public class PaymentController {
         String paymentId = request.getParameter("paymentId");
         String payerId = request.getParameter("PayerID");
 //        OVDE CEMO UBACITI U BAZU PORUDZBINNU KOJA SE UPRAVO ZAVRSILA
+
+        List<OrderItemDto> lista = (List<OrderItemDto>) session.getAttribute("cart");
+        UserDto user = (UserDto) session.getAttribute("loginUser");
+        
+        OrderDto order = new OrderDto();
+        order.setUserDto(user);
+        order.setOrderDate(new Date());
+        order.setOrderItems(lista);
+        order.setOrderStatus(OrderEntity.Status.SPAKOVANO);
+        
+
+        orderService.save(order);
+        
+        
         session.removeAttribute("cart");
         try {
             PaymentServices paymentServices = new PaymentServices();

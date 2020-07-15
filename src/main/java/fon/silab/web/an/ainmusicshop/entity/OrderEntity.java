@@ -16,9 +16,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,7 +40,7 @@ public class OrderEntity implements Serializable{
     @Column(name = "order_id", unique = true, nullable = false)
     private int orderId;
     
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private UserEntity userEntity;
     
     @Enumerated(EnumType.STRING)
@@ -57,7 +59,8 @@ public class OrderEntity implements Serializable{
     @Column(name = "shipped_date", length = 10)
     private Date shippedDate;
     
-    @OneToMany(mappedBy = "orderEntity", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, targetEntity=OrderItemEntity.class)
+    @JoinColumn(name = "order_id", referencedColumnName = "order_id")
     private List<OrderItemEntity> orderItems;
 
     public OrderEntity() {

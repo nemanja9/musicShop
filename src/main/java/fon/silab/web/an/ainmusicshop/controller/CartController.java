@@ -2,13 +2,17 @@ package fon.silab.web.an.ainmusicshop.controller;
 
 import fon.silab.web.an.ainmusicshop.dto.OrderDto;
 import fon.silab.web.an.ainmusicshop.dto.OrderItemDto;
+import fon.silab.web.an.ainmusicshop.validator.OrderItemValidator;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +23,20 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/cart")
 public class CartController {
 
+    
+    private final OrderItemValidator orderItemValidator;
+    
+    
+    @Autowired
+    public CartController(OrderItemValidator orderItemValidator) {
+        this.orderItemValidator = orderItemValidator;
+    }
+    
+    @InitBinder("orderItemDto")
+    protected void initItemBinder(WebDataBinder binder) {
+        binder.setValidator(orderItemValidator);
+    }
+    
     @GetMapping
     public ModelAndView cart() {
         ModelAndView modelAndView = new ModelAndView("cart/cartAll");
@@ -28,14 +46,16 @@ public class CartController {
 
     @PostMapping(path = "/add")
     public String addToCart(@ModelAttribute(name = "orderItemDto") OrderItemDto orderItemDto,
-            Model model, BindingResult result,
-            RedirectAttributes redirectAttributes, HttpSession session) {
+            BindingResult result, Model model, HttpSession session,
+            RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
             model.addAttribute("message", "ERROR");
+            redirectAttributes.addFlashAttribute("message", "ERROR!");
             return "redirect:/product/" + orderItemDto.getProduct().getProductId();
 
         } else {
+            redirectAttributes.addFlashAttribute("message", "NE ZNAMMMMMMM!");
             List<OrderItemDto> lista = (List<OrderItemDto>) session.getAttribute("cart");
             if (lista == null) {
                 lista = new ArrayList<>();
@@ -61,7 +81,8 @@ public class CartController {
                 lista.add(orderItemDto);
             }
             session.setAttribute("cart", lista);
-            redirectAttributes.addFlashAttribute("message", "Product is saved!");
+            //redirectAttributes.addFlashAttribute("message", "Product is saved!");
+            redirectAttributes.addFlashAttribute("message", lista.toString());
             return "redirect:/product/" + orderItemDto.getProduct().getProductId();
         }
 

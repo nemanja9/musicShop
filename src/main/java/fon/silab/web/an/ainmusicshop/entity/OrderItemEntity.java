@@ -10,11 +10,9 @@ import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,11 +27,9 @@ public class OrderItemEntity implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id", unique = true, nullable = false)
     private int itemId;
-    @Id
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    private OrderEntity orderEntity;
     
-    @OneToOne(cascade = CascadeType.PERSIST)
+    
+    @OneToOne(cascade = CascadeType.MERGE)
     private ProductEntity product;
     
     @Column(name = "quantity", nullable = false, length = 50, columnDefinition="Integer default '0'")
@@ -73,13 +69,7 @@ public class OrderItemEntity implements Serializable{
         this.quantity = quantity;
     }
 
-    public OrderEntity getOrder() {
-        return orderEntity;
-    }
 
-    public void setOrder(OrderEntity order) {
-        this.orderEntity = order;
-    }
 
     
     @Override
