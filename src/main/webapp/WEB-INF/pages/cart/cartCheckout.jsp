@@ -58,7 +58,9 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="c_postal_zip" class="text-black">Poštanski broj <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">
+                                <!--<input type="text" class="form-control" id="c_postal_zip" name="c_postal_zip">-->
+                                <form:input  value="${sessionScope.loginUser.zip}" type="text" class="form-control" id="c_fname" name="c_fname" path="UserDto.zip" />
+
 
                             </div>
                         </div>

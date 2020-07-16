@@ -23,11 +23,21 @@ public class UserDto {
     private UserRole roleUser;
     private String password;
     private String re_password;
+    private String zip;
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+    
 
     public UserDto() {
     }
 
-    public UserDto(int userId, String firstname, String lastname, String email, String phoneNumber, String adress, String city, UserRole roleUser, String password) {
+    public UserDto(int userId, String firstname, String lastname, String email, String phoneNumber, String adress, String city, UserRole roleUser, String password, String zip) {
         this.userId = userId;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -37,6 +47,7 @@ public class UserDto {
         this.city = city;
         this.roleUser = roleUser;
         this.password = password;
+        this.zip = zip;
     }
 
     public String getRe_password() {

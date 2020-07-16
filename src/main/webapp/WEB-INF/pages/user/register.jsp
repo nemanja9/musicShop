@@ -67,6 +67,11 @@
                                 </div>
                                 <div><form:errors path="city" class="errorMsg"></form:errors></div>
                                 <div class="form-group">
+                                    <label for="zip"><i class="zmdi zmdi-map"></i></label>
+                                        <form:input type="text" path="zip" id="zip" placeholder="Poštanski broj" />
+                                </div>
+                                <div><form:errors path="zip" class="errorMsg"></form:errors></div>
+                                <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                         <form:input type="password" path="password" id="password" placeholder="Lozinka" />
                                 </div>

@@ -45,6 +45,7 @@ public class RegisterValidator implements Validator{
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phoneNumber", "userDto.phoneNumber.empty", "userDto.phoneNumber.empty = Default message");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "adress", "userDto.adress.empty", "userDto.adress.empty = Default message");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "city", "userDto.city.empty", "userDto.city.empty = Default message");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "zip", "userDto.zip.empty", "userDto.zip.empty = Default message");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "userDto.password.empty", "userDto.password.empty = Default message");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "re_password", "userDto.re_password.empty", "userDto.re_password.empty = Default message");
         
@@ -67,6 +68,13 @@ public class RegisterValidator implements Validator{
         if(userDto.getPassword().length() < 6){
             errors.rejectValue("password", "userDto.pass.form", "userDto.pass.form = Default message" );
         }
+        for (Character ch : userDto.getZip().toCharArray()) {
+            if(!ch.isDigit(ch)){
+                errors.rejectValue("zip", "userDto.zip.form", "userDto.zip.form = Default message" );
+                break;
+            }
+        }
+        
     }
     
 }

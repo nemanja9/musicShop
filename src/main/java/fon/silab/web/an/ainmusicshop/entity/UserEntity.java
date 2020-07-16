@@ -47,6 +47,8 @@ public class UserEntity implements Serializable{
 
     @Column(name = "city", nullable = false, length = 256)
     private String city;
+    @Column(name = "zip", nullable = false, length = 10)
+    private String zip;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_role",  length = 256, nullable = false)
@@ -62,7 +64,7 @@ public class UserEntity implements Serializable{
     public UserEntity() {
     }
 
-    public UserEntity(int userId, String firstname, String lastname, String email, String phoneNumber, String adress, String city, UserRole role, String password) {
+    public UserEntity(int userId, String firstname, String lastname, String email, String phoneNumber, String adress, String city, UserRole role, String password, String zip) {
         super();
         this.userId = userId;
         this.firstname = firstname;
@@ -73,6 +75,15 @@ public class UserEntity implements Serializable{
         this.city = city;
         this.roleUser = role;
         this.password = password;
+        this.zip = zip;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
     }
 
     public String getRe_password() {
