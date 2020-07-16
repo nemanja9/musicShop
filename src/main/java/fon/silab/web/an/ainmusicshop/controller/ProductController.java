@@ -89,11 +89,20 @@ public class ProductController {
         boolean categoryOK = false;
         boolean minOk = false;
         boolean maxOk = false;
+        boolean nameOk = true;
         String orderByStr = null;
         String min = null;
         String max = null;
 
-//        System.out.println("ORDER BY PARAM " + req.getParameter("orderby"));
+        
+        if(req.getParameter("productName") != null){
+            for (char c : req.getParameter("productName").toCharArray()) {
+                if(!Character.isLetter(c)){
+                    nameOk = false;
+                }
+            }
+        }
+        
         if (req.getParameter("orderby") != null) {
             switch (req.getParameter("orderby")) {
                 case "name.asc":
@@ -147,7 +156,8 @@ public class ProductController {
         }
 
         modelAndView.addObject("allProducts", productService.getSome((categoryOK ? req.getParameter("category") : null),
-                (orderByOK ? orderByStr : null), (manufacturerOK ? req.getParameter("manufacturer") : null), (maxOk ? max : null), (minOk ? min : null)));
+                (orderByOK ? orderByStr : null), (manufacturerOK ? req.getParameter("manufacturer") : null), (maxOk ? max : null), (minOk ? min : null),
+                (nameOk ? req.getParameter("productName") : null)));
 
         modelAndView.addObject("kategorije", categoryLists());
         modelAndView.addObject("proizvodjaci", manufacturersList());

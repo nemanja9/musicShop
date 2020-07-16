@@ -38,11 +38,11 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
     
      @Override
-    public List<ProductEntity> getSome(String category, String orderBy, String manufacturer, String max, String min) {
-   
+    public List<ProductEntity> getSome(String category, String orderBy, String manufacturer, String max, String min, String name) {
+        if(name == null) name = "%";
         if (category == null) category = "%";
         if (manufacturer == null) manufacturer = "%";
-        String query = "select p from products p where category like '"+ category +"'" +
+        String query = "select p from products p where category like '"+ category +"'" + " and product_name like'%" + name +  "%'" +
                 " and manufacturer like '" + manufacturer + "'" + (max!=null?" and " + max:" ") + (min!=null?" and " + min:" ") + (orderBy==null?"":" order by "+orderBy);
          System.out.println(query);
         return entityManager.createQuery(query, ProductEntity.class).getResultList();

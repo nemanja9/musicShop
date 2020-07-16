@@ -19,7 +19,7 @@ public interface ProductRepository {
     void save(ProductEntity product);
     List<ProductEntity> getAll();
     List<ProductEntity> getCategory(String category);
-    List<ProductEntity> getSome(String category, String orderBy, String manufacturer, String max, String min);
+    List<ProductEntity> getSome(String category, String orderBy, String manufacturer, String max, String min, String name);
     int getHighestPrice ();
     ProductEntity findByNumber(int numberId);
     void delete(int numberId);

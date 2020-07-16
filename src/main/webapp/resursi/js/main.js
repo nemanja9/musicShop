@@ -215,7 +215,6 @@ jQuery(document).ready(function($) {
 	siteMagnificPopup();
 
 	var searchShow = function() {
-		// alert();
 		var searchWrap = $('.search-wrap');
 		$('.js-search-open').on('click', function(e) {
 			e.preventDefault();

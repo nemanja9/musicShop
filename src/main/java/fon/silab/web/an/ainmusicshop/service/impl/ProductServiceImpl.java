@@ -51,8 +51,8 @@ public class ProductServiceImpl implements ProductService {
     }
     
     @Override
-    public List<ProductDto> getSome(String category, String orderBy, String manufacturer, String max, String min) {
-        List<ProductEntity> productsEnt = productRepository.getSome(category, orderBy, manufacturer, max, min);
+    public List<ProductDto> getSome(String category, String orderBy, String manufacturer, String max, String min, String name) {
+        List<ProductEntity> productsEnt = productRepository.getSome(category, orderBy, manufacturer, max, min, name);
         List<ProductDto> productsDto = new ArrayList<>();
         for (ProductEntity productEntity : productsEnt) {
             ProductDto p = modelMapper.map(productEntity, ProductDto.class);

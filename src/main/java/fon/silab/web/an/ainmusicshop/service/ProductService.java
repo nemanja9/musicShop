@@ -18,7 +18,7 @@ public interface ProductService {
    
     void save(ProductDto productDto);
     List<ProductDto> getAll();
-    List<ProductDto> getSome(String category, String orderBy, String manufacturer, String max, String min);
+    List<ProductDto> getSome(String category, String orderBy, String manufacturer, String max, String min, String name);
     List<ProductDto> getCategory(String category);
     int getHighestPrice();
     ProductDto getOne(int numberId);

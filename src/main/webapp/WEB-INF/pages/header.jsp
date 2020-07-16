@@ -38,8 +38,8 @@
                 <div class="search-wrap">
                     <div class="container">
                         <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
-                        <form action="#" method="post">
-                            <input type="text" class="form-control" placeholder="Pretraga...">
+                        <form action="${pageContext.request.contextPath}/product/all" method="get">
+                            <input type="text" id="productName" name="productName" class="form-control" placeholder="Pretraga...">
                         </form>
                     </div>
                 </div>
