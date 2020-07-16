@@ -30,7 +30,7 @@
                 <h2 class="text-black">${requestScope.productDto.getProductName()}</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
                 <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
-                <p><strong class="text-primary h4">${requestScope.productDto.getPrice()} $</strong></p>
+                <p><strong class="text-primary h4">${requestScope.productDto.getPrice()} €</strong></p>
                 <form:form action="${pageContext.request.contextPath}/cart/add" method="post" modelAttribute="orderItemDto">
 
                     <div class="mb-5">

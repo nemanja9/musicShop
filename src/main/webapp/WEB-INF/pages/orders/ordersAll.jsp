@@ -49,12 +49,15 @@
                       <td>
                           <c:set var="total" scope="session" value="0" />
                           <c:forEach items="${o.getOrderItems()}" var="i">
-                              ${i.getProduct().getProductName()} x ${i.getQuantity()} <br>
-                              <c:set var="total" scope="session" value="${total+i.getQuantity()*i.getProduct().getPrice()}" />
+
+                              <c:set var="subTotal" scope="session" value="${i.getQuantity()*i.getProduct().getPrice()}" />
+
+                              ${i.getProduct().getProductName()}[${i.getQuantity()}] x ${i.getProduct().getPrice()} € =  <c:out value="${subTotal}" /> €<br>
+                              <c:set var="total" scope="session" value="${total+subTotal}" />
                           </c:forEach>
                           
                         </td>
-                      <td><c:out value="${total}" /> EUR </td></td>
+                      <td><c:out value="${total}" /> € </td></td>
 
                     
                       <td style="text-align:center">

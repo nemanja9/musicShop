@@ -107,13 +107,13 @@
                                         <c:set var="total" scope="session" value="${total+subtotal}" />
                                         <tr>
                                             <td>${i.getProduct().getProductName()} <strong class="mx-2">x</strong>   ${i.getQuantity()}</td>
-                                            <td><c:out value="${subtotal}" /> RSD </td>
+                                            <td><c:out value="${subtotal}" /> € </td>
                                         </tr>
                                         <!-- do ovde -->
                                     </c:forEach>
                                     <tr>
                                         <td class="text-black font-weight-bold"><strong>Ukupno za uplatu</strong></td>
-                                        <td class="text-black font-weight-bold"><strong><c:out value="${total}" /> RSD </strong></td>
+                                        <td class="text-black font-weight-bold"><strong><c:out value="${total}" /> € </strong></td>
                                     </tr>
                                 </tbody>
                             </table>

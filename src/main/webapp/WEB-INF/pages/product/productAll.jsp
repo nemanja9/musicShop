@@ -41,7 +41,7 @@
                                 <img src="${pageContext.request.contextPath}/resursi/images${p.getImgPath()}" alt="Image" class="img-fluid">
                             </a>
                             <h2 class="item-title"><a href="#">${p.getProductName()}</a></h2>
-                            <strong class="item-price">${p.getPrice()} $</strong>
+                            <strong class="item-price">${p.getPrice()} €</strong>
                         </div>
                         <!-- do ovde -->
                     </c:forEach>

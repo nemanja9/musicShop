@@ -41,7 +41,7 @@
                       <h2 class="h5 text-black">${i.getProduct().getProductName()}</h2>
                     </td>
                     
-                    <td>${i.getProduct().getPrice()} RSD</td>
+                    <td>${i.getProduct().getPrice()} </td>
                     <td>
                       <div class="input-group mb-3" style="max-width: 120px;">
 <!--                        <div class="input-group-prepend">
@@ -58,7 +58,7 @@
                     <c:set var="subtotal" scope="session" value="${i.getQuantity()*i.getProduct().getPrice()}" />
                     <c:set var="total" scope="session" value="${total+subtotal}" />
                     <td>
-                      <c:out value="${subtotal}" /> EUR </td>
+                      <c:out value="${subtotal}" /> € </td>
                     <td>
                         
                         
@@ -116,7 +116,7 @@
                 <%--<c:set var = "cartItems" scope = "session" value = "${sessionScope.cart}"/>--%>
 
                 <strong class="text-black">
-                  <c:out value="${total}" /> RSD</strong>
+                  <c:out value="${total}" /> €</strong>
               </div>
             </div>
 
