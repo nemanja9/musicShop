@@ -81,11 +81,15 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public void delete(int numberId) {
         ProductEntity productEntity = entityManager.find(ProductEntity.class, numberId);
+        System.out.println(productEntity.toString());
         entityManager.remove(productEntity);
+            
+
     }
 
     @Override
     public void update(ProductEntity product) {
+        System.out.println("IDDDDDDDDDD " + product.getProductId());
         entityManager.merge(product);
     }
 

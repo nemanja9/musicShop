@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  *
@@ -61,7 +62,7 @@ public class ProductController {
     protected void initProductBinder(WebDataBinder binder) {
         binder.setValidator(productValidator);
     }
-    
+
     @InitBinder("orderItemDto")
     protected void initItemBinder(WebDataBinder binder) {
         binder.setValidator(orderItemValidator);
@@ -70,6 +71,13 @@ public class ProductController {
     @GetMapping(value = "add")
     public ModelAndView add() {
         ModelAndView modelAndView = new ModelAndView("product/productAdd", "productDto", new ProductDto());
+        return modelAndView;
+    }
+
+    @GetMapping(value = "edit")
+    public ModelAndView edit() {
+        ModelAndView modelAndView = new ModelAndView("product/productEdit");
+        modelAndView.addObject("allProducts", productService.getAll());
         return modelAndView;
     }
 
@@ -85,7 +93,7 @@ public class ProductController {
         String min = null;
         String max = null;
 
-        System.out.println("ORDER BY PARAM " + req.getParameter("orderby"));
+//        System.out.println("ORDER BY PARAM " + req.getParameter("orderby"));
         if (req.getParameter("orderby") != null) {
             switch (req.getParameter("orderby")) {
                 case "name.asc":
@@ -144,7 +152,7 @@ public class ProductController {
         modelAndView.addObject("kategorije", categoryLists());
         modelAndView.addObject("proizvodjaci", manufacturersList());
         modelAndView.addObject("najvecaCena", productService.getHighestPrice());
-        System.out.println(productService.getHighestPrice());
+//        System.out.println(productService.getHighestPrice());
         return modelAndView;
     }
 
@@ -180,32 +188,50 @@ public class ProductController {
             model.addAttribute("message", "Niste ispravno popunili formu!");
             return "product/productAdd";
         } else {
-            int id = productService.getMax() + 1;
             System.out.println("Save product: " + productDto);
             model.addAttribute("productDto", new ProductDto());
             MultipartFile image = productDto.getImg();
             String rootDirectory = session.getServletContext().getRealPath("/");
             Path path = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + ".png");
-            
-            if(new File(path.toString()).exists())
-            for (int i = 1; i < Integer.MAX_VALUE ; i++) {
-                Path tesan = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + "("+ i +")" + ".png");
-                if(!new File(tesan.toString()).exists()){
-                    path = tesan;
-                    break;
+
+            if (new File(path.toString()).exists()) {
+                for (int i = 1; i < Integer.MAX_VALUE; i++) {
+                    Path tesan = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + "(" + i + ")" + ".png");
+                    if (!new File(tesan.toString()).exists()) {
+                        path = tesan;
+                        break;
+                    }
                 }
             }
-             
-             File file = new File(path.toString());
+
+            File file = new File(path.toString());
             image.transferTo(file);
             productDto.setImgPath(path.toString().split("images")[1]);
             System.out.println("IMG PATH JE " + productDto.getImgPath());
-            
+
             productService.save(productDto);
             model.addAttribute("message", "Uspesno ste uneli proizvod " + productDto.getProductName() + "!");
 
             return "product/productAdd";
         }
+
+    }
+
+    @GetMapping("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
+        ModelAndView modelAndView = new ModelAndView("product/edit");
+        productService.delete(id);
+        return "redirect:/product/all";
+
+    }
+
+    @GetMapping("/edit/{id}")
+    public ModelAndView editProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
+        ModelAndView modelAndView = new ModelAndView("product/productEditOne");
+        modelAndView.addObject("product", productService.getOne(id));
+        modelAndView.addObject("categoryList", categoryLists());
+        System.out.println(productService.getOne(id).toString());
+        return modelAndView;
 
     }
 
@@ -227,6 +253,51 @@ public class ProductController {
     @ModelAttribute(name = "manufacturers")
     public List<String> manufacturersList() {
         return productService.getAllManufacturers();
+    }
+
+    @PostMapping(path = "/edit/save")
+    public String saveEdited(@Validated @ModelAttribute(name = "product") ProductDto productDto,
+            BindingResult result, Model model, HttpSession session,
+            RedirectAttributes redirectAttributes) throws IOException {
+
+        if (result.hasErrors()) {
+            model.addAttribute("message", "Niste ispravno popunili formu!");
+            return "product/productEditOne";
+        } else {
+            
+            
+            MultipartFile image = productDto.getImg();
+        
+            if (image.getOriginalFilename().length()>0){
+            String rootDirectory = session.getServletContext().getRealPath("/");
+            Path path = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + ".png");
+            Path zaBrisanje = Paths.get(rootDirectory + "/resursi/images" + productDto.getImgPath());
+            new File(zaBrisanje.toString()).delete();
+                System.out.println("Trebao se obrisati fajl " + zaBrisanje.toString());
+
+            if (new File(path.toString()).exists()) {
+                for (int i = 1; i < Integer.MAX_VALUE; i++) {
+                    Path tesan = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + "(" + i + ")" + ".png");
+                    if (!new File(tesan.toString()).exists()) {
+                        path = tesan;
+                        break;
+                    }
+                }
+            }
+
+            File file = new File(path.toString());
+            image.transferTo(file);
+            productDto.setImgPath(path.toString().split("images")[1]);
+
+            
+            }
+            
+            productService.update(productDto);
+            
+            return "redirect:/product/all";
+
+        }
+
     }
 
 }

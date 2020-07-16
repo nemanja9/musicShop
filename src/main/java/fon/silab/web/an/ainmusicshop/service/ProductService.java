@@ -28,5 +28,4 @@ public interface ProductService {
 
     public ArrayList<String> getAllManufacturers();
     int getMax();
-    
 }

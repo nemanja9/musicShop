@@ -1082,3 +1082,6 @@ p{
   text-indent: 30px;
   text-transform: uppercase;
 }
+#dataTable img{
+    max-height: 100px;
+}

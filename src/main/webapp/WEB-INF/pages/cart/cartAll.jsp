@@ -44,14 +44,14 @@
                     <td>${i.getProduct().getPrice()} RSD</td>
                     <td>
                       <div class="input-group mb-3" style="max-width: 120px;">
-                        <div class="input-group-prepend">
+<!--                        <div class="input-group-prepend">
                           <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                        </div>
+                        </div>-->
                         <input type="text" class="form-control text-center" value="${i.getQuantity()}" placeholder=""
-                          aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <div class="input-group-append">
+                               aria-label="Example text with button addon" aria-describedby="button-addon1" disabled="">
+<!--                        <div class="input-group-append">
                           <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                        </div>
+                        </div>-->
                       </div>
 
                     </td>
@@ -61,7 +61,8 @@
                       <c:out value="${subtotal}" /> RSD </td>
                     <td>
                         
-                        <form:form method="post" action="${pageContext.request.contextPath}/cart/remove"  modelAttribute="orderItemDto">
+                        
+                        <form:form method="post" action="${pageContext.request.contextPath}/cart/remove" modelAttribute="orderItemDto">
                         <form:hidden value="${i.getProduct().getProductId()}" path="product.productId" />
                       <button class="btn btn-primary height-auto btn-sm">X</button>
                     </form:form>
@@ -86,9 +87,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="row mb-5">
-          <div class="col-md-6 mb-3 mb-md-0">
-            <button class="btn btn-primary btn-sm btn-block">Update Cart (? sta ovo dugme radi)</button>
-          </div>
+          
           <div class="col-md-6">
             <a href="${pageContext.request.contextPath}/product/all">
                 <button class="btn btn-outline-primary btn-sm btn-block">Nastavi kupovinu</button></a>

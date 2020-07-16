@@ -62,6 +62,7 @@
                                         <ul class="dropdown">
                                             <li><a href="${pageContext.request.contextPath}/product/all">Svi proizvodi</a></li>
                                             <li><a href="${pageContext.request.contextPath}/product/add">Dodavanje proizvoda</a></li>
+                                            <li><a href="${pageContext.request.contextPath}/product/edit">Izmena proizvoda</a></li>
 
                                         </ul>
                                     </li>
