@@ -19,4 +19,5 @@ public interface OrderService {
     OrderDto findByNumber(int numberId);
     void delete(int numberId);
     void update(OrderDto order);
+    String getUserByOrderID(int id);
 }

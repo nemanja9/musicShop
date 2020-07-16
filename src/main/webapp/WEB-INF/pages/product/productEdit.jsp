@@ -15,7 +15,7 @@
                       <th>Kategorija</th>
                       <th>Opis</th>
                       <th>Proizvodjac</th>
-                      <th>Action</th>
+                      <th>Opcije</th>
                     </tr>
                     </thead>
                      <tfoot>
@@ -27,7 +27,7 @@
                       <th>Kategorija</th>
                       <th>Opis</th>
                       <th>Proizvodjac</th>
-                      <th>Action</th>
+                      <th>Opcije</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -37,7 +37,7 @@
                       <td>${p.productName}</td>
                       <td>${p.price}</td>
                       <td><img src="${pageContext.request.contextPath}/resursi/images${p.getImgPath()}" alt="Image" class="img-fluid"></td>
-                      <td>Kategorija fali u product dto ?</td>
+                      <td>${p.category}</td>
                       <td>${p.manufacturer}</td>
                       <td>${p.description}</td>
                     

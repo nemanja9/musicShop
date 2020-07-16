@@ -78,5 +78,10 @@ public class OrderServiceImpl implements OrderService{
         OrderEntity orderEntity = modelMapper.map(order, OrderEntity.class);
         orderRepository.update(orderEntity);
     }
+
+    @Override
+    public String getUserByOrderID(int id) {
+        return orderRepository.getUserByOrderID(id);
+    }
     
 }

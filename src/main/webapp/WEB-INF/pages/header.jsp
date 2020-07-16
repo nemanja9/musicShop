@@ -77,14 +77,14 @@
                                                 <li><a href="${pageContext.request.contextPath}/user/register">Registracija</a></li>
                                                 </c:if>
                                                 <c:if test="${not empty sessionScope.loginUser}">
-                                                <li><a href="#">Moje porudžbine</a></li>
+                                                
                                                
                                                 
                                                 <li><a href="${pageContext.request.contextPath}/user/logout">Odjavi se</a></li>
                                                 
                                                
                                                 </c:if>
-
+<li><a href="${pageContext.request.contextPath}/orders/all">Moje porudžbine</a></li>
                                         </ul>
                                     </li>
                                 </ul>

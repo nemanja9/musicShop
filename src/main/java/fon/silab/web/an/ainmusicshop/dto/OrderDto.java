@@ -21,23 +21,43 @@ public class OrderDto {
     private UserDto userDto;
     private Status orderStatus;
     private Date orderDate;
-    private Date requiredDate;
+    private Date paidDate;
     private Date shippedDate;
     private List<OrderItemDto> orderItems;
+    private String token;
+    private String paymentId;
 
     public OrderDto() {
         orderItems = new ArrayList<>();
     }
 
-    public OrderDto(int orderId, UserDto userDto, Status orderStatus, Date orderDate, Date requiredDate, Date shippedDate, List<OrderItemDto> orderItems) {
+    public OrderDto(int orderId, UserDto userDto, Status orderStatus, Date orderDate, Date paidDate, Date shippedDate, List<OrderItemDto> orderItems, String token, String paymentId) {
         super();
         this.orderId = orderId;
         this.userDto = userDto;
         this.orderStatus = orderStatus;
         this.orderDate = orderDate;
-        this.requiredDate = requiredDate;
+        this.paidDate = paidDate;
         this.shippedDate = shippedDate;
         this.orderItems = orderItems;
+        this.token = token;
+        this.paymentId = paymentId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
     }
     
     
@@ -74,12 +94,12 @@ public class OrderDto {
         this.orderDate = orderDate;
     }
 
-    public Date getRequiredDate() {
-        return requiredDate;
+    public Date getPaidDate() {
+        return paidDate;
     }
 
-    public void setRequiredDate(Date requiredDate) {
-        this.requiredDate = requiredDate;
+    public void setPaidDate(Date paidDate) {
+        this.paidDate = paidDate;
     }
 
     public Date getShippedDate() {
@@ -100,7 +120,7 @@ public class OrderDto {
 
     @Override
     public String toString() {
-        return "OrderDto{" + "orderId=" + orderId + ", userDto=" + userDto + ", orderStatus=" + orderStatus + ", orderDate=" + orderDate + ", requiredDate=" + requiredDate + ", shippedDate=" + shippedDate + ", orderItems=" + orderItems + '}';
+        return "OrderDto{" + "orderId=" + orderId + ", userDto=" + userDto + ", orderStatus=" + orderStatus + ", orderDate=" + orderDate + ", paidDate=" + paidDate + ", shippedDate=" + shippedDate + ", orderItems=" + orderItems + '}';
     }
     
     

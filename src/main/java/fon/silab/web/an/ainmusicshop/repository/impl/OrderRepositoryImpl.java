@@ -53,6 +53,12 @@ public class OrderRepositoryImpl implements OrderRepository{
         entityManager.merge(order);
     }
 
+    @Override
+    public String getUserByOrderID(int id) {
+        String query = "SELECT CONCAT (firstname, ' ' ,lastname) FROM users u JOIN orders o ON u.userId = o.userEntity WHERE o.orderId = " + id;
+        return entityManager.createQuery(query, String.class).getSingleResult();
+    }
+
     
     
     

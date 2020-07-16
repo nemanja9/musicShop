@@ -19,5 +19,7 @@ public interface OrderRepository {
     OrderEntity findByNumber(int numberId);
     void delete(int numberId);
     void update(OrderEntity order);
+
+    public String getUserByOrderID(int id);
     
 }

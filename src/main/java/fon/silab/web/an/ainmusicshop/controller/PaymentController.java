@@ -84,16 +84,29 @@ public class PaymentController {
         order.setUserDto(user);
         order.setOrderDate(new Date());
         order.setOrderItems(lista);
-        order.setOrderStatus(OrderEntity.Status.SPAKOVANO);
+        if(request.getParameter("paymentId")!= null){
+            System.out.println(request.getParameter("token"));
+            System.out.println(request.getParameter("paymentId"));
+        order.setToken(request.getParameter("token"));
+        order.setPaymentId(request.getParameter("paymentId"));
+        order.setOrderStatus(OrderEntity.Status.PLACENO);
+        order.setPaidDate(new Date());
+        }
+        else {
+            order.setOrderStatus(OrderEntity.Status.NEPLACENO);
+        }
         
 
-        orderService.save(order);
+                orderService.save(order);
+
         
         
         session.removeAttribute("cart");
         try {
             PaymentServices paymentServices = new PaymentServices();
             Payment payment = paymentServices.getPaymentDetails(paymentId);
+//            System.out.println(paymentId);
+//            System.out.println(request.getParameter("token"));
 
             PayerInfo payerInfo = payment.getPayer().getPayerInfo();
             Transaction transaction = payment.getTransactions().get(0);

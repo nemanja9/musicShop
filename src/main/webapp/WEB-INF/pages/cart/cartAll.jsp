@@ -58,7 +58,7 @@
                     <c:set var="subtotal" scope="session" value="${i.getQuantity()*i.getProduct().getPrice()}" />
                     <c:set var="total" scope="session" value="${total+subtotal}" />
                     <td>
-                      <c:out value="${subtotal}" /> RSD </td>
+                      <c:out value="${subtotal}" /> EUR </td>
                     <td>
                         
                         
