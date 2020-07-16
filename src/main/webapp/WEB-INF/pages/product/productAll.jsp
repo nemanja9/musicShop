@@ -32,12 +32,25 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-5">
+                
+                <c:if test="${requestScope.allProducts.size()==0}">
+                <div class="site-blocks-cover inner-page round-me-blur-me"style="background-repeat: no-repeat; background-size: cover; background-position: center"
+      data-aos="fade">
+                <a href="http://localhost:8080/musicshop/product/all" class="product-category-center404">Izgleda da nema proizvoda koji odgovaraju vašim kriterijumima! Da uklonite filtere kliknite <b>OVDE</b></a>
 
+      <div class="container">
+        <div class="row">
+            <img class="small-me" src="${pageContext.request.contextPath}/resursi/images/404.png">
+        </div>
+
+      </div>
+    </div>
+                </c:if>
+                <div class="row mb-5"> 
                     <!-- ovde ide for za proizvod -->
                     <c:forEach items="${requestScope.allProducts}" var="p">
                         <div class="col-lg-6 col-md-6 item-entry mb-4">
-                            <a href="${pageContext.request.contextPath}/product/${p.getProductId()}" class="product-item md-height bg-gray d-block">
+                            <a href="${pageContext.request.contextPath}/product/${p.getProductId()}" class="product-item md-height400px bg-NOgray d-block">
                                 <img src="${pageContext.request.contextPath}/resursi/images${p.getImgPath()}" alt="Image" class="img-fluid">
                             </a>
                             <h2 class="item-title"><a href="#">${p.getProductName()}</a></h2>
@@ -49,6 +62,8 @@
                 </div>
             </div>
 
+            
+            
             <!-- filteri sa strane -->
             <div class="col-md-3 order-2 mb-5 mb-md-0">
                 <!--kategorije-->
@@ -58,7 +73,7 @@
                         <c:forEach items="${kategorije}" var="k">
 
                             <li class="mb-1"><a onclick="setGetParameter('category', '${k}')" href="#" class="d-flex"><span>${k}</span> <span
-                                        class="text-black ml-auto">(2,220)</span></a></li>
+                                        class="text-black ml-auto"></span></a></li>
                                 </c:forEach>
                     </ul>
                 </div>
@@ -72,7 +87,7 @@
                         <c:forEach items="${proizvodjaci}" var="k">
 
                             <li class="mb-1"><a onclick="setGetParameter('manufacturer', '${k}')" href="#" class="d-flex"><span>${k}</span> <span
-                                        class="text-black ml-auto">(2,220)</span></a></li>
+                                        class="text-black ml-auto"></span></a></li>
                                 </c:forEach>
                     </ul>
                 </div>

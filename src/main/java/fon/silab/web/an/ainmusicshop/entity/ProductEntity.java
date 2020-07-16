@@ -170,10 +170,13 @@ public class ProductEntity implements Serializable{
     
 
     public enum Category{
-        ZICANI,
-        UDARALJKE, 
-        NEMAMPOJMADALJE,
-        k
+        KLAVIRI,
+        BUBNJEVI, 
+        POJAČALA,
+        KLAVIJATURE,
+        MIKSETE,
+        DUVAČKI,
+        GITARE
     }
     
 

@@ -11,7 +11,7 @@
 
 <div class="site-section">
     <div class="container">
-<form:form method="post" action="${pageContext.request.contextPath}/PayPal/openPayPal"  modelAttribute="orderDto">
+        <form:form method="post" id="formaCartCheckout" action="${pageContext.request.contextPath}/PayPal/openPayPal"  modelAttribute="orderDto" onsubmit="return plati(event)">
         <div class="row">
             <!--deo za podatke-->
 
@@ -119,27 +119,21 @@
                             </table>
 
                             <div class="border p-3 mb-3">
-                                <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">Plaćanje pouzećem</a></h3>
+                                
+                                <p style="color: black"><b>Izaberite način plaćanja</b></p>              
 
-                                <div class="collapse" id="collapsebank">
-                                    <div class="py-2">
-                                        <p class="mb-0">Iznos za uplatu plaćate kuriru kada vam isporuči robu.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="border p-3 mb-5">
-                                <h3 class="h6 mb-0">
-                                    <a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">Plaćanje preko Paypal</a></h3>
-
-                                <div class="collapse" id="collapsepaypal">
-                                    <div class="py-2">
-                                        <p class="mb-0">Nakon klika na dugnme 'Završi porudžbinu' bićete preusmereni na sajt Paypal da izvršite uplatu</p>
-                                    </div>
-                                </div>
-                            </div>
+                                        <form class="formRadioButtons">
+                                          <div class="inputGroupRadioButtons">
+                                            <input id="radio1" name="radio" type="radio"/>
+                                            <label for="radio1">Pouzećem</label>
+                                          </div>
+                                          <div class="inputGroupRadioButtons">
+                                            <input id="radio2" name="radio" type="radio"/>
+                                            <label for="radio2">PayPal</label>
+                                          </div>
+                                        </form>
+                                         </div>
+                            
 
                             <div class="form-group">
                                 <button class="btn btn-primary btn-lg btn-block">Završi porudžbinu</button>
