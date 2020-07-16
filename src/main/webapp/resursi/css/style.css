@@ -1077,11 +1077,15 @@ a {
     border-radius: 20px;
 }
 
-p{
+.errorMsgTitle{
   color: red;
   text-indent: 30px;
   text-transform: uppercase;
 }
+.errorMsg{
+    color:red;
+}
+
 #dataTable img{
     max-height: 100px;
 }

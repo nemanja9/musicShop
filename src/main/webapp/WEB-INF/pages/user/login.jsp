@@ -12,6 +12,7 @@
         <!-- Font Icon -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/fonts/material-icon/css/material-design-iconic-font.min.css">
 
+
         <!-- Main css -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/login.style.css">
 
@@ -36,27 +37,27 @@
                     <div class="polovina">
                         <div class="signin-form">
                             <h2 class="form-title">Prijavljivanje</h2>
-                            <div>${message}</div>
+                            <p class="errorMsgTitle">${message}</p>
                             <c:if test="${not empty invalid}">
-                                <div>${invalid}</div>
+                                <p  class="errorMsgTitle">${invalid}</p>
                             </c:if>
                             <form:form action="${pageContext.request.contextPath}/user/login_user" method="post" modelAttribute="userToLogin" class="register-form" id="login-form">
                                 <div class="form-group">
                                     <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                    <form:input type="text" name="email" id="email" path = "email" placeholder="Email" />
-                                    <div><form:errors path="email"></form:errors></div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                    <form:input type="password" name="password" id="password" path="password" placeholder="Lozinka" />
-                                    <div><form:errors path="password"></form:errors></div>
-                                </div>
-                                <div class="form-group">
+                                        <form:input type="text" name="email" id="email" path = "email" placeholder="Email" />
+                                    <div><form:errors path="email" class="errorMsg"></form:errors></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                        <form:input type="password" name="password" id="password" path="password" placeholder="Lozinka" />
+                                    <div><form:errors path="password" class="errorMsg"></form:errors></div>
+                                    </div>
+                                    <div class="form-group">
 
-                                </div>
-                                <div class="form-group form-button">
-                                    <input type="submit" name="login" id="login" class="form-submit" value="Prijava" />
-                                </div>
+                                    </div>
+                                    <div class="form-group form-button">
+                                        <input type="submit" name="login" id="login" class="form-submit" value="Prijava" />
+                                    </div>
                             </form:form>
                             <br>
                             <a href="${pageContext.request.contextPath}/user/register"><p>Nemate nalog? Registrujte se ovde</p></a>

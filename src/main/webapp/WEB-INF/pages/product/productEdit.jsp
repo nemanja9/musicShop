@@ -42,9 +42,9 @@
                       <td>${p.description}</td>
                     
                       <td style="text-align:center">
-                          <button type="button" class="btn btn-warning" style="width: 115px;" data-toggle="modal" onClick="window.location='${pageContext.request.contextPath}/product/edit/${p.productId}'"><i class="fas fa-user-edit"></i> EDIT</button>
+                          <button type="button" class="btn btn-warning" style="width: 115px;" data-toggle="modal" onClick="window.location='${pageContext.request.contextPath}/product/edit/${p.productId}'"><i class="fas fa-user-edit"></i> Izmeni</button>
                       <a href="${pageContext.request.contextPath}/product/deleteProduct/${p.productId}"><button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Are you sure you want to delete this product?')">
-                              <i class="fas fa-user-minus"></i> DELETE</button></a></td>
+                              <i class="fas fa-user-minus"></i> Obriši</button></a></td>
                     </tr>
                     
                     

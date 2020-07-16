@@ -7,7 +7,7 @@
 <div class="bg-light py-3">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <a href="shop.html">Proizvodi</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">${requestScope.productDto.getProductName()}</strong></div>
+            <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <a href="${pageContext.request.contextPath}/product/all">Proizvodi</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">${requestScope.productDto.getProductName()}</strong></div>
         </div>
     </div>
 </div>  
@@ -26,25 +26,11 @@
 
             </div>
             <div class="col-md-6">
-                <p>${message}</p>
+                <!--<p>${message}</p>-->
                 <h2 class="text-black">${requestScope.productDto.getProductName()}</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
                 <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
                 <p><strong class="text-primary h4">${requestScope.productDto.getPrice()} $</strong></p>
-                <div class="mb-1 d-flex">
-                    <label for="option-sm" class="d-flex mr-3 mb-3">
-                        <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">Small</span>
-                    </label>
-                    <label for="option-md" class="d-flex mr-3 mb-3">
-                        <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-md" name="shop-sizes"></span> <span class="d-inline-block text-black">Medium</span>
-                    </label>
-                    <label for="option-lg" class="d-flex mr-3 mb-3">
-                        <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-lg" name="shop-sizes"></span> <span class="d-inline-block text-black">Large</span>
-                    </label>
-                    <label for="option-xl" class="d-flex mr-3 mb-3">
-                        <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-xl" name="shop-sizes"></span> <span class="d-inline-block text-black"> Extra Large</span>
-                    </label>
-                </div>
                 <form:form action="${pageContext.request.contextPath}/cart/add" method="post" modelAttribute="orderItemDto">
 
                     <div class="mb-5">

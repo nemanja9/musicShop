@@ -22,7 +22,7 @@
         <div class="custom-border-bottom py-3" id="backHome">
             <div>
                 <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Register</strong></div>
+                        class="text-black">Registracija</strong></div>
             </div>
         </div>
         <div class="container">
@@ -31,51 +31,51 @@
                     <div class="polovina">
                         <div class="signin-form">
                             <h2 class="form-title">Registracija</h2>
-                            <div>${message}</div>
+                            <p class="errorMsgTitle">${message}</p>
                             <c:if test="${not empty invalid}">
-                                <div>${invalid}</div>
+                                <p class="errorMsgTitle">${invalid}</p>
                             </c:if>
                             <form:form action="${pageContext.request.contextPath}/user/register_user" method="post" modelAttribute="userToRegister" class="register-form" id="register-form">
                                 <div class="form-group">
                                     <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                         <form:input type="text" path="firstname" id="firstname" placeholder="Ime" />
                                 </div>
-                                <div><form:errors path="firstname"></form:errors></div>
+                                <div><form:errors path="firstname" class="errorMsg"></form:errors></div>
                                 <div class="form-group">
                                         <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                         <form:input type="text" path="lastname" id="lastname" placeholder="Prezime" />
                                 </div>
-                                <div><form:errors path="lastname"></form:errors></div>
+                                <div><form:errors path="lastname" class="errorMsg"></form:errors></div>
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email"></i></label>
                                         <form:input type="text" path="email" id="email" placeholder="Email" />
                                 </div>
-                                <div><form:errors path="email"></form:errors></div>
+                                <div><form:errors path="email" class="errorMsg"></form:errors></div>
                                 <div class="form-group">
                                     <label for="phoneNumber"><i class="zmdi zmdi-smartphone-iphone"></i></label>
                                         <form:input type="text" path="phoneNumber" id="phoneNumber" placeholder="Kontakt telefon" />
                                 </div>
-                                <div><form:errors path="phoneNumber"></form:errors></div>
+                                <div><form:errors path="phoneNumber" class="errorMsg"></form:errors></div>
                                 <div class="form-group">
                                     <label for="phoneNumber"><i class="zmdi zmdi-home"></i> </label>
                                     <form:input type="text" path="adress" id="adress" placeholder="Ulica, broj i ulaz" />
                                 </div>
-                                <div><form:errors path="adress"></form:errors></div>
+                                <div><form:errors path="adress" class="errorMsg"></form:errors></div>
                                 <div class="form-group">
                                     <label for="phoneNumber"><i class="zmdi zmdi-map"></i></label>
                                         <form:input type="text" path="city" id="city" placeholder="Grad" />
                                 </div>
-                                <div><form:errors path="city"></form:errors></div>
+                                <div><form:errors path="city" class="errorMsg"></form:errors></div>
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                         <form:input type="password" path="password" id="password" placeholder="Lozinka" />
                                 </div>
-                                <div><form:errors path="password"></form:errors></div>
+                                <div><form:errors path="password" class="errorMsg"></form:errors></div>
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                         <form:input type="password" path="re_password" id="re_password" placeholder="Ponovite lozinku" />
                                 </div>
-                                <div><form:errors path="re_password"></form:errors></div>
+                                <div><form:errors path="re_password" class="errorMsg"></form:errors></div>
                                 <div class="form-group">
                                     <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                     <label for="agree-term" class="label-agree-term"><span><span></span></span>Slažem se sa <a href="javascript:alert('Nema uslova koriscenja trenutno!');" class="term-service">uslovima korišćenja</a></label>

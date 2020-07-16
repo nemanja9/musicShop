@@ -124,7 +124,7 @@ public class UserController {
 
         if (result.hasErrors()) {
             System.out.println("Bilo je gresaka pri validaciji...");
-            model.addAttribute("invalid", "One or more fields are invalid!");
+            model.addAttribute("invalid", "Niste lepo popunili formu!");
             return "user/register";
         } else {
             System.out.println("Nije bilo gresaka pri validaciji...");
