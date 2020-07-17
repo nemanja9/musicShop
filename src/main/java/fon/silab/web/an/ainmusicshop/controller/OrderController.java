@@ -2,8 +2,11 @@ package fon.silab.web.an.ainmusicshop.controller;
 
 import fon.silab.web.an.ainmusicshop.dto.OrderDto;
 import fon.silab.web.an.ainmusicshop.dto.OrderItemDto;
+import fon.silab.web.an.ainmusicshop.dto.UserDto;
 import fon.silab.web.an.ainmusicshop.service.OrderItemService;
 import fon.silab.web.an.ainmusicshop.service.OrderService;
+import fon.silab.web.an.ainmusicshop.service.UserService;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,22 +24,30 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class OrderController {
     private final OrderService orderService;
     private final OrderItemService orderItemService; 
+    private final UserService userService;
 
     @Autowired
-    public OrderController(OrderService orderService, OrderItemService orderItemService) {
+    public OrderController(OrderService orderService, OrderItemService orderItemService, UserService userService) {
         this.orderService = orderService;
         this.orderItemService = orderItemService;
+        this.userService = userService;
     }
     
     
      @GetMapping(path = "/all")
     public ModelAndView allOrders(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("orders/ordersAll");
-        modelAndView.addObject("orders", orderService.getAll());
-         for (OrderDto object : orderService.getAll()) {
-             System.out.println(object.getUserDto());
+        
+         List<OrderDto> list = orderService.getAll();
+         for (OrderDto o : list) {
+             UserDto u = userService.findByEmail(orderService.getUserByOrderID(o.getOrderId()));
+             o.setUserDto(u);
+             System.out.println(orderService.getUserByOrderID(o.getOrderId()));
+             System.out.println(userService.findByEmail(orderService.getUserByOrderID(o.getOrderId())));
+             System.out.println(u);
          }
- 
+         
+        modelAndView.addObject("orders", list);
         return modelAndView;
     }
     

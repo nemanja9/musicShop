@@ -43,9 +43,8 @@
                       <td>${o.getShippedDate()}</td>
                       <td>${o.getPaymentId()}</td>
                       <td>${o.getToken()}</td>
-                      <!--<td>{o.getUserDto().getFirstname()+ " " + o.getUserDto().getLastname()}</td>-->
-                      <td>X</td>
-                      <!--obrisati kom i dodati $ kada se resi prob-->
+                      <td>${o.getUserDto().getFirstname()}  ${o.getUserDto().getLastname()}</td>-->
+                      
                       <td>
                           <c:set var="total" scope="session" value="0" />
                           <c:forEach items="${o.getOrderItems()}" var="i">
@@ -57,7 +56,7 @@
                           </c:forEach>
                           
                         </td>
-                      <td><c:out value="${total}" /> € </td></td>
+                      <td><c:out value="${total}" /> $ </td>
 
                     
                       <td style="text-align:center">

@@ -98,9 +98,27 @@ public class OrderEntity implements Serializable{
         return userEntity;
     }
 
-    public void setUser(UserEntity user) {
-        this.userEntity = user;
+    public void setUser(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
+
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    
 
     public Status getOrderStatus() {
         return orderStatus;
