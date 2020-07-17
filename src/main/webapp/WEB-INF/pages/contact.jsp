@@ -26,7 +26,7 @@
         <div class="row">         
           <div class="col-md-7">
             <h2 class="h3 mb-3 text-black">Kontaktirajte nas</h2>
-            <form action="#" method="post">
+            <form action="" method="post" id="formaContact" onsubmit="return kontaktirajteNas(event)">
 
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">

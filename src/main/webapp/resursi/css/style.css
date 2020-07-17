@@ -1206,17 +1206,10 @@ code {
   padding: 0 8px;
 }
 
-.centerTextFieldQty{
-    display: inline-block;
-    min-width: fit-content;
-    max-width: 60px;
+#centerDivQty{
+    text-justify: auto;
+    width: 10px;
 }
-
-.centerDivQty{
-        display: inline-block;
-        max-width: 60px !important;
-}
-
 .round-me-blur-me{
     
     border-radius: 50px;

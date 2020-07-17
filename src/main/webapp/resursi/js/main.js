@@ -244,11 +244,15 @@ function plati(e) {
         return;
     } else {
         alert("Morate izabrati opciju plaćanja");
-        
+
     }
+}
+
+function kontaktirajteNas(e) {
+    e.preventDefault();
+    alert("Uspešno poslata poruka!");
+    window.location.href = "http://localhost:8080/musicshop/";
 
 
-//    document.getElementById("formaCartCheckout").submit();
-//    return;
-//    window.location.href = "http://localhost:8080/musicshop/";
+
 }

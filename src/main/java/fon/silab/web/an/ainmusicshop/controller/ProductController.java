@@ -10,6 +10,7 @@ import fon.silab.web.an.ainmusicshop.dto.ProductDto;
 import fon.silab.web.an.ainmusicshop.entity.ProductEntity.Category;
 import fon.silab.web.an.ainmusicshop.service.ProductService;
 import fon.silab.web.an.ainmusicshop.validator.OrderItemValidator;
+import fon.silab.web.an.ainmusicshop.validator.ProductEditValidator;
 import java.util.ArrayList;
 import fon.silab.web.an.ainmusicshop.validator.ProductValidator;
 import java.io.File;
@@ -50,17 +51,24 @@ public class ProductController {
     private final ProductService productService;
     private final ProductValidator productValidator;
     private final OrderItemValidator orderItemValidator;
+    private final ProductEditValidator productEditValidator;
 
     @Autowired
-    public ProductController(ProductService productService, ProductValidator productValidator, OrderItemValidator orderItemValidator) {
+    public ProductController(ProductService productService, ProductValidator productValidator, OrderItemValidator orderItemValidator, ProductEditValidator productEditValidator) {
         this.productService = productService;
         this.productValidator = productValidator;
         this.orderItemValidator = orderItemValidator;
+        this.productEditValidator = productEditValidator;
     }
-
+    
+    
     @InitBinder("productDto")
     protected void initProductBinder(WebDataBinder binder) {
         binder.setValidator(productValidator);
+    }
+    @InitBinder("product")
+    protected void initProductEditBinder(WebDataBinder binder) {
+        binder.setValidator(productEditValidator);
     }
 
     @InitBinder("orderItemDto")
@@ -265,7 +273,7 @@ public class ProductController {
         return productService.getAllManufacturers();
     }
 
-    @PostMapping(path = "/edit/save")
+    @PostMapping(path = "/edit/saveEdit")
     public String saveEdited(@Validated @ModelAttribute(name = "product") ProductDto productDto,
             BindingResult result, Model model, HttpSession session,
             RedirectAttributes redirectAttributes) throws IOException {

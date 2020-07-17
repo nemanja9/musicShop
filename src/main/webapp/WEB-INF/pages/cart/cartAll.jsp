@@ -42,14 +42,8 @@
                                     </td>
 
                                     <td>${i.getProduct().getPrice()} </td>
-                                    <td>
-                                        <div class="input-group mb-3" id="centerDivQty">
-
-                                            <input type="text" class="form-control text-center" id="centerTextFieldQty" value="${i.getQuantity()}" placeholder=""
-                                                   aria-label="Example text with button addon" aria-describedby="button-addon1" disabled="">
-
-                                        </div>
-
+                                    <td style="text-align: center;max-width: 60px">
+                                            ${i.getQuantity()}
                                     </td>
                                     <c:set var="subtotal" scope="session" value="${i.getQuantity()*i.getProduct().getPrice()}" />
                                     <c:set var="total" scope="session" value="${total+subtotal}" />

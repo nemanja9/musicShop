@@ -56,7 +56,7 @@
                           </c:forEach>
                           
                         </td>
-                      <td><c:out value="${total}" /> $ </td>
+                      <td><c:out value="${total}" /> € </td>
 
                     
                       <td style="text-align:center">
