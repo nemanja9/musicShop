@@ -43,7 +43,7 @@
                       <td>${o.getShippedDate()}</td>
                       <td>${o.getPaymentId()}</td>
                       <td>${o.getToken()}</td>
-                      <td>${o.getUserDto().getFirstname()}  ${o.getUserDto().getLastname()}</td>-->
+                      <td>${o.getUserDto().getFirstname()}  ${o.getUserDto().getLastname()}</td>
                       
                       <td>
                           <c:set var="total" scope="session" value="0" />

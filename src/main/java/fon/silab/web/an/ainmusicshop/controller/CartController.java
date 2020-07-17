@@ -2,6 +2,7 @@ package fon.silab.web.an.ainmusicshop.controller;
 
 import fon.silab.web.an.ainmusicshop.dto.OrderDto;
 import fon.silab.web.an.ainmusicshop.dto.OrderItemDto;
+import fon.silab.web.an.ainmusicshop.dto.UserDto;
 import fon.silab.web.an.ainmusicshop.validator.OrderItemValidator;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,20 +24,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/cart")
 public class CartController {
 
-    
     private final OrderItemValidator orderItemValidator;
-    
-    
+
     @Autowired
     public CartController(OrderItemValidator orderItemValidator) {
         this.orderItemValidator = orderItemValidator;
     }
-    
+
     @InitBinder("orderItemDto")
     protected void initItemBinder(WebDataBinder binder) {
         binder.setValidator(orderItemValidator);
     }
-    
+
     @GetMapping
     public ModelAndView cart() {
         ModelAndView modelAndView = new ModelAndView("cart/cartAll");
@@ -122,7 +121,20 @@ public class CartController {
     public ModelAndView checkOut(@ModelAttribute(name = "orderDto") OrderDto orderDto,
             Model model, BindingResult result,
             RedirectAttributes redirectAttributes, HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("cart/cartCheckout");
+        
+         ModelAndView modelAndView;
+        if (session.getAttribute("loginUser") == null) {
+            modelAndView = new ModelAndView("user/login");
+            modelAndView.addObject("userToLogin", new UserDto());
+        } else {
+            modelAndView = new ModelAndView("cart/cartCheckout");
+        }
+        
+        
+        
+        
+        
+        
         modelAndView.addObject("orderDto", new OrderDto());
         return modelAndView;
     }
