@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="header.jsp" %>
+<%@taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
 
 <div class="site-blocks-cover inner-page"
       style="background-image: url('${pageContext.request.contextPath}/resursi/images/hero_2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center"
@@ -16,6 +17,7 @@
         <div class="row">
           <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <strong
               class="text-black">Kontakt</strong></div>
+              
         </div>
       </div>
     </div>
@@ -26,36 +28,37 @@
         <div class="row">         
           <div class="col-md-7">
             <h2 class="h3 mb-3 text-black">Kontaktirajte nas</h2>
-            <form action="" method="post" id="formaContact" onsubmit="return kontaktirajteNas(event)">
+            <p>${msg}</p>
+            <s:form action="${pageContext.request.contextPath}/contact/send" method="post" id="formaContact" modelAttribute="contact">
 
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
                     <label for="c_fname" class="text-black">Ime <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_fname" name="c_fname">
+                    <s:input type="text" class="form-control" id="c_fname" name="c_fname" path="name"/>
                   </div>
                   <div class="col-md-6">
                     <label for="c_lname" class="text-black">Prezime <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_lname" name="c_lname">
+                    <s:input type="text" class="form-control" id="c_lname" name="c_lname" path="lastname"/>
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="c_email" name="c_email" placeholder="">
+                    <s:input type="email" class="form-control" id="c_email" name="c_email" placeholder="" path="email"/>
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="c_subject" class="text-black">Naslov </label>
-                    <input type="text" class="form-control" id="c_subject" name="c_subject">
+                    <s:input type="text" class="form-control" id="c_subject" name="c_subject" path="subject"/>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="c_message" class="text-black">Poruka </label>
-                    <textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control"></textarea>
+                    <s:textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control" path="content"/></textarea>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -64,7 +67,7 @@
                   </div>
                 </div>
               </div>
-            </form>
+            </s:form>
           </div>
           <div class="col-md-5 ml-auto">
             <h2 class="h3 mb-3 text-black">O nama</h2>

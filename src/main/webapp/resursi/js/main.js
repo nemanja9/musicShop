@@ -248,11 +248,3 @@ function plati(e) {
     }
 }
 
-function kontaktirajteNas(e) {
-    e.preventDefault();
-    alert("Uspešno poslata poruka!");
-    window.location.href = "http://localhost:8080/musicshop/";
-
-
-
-}
