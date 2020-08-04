@@ -36,22 +36,26 @@
                   <div class="col-md-6">
                     <label for="c_fname" class="text-black">Ime <span class="text-danger">*</span></label>
                     <s:input type="text" class="form-control" id="c_fname" name="c_fname" path="name"/>
+                    <div><s:errors path="name" class="errorMsg"></s:errors></div>
                   </div>
                   <div class="col-md-6">
                     <label for="c_lname" class="text-black">Prezime <span class="text-danger">*</span></label>
                     <s:input type="text" class="form-control" id="c_lname" name="c_lname" path="lastname"/>
+                    <div><s:errors path="lastname" class="errorMsg"></s:errors></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
                     <s:input type="email" class="form-control" id="c_email" name="c_email" placeholder="" path="email"/>
+                    <div><s:errors path="email" class="errorMsg"></s:errors></div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="c_subject" class="text-black">Naslov </label>
                     <s:input type="text" class="form-control" id="c_subject" name="c_subject" path="subject"/>
+                    <div><s:errors path="subject" class="errorMsg"></s:errors></div>
                   </div>
                 </div>
 
@@ -59,6 +63,7 @@
                   <div class="col-md-12">
                     <label for="c_message" class="text-black">Poruka </label>
                     <s:textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control" path="content"/></textarea>
+                  <div><s:errors path="content" class="errorMsg"></s:errors></div>
                   </div>
                 </div>
                 <div class="form-group row">

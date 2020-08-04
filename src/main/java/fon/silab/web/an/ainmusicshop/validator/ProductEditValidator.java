@@ -6,8 +6,6 @@
 package fon.silab.web.an.ainmusicshop.validator;
 
 import fon.silab.web.an.ainmusicshop.dto.ProductDto;
-import fon.silab.web.an.ainmusicshop.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
