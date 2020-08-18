@@ -51,6 +51,11 @@ public class LoginValidator implements Validator{
         if(userService.findByEmail(userDto.getEmail()) == null){
             errors.rejectValue("email", "userDto.email.notExist", "userDto.email.notExist = Default message" );
         }
+        else if (userService.findByEmail(userDto.getEmail()).getEmailConfirmed()==0){
+                        errors.rejectValue("email", "userDto.email.notConfirmed", "userDto.email.notConfirmed = Default message" );
+
+        }
+        
         
         if(!userDto.getPassword().equals(userService.findByEmail(userDto.getEmail()).getPassword())){
             errors.rejectValue("password", "userDto.password.wrong", "userDto.password.wrong = Default message" );

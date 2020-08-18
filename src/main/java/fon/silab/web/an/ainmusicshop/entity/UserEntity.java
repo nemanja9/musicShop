@@ -56,10 +56,17 @@ public class UserEntity implements Serializable{
 
     @Column(name = "password", nullable = false, length = 256)
     private String password;
-
+    
     @Transient
     @Column(name = "re_password", insertable = false, updatable = false)
     private String re_password;
+    
+    @Column(name = "emailToken", nullable = true, length = 256)
+    private String emailToken;
+    
+    @Column(name = "emailConfirmed", nullable = false, length = 1)
+    private int emailConfirmed;
+
 
     public UserEntity() {
     }
@@ -205,6 +212,22 @@ public class UserEntity implements Serializable{
     @Override
     public String toString() {
         return "UserEntity{" + "userId=" + userId + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + ", phoneNumber=" + phoneNumber + ", adress=" + adress + ", city=" + city + ", role=" + roleUser + ", password=" + password + '}';
+    }
+
+    public String getEmailToken() {
+        return emailToken;
+    }
+
+    public void setEmailToken(String emailToken) {
+        this.emailToken = emailToken;
+    }
+
+    public int getEmailConfirmed() {
+        return emailConfirmed;
+    }
+
+    public void setEmailConfirmed(int emailConfirmed) {
+        this.emailConfirmed = emailConfirmed;
     }
 
     

@@ -1246,3 +1246,54 @@ code {
       .product-category-center404:hover span {
         color: rgba(255, 255, 255, 0.5) !important;
       }
+      
+ .center-email-conf{
+ display: flex;
+ flex-wrap: wrap;
+ align-content: center;
+ margin: auto;
+  width: 50%;
+ padding-top: 100px;
+ text-align: center;
+ 
+ }
+ .potvrdjenEmailSlika{
+      display: flex;
+ flex-wrap: wrap;
+ align-content: center;
+ margin: auto;
+  width: 120px;
+  padding-bottom: 10px;
+ text-align: center;
+ }
+ 
+ 
+ .form-submit-email-conf {
+  display: inline-block;
+
+
+  
+  background: #eac51f;
+  color: #fff;
+  border-bottom: none;
+  width: auto;
+  padding: 15px 39px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  margin-top: 25px;
+  cursor: pointer; }
+  .form-submit-email-conf:hover {
+    background: #b9a31c; }
+  .asdasdasd{
+       display: flex;
+ flex-wrap: wrap;
+ align-content: center;
+ margin: auto;
+  width: 123px;
+ padding-top: 10px;
+ text-align: center;
+ padding-bottom: 40px;
+  }

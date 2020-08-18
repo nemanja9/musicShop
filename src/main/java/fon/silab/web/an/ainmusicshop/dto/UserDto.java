@@ -24,6 +24,8 @@ public class UserDto {
     private String password;
     private String re_password;
     private String zip;
+    private int emailConfirmed;
+    private String emailToken;
 
     public String getZip() {
         return zip;
@@ -135,6 +137,22 @@ public class UserDto {
     @Override
     public String toString() {
         return "UserDto{" + "userId=" + userId + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + ", phoneNumber=" + phoneNumber + ", adress=" + adress + ", city=" + city + ", roleUser=" + roleUser + ", password=" + password + '}';
+    }
+
+    public int getEmailConfirmed() {
+        return emailConfirmed;
+    }
+
+    public void setEmailConfirmed(int emailConfirmed) {
+        this.emailConfirmed = emailConfirmed;
+    }
+
+    public String getEmailToken() {
+        return emailToken;
+    }
+
+    public void setEmailToken(String emailToken) {
+        this.emailToken = emailToken;
     }
     
     
