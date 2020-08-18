@@ -75,6 +75,12 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView("user/login");
         return modelAndView;
     }
+    @GetMapping(path = "profile")
+    public ModelAndView profile(){
+        ModelAndView modelAndView = new ModelAndView("user/profile");
+        modelAndView.addObject("izmenjenKorisnik",new UserDto());
+        return modelAndView;
+    }
     
     @ModelAttribute(name = "userToLogin")
     public UserDto userLogin(){
@@ -94,6 +100,68 @@ public class UserController {
             System.out.println("Nije bilo gresaka pri validaciji...");
             UserDto u = userService.findByEmail(userToLogin.getEmail());
             session.setAttribute("loginUser", u);
+            return "redirect:/index.jsp";
+        }
+
+    }
+    @PostMapping(path = "/edit/submitPersonalChanges")
+    public String editUserPersonal(@Validated @ModelAttribute(name = "izmenjenKorisnik") UserDto userToSave,
+            BindingResult result, Model model,  HttpSession session,
+            RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            System.out.println("Bilo je gresaka pri validaciji...");
+            model.addAttribute("invalid", "Niste ispravno popunili formu!");
+            return "user/login";
+        } else {
+            System.out.println("Nije bilo gresaka pri validaciji...");
+            userToSave.setUserId(((UserDto)session.getAttribute("loginUser")).getUserId());
+            userService.update(userToSave);
+            session.setAttribute("loginUser", userToSave);
+            return "redirect:/index.jsp";
+        }
+
+    }
+    
+    @PostMapping(path = "/edit/submitEmail")
+    public String editUserEmail(@Validated @ModelAttribute(name = "izmenjenKorisnik") UserDto userToSave,
+            BindingResult result, Model model,  HttpSession session,
+            RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            System.out.println("Bilo je gresaka pri validaciji...");
+            model.addAttribute("invalid", "Niste ispravno popunili formu!");
+            return "user/login";
+        } else {
+            System.out.println("Nije bilo gresaka pri validaciji...");
+            UserDto pom = ((UserDto)session.getAttribute("loginUser"));
+            pom.setEmail(userToSave.getEmail());
+            
+            userService.update(pom);
+            // OVDE TREBA DA POSALJEMO MAIL SA POTVRDOM NA NOV MAIL
+            session.setAttribute("loginUser", null);
+            return "redirect:/index.jsp";
+        }
+
+    }
+ 
+    @PostMapping(path = "/edit/submitPassword")
+    public String editUserPassword(@Validated @ModelAttribute(name = "izmenjenKorisnik") UserDto userToSave,
+            BindingResult result, Model model,  HttpSession session,
+            RedirectAttributes redirectAttributes) {
+
+        if (result.hasErrors()) {
+            System.out.println("Bilo je gresaka pri validaciji...");
+            model.addAttribute("invalid", "Niste ispravno popunili formu!");
+            return "user/login";
+        } else {
+            System.out.println("Nije bilo gresaka pri validaciji...");
+            UserDto pom = ((UserDto)session.getAttribute("loginUser"));
+            pom.setPassword(userToSave.getPassword());
+            pom.setRe_password(userToSave.getRe_password());
+            
+            userService.update(pom);
+            session.setAttribute("loginUser", pom);
             return "redirect:/index.jsp";
         }
 

@@ -30,24 +30,24 @@ public class UserEntity implements Serializable{
     @Column(name = "user_id", unique = true, nullable = false)
     private int userId;
 
-    @Column(name = "firstname", nullable = false, length = 55)
+    @Column(name = "firstname", nullable = true, length = 55)
     private String firstname;
 
-    @Column(name = "lastname", nullable = false, length = 55)
+    @Column(name = "lastname", nullable = true, length = 55)
     private String lastname;
 
     @Column(name = "email", nullable = false, length = 256)
     private String email;
 
-    @Column(name = "phone_number", nullable = false, length = 25)
+    @Column(name = "phone_number", nullable = true, length = 25)
     private String phoneNumber;
 
-    @Column(name = "adress", nullable = false, length = 256)
+    @Column(name = "adress", nullable = true, length = 256)
     private String adress;
 
-    @Column(name = "city", nullable = false, length = 256)
+    @Column(name = "city", nullable = true, length = 256)
     private String city;
-    @Column(name = "zip", nullable = false, length = 10)
+    @Column(name = "zip", nullable = true, length = 10)
     private String zip;
 
     @Enumerated(EnumType.STRING)

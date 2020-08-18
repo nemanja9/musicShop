@@ -87,6 +87,7 @@
 
 
                                             <li><a href="${pageContext.request.contextPath}/user/logout"><fmt:message key="header.odjaviSe" /></a></li>
+                                            <li><a href="${pageContext.request.contextPath}/user/profile"><fmt:message key="header.profil" /></a></li>
 
 
                                         </c:if>

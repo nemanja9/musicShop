@@ -36,41 +36,14 @@
                                 <p class="errorMsgTitle">${invalid}</p>
                             </c:if>
                             <form:form action="${pageContext.request.contextPath}/user/register_user" method="post" modelAttribute="userToRegister" class="register-form" id="register-form">
-                                <div class="form-group">
-                                    <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                        <form:input type="text" path="firstname" id="firstname" placeholder="Ime" />
-                                </div>
-                                <div><form:errors path="firstname" class="errorMsg"></form:errors></div>
-                                <div class="form-group">
-                                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                        <form:input type="text" path="lastname" id="lastname" placeholder="Prezime" />
-                                </div>
-                                <div><form:errors path="lastname" class="errorMsg"></form:errors></div>
+                               
+                               
                                 <div class="form-group">
                                     <label for="email"><i class="zmdi zmdi-email"></i></label>
                                         <form:input type="text" path="email" id="email" placeholder="Email" />
                                 </div>
                                 <div><form:errors path="email" class="errorMsg"></form:errors></div>
-                                <div class="form-group">
-                                    <label for="phoneNumber"><i class="zmdi zmdi-smartphone-iphone"></i></label>
-                                        <form:input type="text" path="phoneNumber" id="phoneNumber" placeholder="Kontakt telefon" />
-                                </div>
-                                <div><form:errors path="phoneNumber" class="errorMsg"></form:errors></div>
-                                <div class="form-group">
-                                    <label for="phoneNumber"><i class="zmdi zmdi-home"></i> </label>
-                                    <form:input type="text" path="adress" id="adress" placeholder="Ulica, broj i ulaz" />
-                                </div>
-                                <div><form:errors path="adress" class="errorMsg"></form:errors></div>
-                                <div class="form-group">
-                                    <label for="phoneNumber"><i class="zmdi zmdi-map"></i></label>
-                                        <form:input type="text" path="city" id="city" placeholder="Grad" />
-                                </div>
-                                <div><form:errors path="city" class="errorMsg"></form:errors></div>
-                                <div class="form-group">
-                                    <label for="zip"><i class="zmdi zmdi-map"></i></label>
-                                        <form:input type="text" path="zip" id="zip" placeholder="Poštanski broj" />
-                                </div>
-                                <div><form:errors path="zip" class="errorMsg"></form:errors></div>
+                               
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                         <form:input type="password" path="password" id="password" placeholder="Lozinka" />
