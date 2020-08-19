@@ -19,12 +19,13 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/bootstrap.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/modal.css">
 
+        
+        
+
     </head>
 
     <body>
-
-
-        <!--OD MODAL-->
+         <!--OD MODAL-->
          <c:if test="${not empty uspeh}">
         <div id="myModal" class="modal">
 
@@ -36,13 +37,15 @@
         </div>
          </c:if>
         <!--DO MODAL-->
+      
+        				
 
-
-
+        
+        
         <div class="custom-border-bottom py-3" id="backHome">
             <div>
                 <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Login</strong></div>
+                        class="text-black">Reset lozinke</strong></div>
             </div>
         </div>
         <div class="container">
@@ -53,34 +56,27 @@
                 <div class="column">
                     <div class="polovina">
                         <div class="signin-form">
-                            <h2 class="form-title">Prijavljivanje</h2>
-                            <p class="errorMsgTitle">${message}</p>
-                            <c:if test="${not empty invalid}">
+                            <h2 class="form-title">Resetovanje lozinke</h2>
+                            <br>
+                            
+                          <c:if test="${not empty invalid}">
                                 <p  class="errorMsgTitle">${invalid}</p>
                             </c:if>
-                            <form:form action="${pageContext.request.contextPath}/user/login_user" method="post" modelAttribute="userToLogin" class="register-form" id="login-form">
+                                <form method="post" action="${pageContext.request.contextPath}/user/resetPassword">
                                 <div class="form-group">
                                     <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                        <form:input type="text" name="email" id="email" path = "email" placeholder="Email" />
-                                    <div><form:errors path="email" class="errorMsg"></form:errors></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                        <form:input type="password" name="password" id="password" path="password" placeholder="Lozinka" />
-                                    <div><form:errors path="password" class="errorMsg"></form:errors></div>
-                                    </div>
-                                    <div class="form-group">
-
-                                    </div>
+                                        <input type="text" name="email" id="email" placeholder="Email" />
+                                    
+                                    
+                                   
                                     <div class="form-group form-button">
-                                        <input type="submit" name="login" id="login" class="form-submit" value="Prijava" />
+                                        <input type="submit" name="login" id="login" class="form-submit" value="Posalji email" />
                                     </div>
-                            </form:form>
                             <br>
-                            <a href="${pageContext.request.contextPath}/user/register"><p>Nemate nalog? Registrujte se ovde</p></a>
-                            <a href="${pageContext.request.contextPath}/user/resetPassword"><p>Zaboravljena lozinka</p></a>
+                            <a href="${pageContext.request.contextPath}/user/login"><p>Nazad na prijavljivanje</p></a>
 
                         </div>
+                            </form>
                     </div>
                     <div id="signUpInstead">
                     </div>
