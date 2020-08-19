@@ -63,8 +63,11 @@ public class UserRepositoryImpl implements UserRepository {
             e.getMessage();
         }
         if(u != null){
+            System.out.println("ASDF " + u);
             return u;
         } else{
+                        System.out.println("FDSA NULL");
+
             return null;
         }
     }

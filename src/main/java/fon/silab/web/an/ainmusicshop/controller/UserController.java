@@ -181,10 +181,10 @@ public class UserController {
     }
 
     @GetMapping(path = "logout")
-    public ModelAndView logout(HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("contact");
+    public String logout(HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView("../../index");
         session.setAttribute("loginUser", null);
-        return modelAndView;
+        return "redirect:/index.jsp";
     }
 
     @GetMapping(path = "register")
