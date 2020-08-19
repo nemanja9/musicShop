@@ -3,7 +3,18 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@include file="../header.jsp" %>
 
+ <!--OD MODAL-->
+         <c:if test="${not empty uspeh}">
+        <div id="myModal" class="modal">
 
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>${uspeh}</p>
+            </div>
+
+        </div>
+         </c:if>
+        <!--DO MODAL-->
 
 
 

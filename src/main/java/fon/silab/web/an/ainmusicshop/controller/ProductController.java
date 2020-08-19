@@ -228,7 +228,7 @@ public class ProductController {
             System.out.println("IMG PATH JE " + productDto.getImgPath());
 
             productService.save(productDto);
-            model.addAttribute("message", "Uspesno ste uneli proizvod " + productDto.getProductName() + "!");
+            model.addAttribute("uspeh", "Uspesno ste uneli proizvod " + productDto.getProductName() + "!");
 
             return "product/productAdd";
         }

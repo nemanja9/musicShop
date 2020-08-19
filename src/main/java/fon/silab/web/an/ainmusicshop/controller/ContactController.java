@@ -55,9 +55,9 @@ public class ContactController {
                 content += "<br>Message subject: " + contact.getSubject();
                 content += "<br>Message: " + contact.getContent();
                 mailService.send("musicshopan@gmail.com", "musicshopan@gmail.com", contact.getSubject(), content);
-                model.addAttribute("msg", "Poruka je uspesno poslata!");
+                model.addAttribute("uspeh", "Poruka je uspesno poslata!");
             } catch (Exception e) {
-                model.addAttribute("msg", "Poruka nije poslata!Problem sa serverom!");
+                model.addAttribute("uspeh", "Poruka nije poslata!Problem sa serverom!");
             }
         } else {
             model.addAttribute("msg", "Niste ispravno popunili formu!");

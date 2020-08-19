@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/owl.theme.default.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/aos.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/style.css">
+                <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/modal.css">
+
         <script src="${pageContext.request.contextPath}/resursi/js/i18n.js"></script>
 
 

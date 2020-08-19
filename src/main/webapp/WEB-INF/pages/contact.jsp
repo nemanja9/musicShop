@@ -2,6 +2,24 @@
 <%@include file="header.jsp" %>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
 
+
+
+
+<!--OD MODAL-->
+         <c:if test="${not empty uspeh}">
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>${uspeh}</p>
+            </div>
+
+        </div>
+         </c:if>
+        <!--DO MODAL-->
+
+
+
 <div class="site-blocks-cover inner-page"
       style="background-image: url('${pageContext.request.contextPath}/resursi/images/hero_2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center"
       data-aos="fade">
