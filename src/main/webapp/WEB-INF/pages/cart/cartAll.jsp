@@ -43,7 +43,22 @@
 
                                     <td>${i.getProduct().getPrice()} </td>
                                     <td style="text-align: center;max-width: 60px">
-                                            ${i.getQuantity()}
+
+
+
+                                        <div class="input-group mb-3" style="max-width: 120px;">
+                                            <div class="input-group-prepend">
+                                                <a href="${pageContext.request.contextPath}/cart/minus?id=${i.getProduct().getProductId()}">
+                                                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                                </a>
+                                            </div>
+                                            <input type="text" class="form-control text-center" value="${i.getQuantity()}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                            <div class="input-group-append">
+                                                <a href="${pageContext.request.contextPath}/cart/plus?id=${i.getProduct().getProductId()}">
+                                                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </td>
                                     <c:set var="subtotal" scope="session" value="${i.getQuantity()*i.getProduct().getPrice()}" />
                                     <c:set var="total" scope="session" value="${total+subtotal}" />
@@ -71,7 +86,7 @@
                 </div>
             </form>
         </div>
-       
+
         <div class="row">
             <div class="col-md-6">
                 <div class="row mb-5">
@@ -117,4 +132,38 @@
         </div>
     </div>
 
-<%@include file="../footer.jsp" %>
+                                        
+                                        <!--odavde ide footer, ne stavljamo ga preko importa jer nam ne trebaju svi js fajlovi-->
+
+<footer class="site-footer custom-border-top">
+    <div class="container">
+
+
+        <div class="copyright text-center my-auto" id="">
+            <span>Copyright &copy; AIN Music 2020</span>
+        </div>
+
+
+
+</footer>
+
+</div>
+
+<script src="${pageContext.request.contextPath}/resursi/js/get.js"></script>      
+
+<script src="${pageContext.request.contextPath}/resursi/js/jquery-ui.js"></script>
+<script src="${pageContext.request.contextPath}/resursi/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/resursi/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resursi/js/owl.carousel.min.js"></script>
+
+
+
+<script src="${pageContext.request.contextPath}/resursi/js/modal.js"></script>
+
+
+
+
+</body>
+
+</html>
+

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -114,6 +115,58 @@ public class CartController {
             redirectAttributes.addFlashAttribute("message", "Product is removed!");
             return "redirect:/cart/";
         }
+
+    }
+    @GetMapping(path = "/plus")
+    public String plus(@RequestParam int id, HttpSession session) {
+
+        
+       
+            List<OrderItemDto> lista = (List<OrderItemDto>) session.getAttribute("cart");
+            if (lista == null) {
+                return "redirect:/cart/";
+            }
+
+            for (int i = 0; i < lista.size(); i++) {
+                if (lista.get(i).getProduct().getProductId() == id) {
+                    OrderItemDto pom = lista.get(i);
+                    pom.setQuantity(pom.getQuantity()+1);
+                    lista.set(i, pom);
+                    break;
+                }
+            }
+
+            session.setAttribute("cart", lista);
+            return "redirect:/cart/";
+        
+
+    }
+    @GetMapping(path = "/minus")
+    public String minus(@RequestParam int id, HttpSession session) {
+
+        
+       
+            List<OrderItemDto> lista = (List<OrderItemDto>) session.getAttribute("cart");
+            if (lista == null) {
+                return "redirect:/cart/";
+            }
+
+            for (int i = 0; i < lista.size(); i++) {
+                if (lista.get(i).getProduct().getProductId() == id) {
+                    if (lista.get(i).getQuantity()==1){
+                        lista.remove(i);
+                        break;
+                    }
+                    OrderItemDto pom = lista.get(i);
+                    pom.setQuantity(pom.getQuantity()-1);
+                    lista.set(i, pom);
+                    break;
+                }
+            }
+
+            session.setAttribute("cart", lista);
+            return "redirect:/cart/";
+        
 
     }
 
