@@ -14,7 +14,7 @@ import javax.servlet.http.Cookie;
 
 
 
-@WebFilter(filterName = "LoggedInUsers", urlPatterns = { "/musicshop/user/login" })
+@WebFilter(filterName = "LoggedInUsers", urlPatterns = { "/user/login/*","/user/register/*" })
 public class forLoggedInUsers implements Filter{
 
     @Override
@@ -25,11 +25,13 @@ public class forLoggedInUsers implements Filter{
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-
-        if (req.getParameter("cookieLocale") != null) {
-            Cookie cookie = new Cookie("lang", req.getParameter("cookieLocale"));
-            res.addCookie(cookie);
+        
+        System.out.println("USAO U FILTER");
+        if (req.getSession().getAttribute("loginUser") != null){
+            res.sendRedirect(req.getContextPath()+ "/index.jsp");
+            
         }
+       
 
         chain.doFilter(request, response);
     }

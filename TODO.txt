@@ -1,0 +1,10 @@
+- Validacija za profil
+- Validacija mora sve odjednom kaze dule
+- U metodi submitNewPassword nema validacije da sifre treba da se poklapaju, kao i minimum 6 karaktera
+- Promeniti linkove u mailu u roze delu
+- Prevesti ostatak sajta
+- Pop up na strani kontakt je ispod slike iz nekog razloga????
+- web filters za zabranu pristupa ulogovanim korisnicima logovanju i neulogovanim korisnicima checkout itd!
+- Proizovdi da imaju neki border, ili shadow ili nekako da iskacu iz bele pozadine
+- Dependency injection za modelMapper
+- ROLES sugave
