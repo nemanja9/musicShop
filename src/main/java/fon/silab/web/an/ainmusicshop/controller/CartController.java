@@ -117,56 +117,52 @@ public class CartController {
         }
 
     }
+
     @GetMapping(path = "/plus")
     public String plus(@RequestParam int id, HttpSession session) {
 
-        
-       
-            List<OrderItemDto> lista = (List<OrderItemDto>) session.getAttribute("cart");
-            if (lista == null) {
-                return "redirect:/cart/";
-            }
-
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).getProduct().getProductId() == id) {
-                    OrderItemDto pom = lista.get(i);
-                    pom.setQuantity(pom.getQuantity()+1);
-                    lista.set(i, pom);
-                    break;
-                }
-            }
-
-            session.setAttribute("cart", lista);
+        List<OrderItemDto> lista = (List<OrderItemDto>) session.getAttribute("cart");
+        if (lista == null) {
             return "redirect:/cart/";
-        
+        }
+
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getProduct().getProductId() == id) {
+                OrderItemDto pom = lista.get(i);
+                pom.setQuantity(pom.getQuantity() + 1);
+                lista.set(i, pom);
+                break;
+            }
+        }
+
+        session.setAttribute("cart", lista);
+        return "redirect:/cart/";
 
     }
+
     @GetMapping(path = "/minus")
     public String minus(@RequestParam int id, HttpSession session) {
 
-        
-       
-            List<OrderItemDto> lista = (List<OrderItemDto>) session.getAttribute("cart");
-            if (lista == null) {
-                return "redirect:/cart/";
-            }
+        List<OrderItemDto> lista = (List<OrderItemDto>) session.getAttribute("cart");
+        if (lista == null) {
+            return "redirect:/cart/";
+        }
 
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).getProduct().getProductId() == id) {
-                    if (lista.get(i).getQuantity()==1){
-                        lista.remove(i);
-                        break;
-                    }
-                    OrderItemDto pom = lista.get(i);
-                    pom.setQuantity(pom.getQuantity()-1);
-                    lista.set(i, pom);
+        for (int i = 0; i < lista.size(); i++) {
+            if (lista.get(i).getProduct().getProductId() == id) {
+                if (lista.get(i).getQuantity() == 1) {
+                    lista.remove(i);
                     break;
                 }
+                OrderItemDto pom = lista.get(i);
+                pom.setQuantity(pom.getQuantity() - 1);
+                lista.set(i, pom);
+                break;
             }
+        }
 
-            session.setAttribute("cart", lista);
-            return "redirect:/cart/";
-        
+        session.setAttribute("cart", lista);
+        return "redirect:/cart/";
 
     }
 
@@ -175,19 +171,7 @@ public class CartController {
             Model model, BindingResult result,
             RedirectAttributes redirectAttributes, HttpSession session) {
         
-         ModelAndView modelAndView;
-        if (session.getAttribute("loginUser") == null) {
-            modelAndView = new ModelAndView("user/login");
-            modelAndView.addObject("userToLogin", new UserDto());
-        } else {
-            modelAndView = new ModelAndView("cart/cartCheckout");
-        }
-        
-        
-        
-        
-        
-        
+        ModelAndView modelAndView = new ModelAndView("cart/cartCheckout");
         modelAndView.addObject("orderDto", new OrderDto());
         return modelAndView;
     }
