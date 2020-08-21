@@ -10,7 +10,7 @@
                 <h2 class="h3 mb-3 text-black">Izmena proizvoda "${product.productName}"</h2>
                 <p class="errorMsgTitle">${message}</p>
                 <div class="p-3 p-lg-5 border">
-                    <form:form action="${pageContext.request.contextPath}/product/edit/saveEdit" method="post" modelAttribute="product" enctype="multipart/form-data">
+                    <form:form action="${pageContext.request.contextPath}/admin/product/edit/saveEdit" method="post" modelAttribute="product" enctype="multipart/form-data">
                         <div class="text-black">Kategorija proizvoda </div>
                         <form:select class="form-control" path="category">
                             <form:option value="" label="Izaberite kategoriju" />

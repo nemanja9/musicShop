@@ -1,5 +1,7 @@
 package fon.silab.web.an.ainmusicshop.accessControll;
 
+import fon.silab.web.an.ainmusicshop.dto.UserDto;
+import fon.silab.web.an.ainmusicshop.entity.UserEntity;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -14,8 +16,8 @@ import javax.servlet.http.Cookie;
 
 
 
-@WebFilter(filterName = "LoggedOutUsers", urlPatterns = { "/cart/checkout/*","/PayPal/*","/user/profile/*","/user/edit/*" })
-public class forLoggedOutUsers implements Filter{
+@WebFilter(filterName = "admins", urlPatterns = { "/admin/*" })
+public class forNonAdmins implements Filter{
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -26,8 +28,10 @@ public class forLoggedOutUsers implements Filter{
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         
-        if (req.getSession().getAttribute("loginUser") == null){
-            res.sendRedirect(req.getContextPath()+ "/user/login");
+        System.out.println("USAO U FILTER");
+        UserDto pom = (UserDto) req.getSession().getAttribute("loginUser");
+        if (pom == null || pom.getRoleUser() != UserEntity.UserRole.ROLE_ADMIN){
+            res.sendRedirect(req.getContextPath()+ "/");
             
         }
        

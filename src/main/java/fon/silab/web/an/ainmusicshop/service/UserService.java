@@ -20,4 +20,5 @@ public interface UserService {
     void delete(int numberId);
     void update(UserDto user);
     UserDto findByEmail(String name);
+
 }

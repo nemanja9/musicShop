@@ -26,7 +26,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/owl.theme.default.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/aos.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/style.css">
-                <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/modal.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/modal.css">
 
         <script src="${pageContext.request.contextPath}/resursi/js/i18n.js"></script>
 
@@ -65,14 +65,9 @@
                                 <li class=" <c:if test="${empty currrentAdress}">active </c:if>>">
                                     <a href="${pageContext.request.contextPath}"><fmt:message key="header.pocetna" /></a>
                                 </li>
-                                <li class="has-children <c:if test="${fn:startsWith(currrentAdress, 'product')}">active </c:if>>">
+                                <li class=" <c:if test="${fn:startsWith(currrentAdress, 'product')}">active </c:if>>">
                                     <a href="<c:url value="/product/all"/>"><fmt:message key="header.proizvodi" /></a>
-                                    <ul class="dropdown">
-                                        <li><a href="${pageContext.request.contextPath}/product/all"><fmt:message key="header.sviProizvodi" /></a></li>
-                                        <li><a href="${pageContext.request.contextPath}/product/add"><fmt:message key="header.dodavanjeProizvoda" /></a></li>
-                                        <li><a href="${pageContext.request.contextPath}/product/edit"><fmt:message key="header.izmenaProizvoda" /></a></li>
-
-                                    </ul>
+                                   
                                 </li>
 
                                 <li class="<c:if test="${fn:startsWith(currrentAdress, 'contact')}">active  </c:if>>">
@@ -96,6 +91,41 @@
                                         <li><a href="${pageContext.request.contextPath}/orders/all"><fmt:message key="header.mojePorudzbine" /></a></li>
                                     </ul>
                                 </li>
+
+
+                                <%--<c:if test="${sessionScope.loginUser.roleUser == 'ROLE_ADMIN'}">--%>
+                                
+                                <li class="has-children <c:if test="${fn:startsWith(currrentAdress, 'admin')}">active </c:if>>">
+                                    <a href="<c:url value="/product/all"/>"><fmt:message key="header.admin" /></a>
+                                    <ul class="dropdown">
+
+                                        <li class="has-children">
+                                            <a href="#">Proizvodi</a>
+                                            <ul class="dropdown">
+                                                <li><a href="${pageContext.request.contextPath}/admin/product/add"><fmt:message key="header.dodavanjeProizvoda" /></a></li>
+                                                <li><a href="${pageContext.request.contextPath}/admin/product/edit"><fmt:message key="header.izmenaProizvoda" /></a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-children">
+                                            <a href="#">Korisnici</a>
+                                            <ul class="dropdown">
+                                                <li><a href="${pageContext.request.contextPath}/adminn/user/add">Dodavanje korisnici</a></li>
+                                                <li><a href="${pageContext.request.contextPath}/adminn/user/all">Izmena korisnici</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="has-children">
+                                            <a href="#">Porudzbine</a>
+                                            <ul class="dropdown">
+                                                <li><a href="${pageContext.request.contextPath}/admin/orders/all">Sve porudzbine </a></li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                
+                                 <%--</c:if>--%>
+
+
                             </ul>
                         </nav>
                     </div>
@@ -123,7 +153,7 @@
                         <ul>
                             <li><a href="javascript:setLanguageSrb();"> <fmt:message key="jezik.srpski" /> </a></li>
                             <li><a href="javascript:setLanguageEn();"> <fmt:message key="jezik.engleski" /> </a></li>
-                            
+
                         </ul>
                     </div>
 

@@ -1,25 +1,66 @@
-<%-- 
-    Document   : all
-    Created on : Jul 5, 2020, 10:44:38 PM
-    Author     : lj
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>ALL USERS</h1>
-        
-        <div>
-            <a href="<c:url value="/user/add"/>">Add new user</a>
-        </div>
-        <div>
-            <a href="<c:url value="/index.jsp"/>">Back to home page</a>
-        </div>
-    </body>
-</html>
+<%@include file="../header.jsp" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:if test="${!empty users}">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Adresa</th>
+                    <th>Grad, ZIP</th>
+                    <th>Telefon</th>
+                    <th>E posta</th>
+                    <th>E posta potvrdjena</th>
+                    <th>Opcije</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>ID</th>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Adresa</th>
+                    <th>Grad, ZIP</th>
+                    <th>Telefon</th>
+                    <th>E posta</th>
+                    <th>E posta potvrdjena</th>
+                    <th>Opcije</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                <c:forEach items="${users}" var="u">
+                    <tr>
+                        <td>${u.userId}</td>
+                        <td>${u.firstname}</td>
+                        <td>${u.lastname}</td>
+                        <td>${u.adress}</td>
+                        <td>${u.city}, ${u.zip}</td>
+                        <td>${u.phoneNumber}</td>
+                        <td>${u.email}</td>
+                        <td><c:if test="${u.emailConfirmed == 1}">True</c:if> <c:if test="${u.emailConfirmed == 0}">False</c:if></td>
+
+                        <td style="text-align:center">
+                            <button type="button" class="btn btn-warning" style="width: 115px;" data-toggle="modal" 
+                                        onClick="window.location = '${pageContext.request.contextPath}/adminn/user/edit/${u.userId}'">
+                                <i class="fas fa-user-edit"></i> vise opcija
+                            </button>
+                         
+                            <a href="${pageContext.request.contextPath}/adminn/user/deleteUser/${u.userId}">
+                                <button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Are you sure you want to delete this user?')">
+                                    <i class="fas fa-user-minus"></i> Obriši</button></a>
+                        </td>
+                    </tr>
+
+
+                </c:forEach>
+            </tbody>
+        </table>
+    </c:if>
+
+
+    <%@include file="../footer.jsp" %>

@@ -23,41 +23,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/orders")
 public class OrderController {
     private final OrderService orderService;
-    private final OrderItemService orderItemService; 
     private final UserService userService;
 
     @Autowired
     public OrderController(OrderService orderService, OrderItemService orderItemService, UserService userService) {
         this.orderService = orderService;
-        this.orderItemService = orderItemService;
         this.userService = userService;
     }
     
     
-     @GetMapping(path = "/all")
-    public ModelAndView allOrders(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("orders/ordersAll");
-        
-         List<OrderDto> list = orderService.getAll();
-         for (OrderDto o : list) {
-             UserDto u = userService.findByEmail(orderService.getUserByOrderID(o.getOrderId()));
-             o.setUserDto(u);
-             System.out.println(orderService.getUserByOrderID(o.getOrderId()));
-             System.out.println(userService.findByEmail(orderService.getUserByOrderID(o.getOrderId())));
-             System.out.println(u);
-         }
-         
-        modelAndView.addObject("orders", list);
-        return modelAndView;
-    }
-    
-    @GetMapping("/deleteOrder/{id}")
-    public String deleteProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
-        ModelAndView modelAndView = new ModelAndView("");
-        orderService.delete(id);
-        return "redirect:/";
-
-    }
+     
     
     
 }
