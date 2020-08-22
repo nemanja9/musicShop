@@ -61,7 +61,7 @@
                     
                       <td style="text-align:center">
                           <!--<button type="button" class="btn btn-warning" style="width: 115px;" data-toggle="modal" onClick="window.location='${pageContext.request.contextPath}/product/edit/${p.productId}'"><i class="fas fa-user-edit"></i> Izmeni</button>-->
-                      <a href="${pageContext.request.contextPath}/admin/orders/deleteOrder/${o.getOrderId()}"><button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Ako obrišete ovu porudžbinu, obrisaće se i sve njene stavke. Da li ste sigurni?')">
+                      <a href="${pageContext.request.contextPath}/adminn/orders/deleteOrder/${o.getOrderId()}"><button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Ako obrišete ovu porudžbinu, obrisaće se i sve njene stavke. Da li ste sigurni?')">
                               <i class="fas fa-user-minus"></i> Obriši</button></a></td>
                     </tr>
                     

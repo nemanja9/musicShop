@@ -116,7 +116,7 @@
                                         <li class="has-children">
                                             <a href="#">Porudzbine</a>
                                             <ul class="dropdown">
-                                                <li><a href="${pageContext.request.contextPath}/admin/orders/all">Sve porudzbine </a></li>
+                                                <li><a href="${pageContext.request.contextPath}/adminn/orders/all">Sve porudzbine </a></li>
                                             </ul>
                                         </li>
 

@@ -67,7 +67,7 @@ public class AdminOrderController {
     @GetMapping("/deleteOrder/{id}")
     public String deleteProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
         orderService.delete(id);
-        return "redirect:/admin/orders/all";
+        return "redirect:/adminn/orders/all";
 
     }
 }

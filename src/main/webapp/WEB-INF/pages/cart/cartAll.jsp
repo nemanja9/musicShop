@@ -52,7 +52,7 @@
                                                 <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
                                                 </a>
                                             </div>
-                                            <input type="text" class="form-control text-center" value="${i.getQuantity()}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                                <input type="text" class="form-control text-center" value="${i.getQuantity()}" disabled="true" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
                                             <div class="input-group-append">
                                                 <a href="${pageContext.request.contextPath}/cart/plus?id=${i.getProduct().getProductId()}">
                                                 <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
