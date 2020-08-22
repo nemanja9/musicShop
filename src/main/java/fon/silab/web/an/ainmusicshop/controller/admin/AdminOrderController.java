@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-@RequestMapping("/admin/orders")
+@RequestMapping("/adminn/orders")
 public class AdminOrderController {
     private final OrderService orderService;
     private final UserService userService; 
@@ -36,6 +36,22 @@ public class AdminOrderController {
         ModelAndView modelAndView = new ModelAndView("orders/ordersAll");
         
          List<OrderDto> list = orderService.getAll();
+         for (OrderDto o : list) {
+             UserDto u = userService.findByEmail(orderService.getUserByOrderID(o.getOrderId()));
+             o.setUserDto(u);
+             System.out.println(orderService.getUserByOrderID(o.getOrderId()));
+             System.out.println(userService.findByEmail(orderService.getUserByOrderID(o.getOrderId())));
+             System.out.println(u);
+         }
+         
+        modelAndView.addObject("orders", list);
+        return modelAndView;
+    }
+     @GetMapping(path = "/all/{id}")
+    public ModelAndView allOrdersForUser(@PathVariable("id") int id, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView("orders/ordersAll");
+                
+         List<OrderDto> list = orderService.getAllForUser(id);
          for (OrderDto o : list) {
              UserDto u = userService.findByEmail(orderService.getUserByOrderID(o.getOrderId()));
              o.setUserDto(u);

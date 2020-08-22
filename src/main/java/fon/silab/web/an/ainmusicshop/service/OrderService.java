@@ -20,4 +20,6 @@ public interface OrderService {
     void delete(int numberId);
     void update(OrderDto order);
     String getUserByOrderID(int id);
+
+    public List<OrderDto> getAllForUser(int id);
 }

@@ -83,5 +83,16 @@ public class OrderServiceImpl implements OrderService{
     public String getUserByOrderID(int id) {
         return orderRepository.getUserByOrderID(id);
     }
+
+    @Override
+    public List<OrderDto> getAllForUser(int id) {
+
+        List<OrderEntity> ordersEnt = orderRepository.getAllForUser(id);
+        List<OrderDto> ordersDto = new ArrayList<>();
+        for (OrderEntity orderEntity : ordersEnt) {
+            OrderDto o = modelMapper.map(orderEntity, OrderDto.class);
+            ordersDto.add(o);
+        }
+        return ordersDto;    }
     
 }

@@ -21,5 +21,7 @@ public interface OrderRepository {
     void update(OrderEntity order);
 
     public String getUserByOrderID(int id);
+
+    public List<OrderEntity> getAllForUser(int id);
     
 }

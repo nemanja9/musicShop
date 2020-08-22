@@ -123,6 +123,9 @@
                     <br>
                     <br>
                     <button class="btn btn-primary btn-lg" onclick="window.location='${pageContext.request.contextPath}/adminn/user/sendPasswordReset/${u.userId}'">Posalji email za reset lozinke</button>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary btn-lg" onclick="window.location='${pageContext.request.contextPath}/adminn/orders/all/${u.userId}'">Pogledaj sve porudzbine korisnika</button>
                                   
 
                 </div>

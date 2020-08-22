@@ -59,6 +59,13 @@ public class OrderRepositoryImpl implements OrderRepository{
         return entityManager.createQuery(query, String.class).getSingleResult();
     }
 
+    @Override
+    public List<OrderEntity> getAllForUser(int id) {
+            String query = "select o from orders o where o.userEntity = "+ id;
+        return entityManager.createQuery(query, OrderEntity.class).getResultList();    
+
+    }
+
     
     
     
