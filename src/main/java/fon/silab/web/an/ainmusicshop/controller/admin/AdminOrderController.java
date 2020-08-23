@@ -2,6 +2,7 @@ package fon.silab.web.an.ainmusicshop.controller.admin;
 
 import fon.silab.web.an.ainmusicshop.dto.OrderDto;
 import fon.silab.web.an.ainmusicshop.dto.UserDto;
+import fon.silab.web.an.ainmusicshop.entity.OrderEntity;
 import fon.silab.web.an.ainmusicshop.service.OrderItemService;
 import fon.silab.web.an.ainmusicshop.service.OrderService;
 import fon.silab.web.an.ainmusicshop.service.UserService;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -70,4 +72,12 @@ public class AdminOrderController {
         return "redirect:/adminn/orders/all";
 
     }
+    @GetMapping("/updateStatus")
+    public String updateStatus(@RequestParam int id,@RequestParam int status, RedirectAttributes attributes) {
+        
+        System.out.println("TREBA UPDATE PORUDZBINU SA ID " + id + " NA STATUS " + status);
+        return "redirect:/adminn/orders/all";
+
+    }
+    
 }

@@ -5,6 +5,6 @@
 - Prevesti ostatak sajta
 - Pop up na strani kontakt je ispod slike iz nekog razloga????
 - Dependency injection za modelMapper
-- ROLES sugave
+- paypal baca null exc neki
 
 - bug neki sa filterima za cenu, ne ide  preko 1000e
