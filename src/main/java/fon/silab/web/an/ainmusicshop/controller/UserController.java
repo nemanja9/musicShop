@@ -122,6 +122,8 @@ public class UserController {
             userToSave.setUserId(((UserDto) session.getAttribute("loginUser")).getUserId());
             userService.update(userToSave);
             session.setAttribute("loginUser", userToSave);
+            session.removeAttribute("nedostajuciPodaci");
+            redirectAttributes.addFlashAttribute("uspeh","Uspesno sacuvane promene!");
             return "redirect:/index.jsp";
         }
 

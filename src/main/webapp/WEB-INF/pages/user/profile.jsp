@@ -5,7 +5,18 @@
 <%@include file="../header.jsp" %>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
 
+<!--OD MODAL-->
+         <c:if test="${not empty sessionScope.nedostajuciPodaci}">
+        <div id="myModal" class="modal">
 
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>${sessionScope.nedostajuciPodaci}</p>
+            </div>
+
+        </div>
+         </c:if>
+        <!--DO MODAL-->
 
 <div class="site-section">
     <div class="container">

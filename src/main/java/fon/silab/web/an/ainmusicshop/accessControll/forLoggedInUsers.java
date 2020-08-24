@@ -26,7 +26,6 @@ public class forLoggedInUsers implements Filter{
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         
-        System.out.println("USAO U FILTER");
         if (req.getSession().getAttribute("loginUser") != null){
             res.sendRedirect(req.getContextPath()+ "/index.jsp");
             

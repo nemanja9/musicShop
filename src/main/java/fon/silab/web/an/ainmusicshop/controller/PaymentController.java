@@ -54,6 +54,7 @@ public class PaymentController {
        
         try {
             orderDto.setOrderItems((List<OrderItemDto>) session.getAttribute("cart"));
+            orderDto.setUserDto((UserDto) session.getAttribute("loginUser"));
             PaymentServices paymentServices = new PaymentServices(orderDto);
             String approvalLink = paymentServices.authorizePayment(orderDto);
 
