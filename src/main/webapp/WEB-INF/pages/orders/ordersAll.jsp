@@ -4,6 +4,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
+ <!--OD MODAL-->
+         <c:if test="${not empty uspeh}">
+        <div id="myModal" class="modal">
+
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>${uspeh}</p>
+            </div>
+
+        </div>
+         </c:if>
+        <!--DO MODAL-->
 
 
 
@@ -16,6 +28,7 @@
             <thead>
                 <tr>
                     <th>ID porudžbine</th>
+                    <th>Status</th>
                     <th>Datum porudžbine</th>
                     <th>Datum plaćanja</th>
                     <th>Datum slanja</th>
@@ -30,6 +43,7 @@
             <tfoot>
                 <tr>
                     <th>ID porudžbine</th>
+                                        <th>Status</th>
                     <th>Datum porudžbine</th>
                     <th>Datum plaćanja</th>
                     <th>Datum slanja</th>
@@ -45,6 +59,7 @@
                 <c:forEach items="${orders}" var="o">
                     <tr>
                         <td>${o.getOrderId()}</td>
+                        <td>${o.getOrderStatus()}</td>
                         <td>${o.getOrderDate()}</td>
                         <td>${o.getPaidDate()}</td>
                         <td>${o.getShippedDate()}</td>
@@ -67,32 +82,12 @@
 
 
                         <td style="text-align:center">
-                            <button type="button" class="btn btn-warning" onclick="" style="width: 115px;" data-toggle="modal" data-target="#myModal${o.getOrderId()}"> <i class="fas fa-user-minus"></i> izmeni status</button>
-                            <a href="${pageContext.request.contextPath}/adminn/orders/deleteOrder/${o.getOrderId()}"><button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Ako obrišete ovu porudžbinu, obrisaće se i sve njene stavke. Da li ste sigurni?')">
+                            <a href="${pageContext.request.contextPath}/adminn/orders/edit/${o.getOrderId()}">
+                            <button type="button" class="btn btn-warning" onclick="" style="width: 115px;"> <i class="fas fa-user-minus"></i> izmeni status</button>
+                            </a>
+                            <a href="${pageContext.request.contextPath}/adminn/orders/deleteOrder/${o.getOrderId()}">
+                                <button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Ako obrišete ovu porudžbinu, obrisaće se i sve njene stavke. Da li ste sigurni?')">
                                     <i class="fas fa-user-minus"></i> Obriši</button></a>
-
-
-                            <!--OD MODAL-->
-                            <div class="modal fade" id="myModal${o.getOrderId()}" role="dialog">
-                                <div class="modal-dialog">
-
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Modal Header</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>Some text in the modal.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <!--DO MODAL-->
 
 
                         </td>

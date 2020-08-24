@@ -6,6 +6,7 @@
 package fon.silab.web.an.ainmusicshop.repository;
 
 import fon.silab.web.an.ainmusicshop.entity.OrderEntity;
+import fon.silab.web.an.ainmusicshop.entity.UserEntity;
 import java.util.List;
 
 /**
@@ -20,7 +21,6 @@ public interface OrderRepository {
     void delete(int numberId);
     void update(OrderEntity order);
 
-    public String getUserByOrderID(int id);
 
     public List<OrderEntity> getAllForUser(int id);
     

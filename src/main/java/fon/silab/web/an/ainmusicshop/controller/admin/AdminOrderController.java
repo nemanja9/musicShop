@@ -2,7 +2,6 @@ package fon.silab.web.an.ainmusicshop.controller.admin;
 
 import fon.silab.web.an.ainmusicshop.dto.OrderDto;
 import fon.silab.web.an.ainmusicshop.dto.UserDto;
-import fon.silab.web.an.ainmusicshop.entity.OrderEntity;
 import fon.silab.web.an.ainmusicshop.service.OrderItemService;
 import fon.silab.web.an.ainmusicshop.service.OrderService;
 import fon.silab.web.an.ainmusicshop.service.UserService;
@@ -14,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,13 +38,6 @@ public class AdminOrderController {
         ModelAndView modelAndView = new ModelAndView("orders/ordersAll");
         
          List<OrderDto> list = orderService.getAll();
-         for (OrderDto o : list) {
-             UserDto u = userService.findByEmail(orderService.getUserByOrderID(o.getOrderId()));
-             o.setUserDto(u);
-             System.out.println(orderService.getUserByOrderID(o.getOrderId()));
-             System.out.println(userService.findByEmail(orderService.getUserByOrderID(o.getOrderId())));
-             System.out.println(u);
-         }
          
         modelAndView.addObject("orders", list);
         return modelAndView;
@@ -54,28 +47,36 @@ public class AdminOrderController {
         ModelAndView modelAndView = new ModelAndView("orders/ordersAll");
                 
          List<OrderDto> list = orderService.getAllForUser(id);
-         for (OrderDto o : list) {
-             UserDto u = userService.findByEmail(orderService.getUserByOrderID(o.getOrderId()));
-             o.setUserDto(u);
-             System.out.println(orderService.getUserByOrderID(o.getOrderId()));
-             System.out.println(userService.findByEmail(orderService.getUserByOrderID(o.getOrderId())));
-             System.out.println(u);
-         }
+        
          
         modelAndView.addObject("orders", list);
         return modelAndView;
     }
     
+    @GetMapping("/edit/{id}")
+    public ModelAndView deleteProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
+        ModelAndView modelAndView = new ModelAndView("orders/orderEdit");
+       
+        modelAndView.addObject("order", orderService.findByNumber(id));
+        
+        
+        return modelAndView;
+
+    }
     @GetMapping("/deleteOrder/{id}")
-    public String deleteProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
+    public String editOrder(@PathVariable("id") int id, RedirectAttributes attributes) {
         orderService.delete(id);
         return "redirect:/adminn/orders/all";
 
     }
-    @GetMapping("/updateStatus")
-    public String updateStatus(@RequestParam int id,@RequestParam int status, RedirectAttributes attributes) {
+    @PostMapping(path = "/updateStatus")
+    public String updateStatus(@RequestParam int id,@RequestParam int novStatus, RedirectAttributes attributes) {
         
-        System.out.println("TREBA UPDATE PORUDZBINU SA ID " + id + " NA STATUS " + status);
+        OrderDto pom = orderService.findByNumber(id);
+        pom.setOrderStatusInt(novStatus);
+                orderService.update(pom);
+           attributes.addFlashAttribute("uspeh", "Status porudzbine sa ID <b>" + id + "</b> uspesno promenjen na <b>" + pom.getOrderStatus()+ "</b>");
+
         return "redirect:/adminn/orders/all";
 
     }

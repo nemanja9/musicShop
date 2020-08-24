@@ -6,7 +6,9 @@
 package fon.silab.web.an.ainmusicshop.service.impl;
 
 import fon.silab.web.an.ainmusicshop.dto.OrderDto;
+import fon.silab.web.an.ainmusicshop.dto.UserDto;
 import fon.silab.web.an.ainmusicshop.entity.OrderEntity;
+import fon.silab.web.an.ainmusicshop.entity.UserEntity;
 import fon.silab.web.an.ainmusicshop.repository.OrderRepository;
 import fon.silab.web.an.ainmusicshop.service.OrderService;
 import java.util.ArrayList;
@@ -49,16 +51,23 @@ public class OrderServiceImpl implements OrderService{
         List<OrderDto> ordersDto = new ArrayList<>();
         for (OrderEntity orderEntity : ordersEnt) {
             OrderDto o = modelMapper.map(orderEntity, OrderDto.class);
+            o.setUserDto( modelMapper.map(orderEntity.getUser(), UserDto.class));
             ordersDto.add(o);
+            System.out.println(o.getUserDto());
         }
+
         return ordersDto;
     }
 
     @Override
     public OrderDto findByNumber(int numberId) {
         OrderEntity o = orderRepository.findByNumber(numberId);
+       
+        
         if(o != null){
-            return modelMapper.map(o, OrderDto.class);
+            OrderDto orderDto =  modelMapper.map(o, OrderDto.class);
+            orderDto.setUserDto(modelMapper.map(o.getUser(), UserDto.class));
+            return orderDto;
         }else{
             return null;
         }
@@ -79,11 +88,7 @@ public class OrderServiceImpl implements OrderService{
         orderRepository.update(orderEntity);
     }
 
-    @Override
-    public String getUserByOrderID(int id) {
-        return orderRepository.getUserByOrderID(id);
-    }
-
+  
     @Override
     public List<OrderDto> getAllForUser(int id) {
 

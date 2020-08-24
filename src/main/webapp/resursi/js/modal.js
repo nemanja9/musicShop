@@ -24,8 +24,3 @@ window.onclick = function(event) {
 
   }
 }
-
-//za hidden
-
-var modalHidden = document.getElementById("myModalHidden");
-var btnStatus = document.getElementById("myBtnStatus");

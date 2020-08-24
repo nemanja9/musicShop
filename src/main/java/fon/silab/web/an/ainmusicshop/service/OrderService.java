@@ -6,6 +6,7 @@
 package fon.silab.web.an.ainmusicshop.service;
 
 import fon.silab.web.an.ainmusicshop.dto.OrderDto;
+import fon.silab.web.an.ainmusicshop.dto.UserDto;
 import java.util.List;
 
 /**
@@ -19,7 +20,6 @@ public interface OrderService {
     OrderDto findByNumber(int numberId);
     void delete(int numberId);
     void update(OrderDto order);
-    String getUserByOrderID(int id);
 
     public List<OrderDto> getAllForUser(int id);
 }

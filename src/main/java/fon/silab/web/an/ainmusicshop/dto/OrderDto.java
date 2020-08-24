@@ -85,6 +85,9 @@ public class OrderDto {
     public void setOrderStatus(Status orderStatus) {
         this.orderStatus = orderStatus;
     }
+    public void setOrderStatusInt(int x) {
+        this.orderStatus = Status.values()[x];
+    }
 
     public Date getOrderDate() {
         return orderDate;
