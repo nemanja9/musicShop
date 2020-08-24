@@ -46,11 +46,9 @@ public class ProductValidator implements Validator {
             errors.rejectValue("img", "productDto.img.exist", "productDto.img.exist = Default message");
         }
 
-        if (!isNumeric(productDto.getPrice())){
-            errors.rejectValue("price", "productDto.price.number", "productDto.price.number = Default message");
-        }
+      
         
-        if (productDto.getPrice().length() > 11){
+        if (productDto.getPrice() < 1){
             errors.rejectValue("price", "productDto.price.length", "productDto.price.length = Default message");
         }
         

@@ -39,13 +39,11 @@ public class ProductEditValidator implements Validator {
             return;
         }
 
-        if (!isNumeric(productDto.getPrice())){
+        if (productDto.getPrice()<1){
             errors.rejectValue("price", "productDto.price.number", "productDto.price.number = Default message");
         }
         
-        if (productDto.getPrice().length() > 11){
-            errors.rejectValue("price", "productDto.price.length", "productDto.price.length = Default message");
-        }
+        
         
     }
 

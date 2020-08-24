@@ -121,7 +121,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public int getHighestPrice() {
+    public double getHighestPrice() {
         return productRepository.getHighestPrice();
     }
 

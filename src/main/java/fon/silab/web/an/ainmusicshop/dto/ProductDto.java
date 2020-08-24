@@ -17,7 +17,7 @@ public class ProductDto {
     private int productId;
     private Category category;
     private String productName;
-    private String price;
+    private double price;
     private String manufacturer;
     private String description;
     private String imgPath;
@@ -34,7 +34,7 @@ public class ProductDto {
     public ProductDto() {
     }
 
-    public ProductDto(int productId, Category category, String productName, String price,String manufacturer, String description) {
+    public ProductDto(int productId, Category category, String productName, double price,String manufacturer, String description) {
         this.productId = productId;
         this.category = category;
         this.productName = productName;
@@ -75,11 +75,11 @@ public class ProductDto {
         this.productName = productName;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

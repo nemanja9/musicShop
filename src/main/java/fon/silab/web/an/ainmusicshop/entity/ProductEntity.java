@@ -40,8 +40,8 @@ public class ProductEntity implements Serializable{
     @Column(name = "manufacturer", nullable = true, length = 256)
     private String manufacturer;
     
-    @Column(name = "price", nullable = false, length = 50)
-    private String price;
+    @Column(name = "price", nullable = false)
+    private double price;
     
     @Column(name = "imgPath", nullable = false, length = 250)
     private String imgPath;
@@ -66,7 +66,7 @@ public class ProductEntity implements Serializable{
     public ProductEntity() {
     }
 
-    public ProductEntity(int productId, Category category, String productName, String price, String img, String manufacturer, String description) {
+    public ProductEntity(int productId, Category category, String productName, double price, String img, String manufacturer, String description) {
         super();
         this.productId = productId;
         this.category = category;
@@ -100,11 +100,11 @@ public class ProductEntity implements Serializable{
         this.productName = productName;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

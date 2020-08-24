@@ -20,7 +20,7 @@ public interface ProductService {
     List<ProductDto> getAll();
     List<ProductDto> getSome(String category, String orderBy, String manufacturer, String max, String min, String name);
     List<ProductDto> getCategory(String category);
-    int getHighestPrice();
+    double getHighestPrice();
     ProductDto getOne(int numberId);
     void delete(int numberId);
     void update(ProductDto product);

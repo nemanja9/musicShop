@@ -57,12 +57,12 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
     
     @Override
-    public int getHighestPrice() {
+    public double getHighestPrice() {
         String query = "select max(p.price) from products p";
-        if(entityManager.createQuery(query, String.class).getSingleResult() != null){
-            return Integer.parseInt(entityManager.createQuery(query, String.class).getSingleResult());
+        if(entityManager.createQuery(query, Double.class).getSingleResult() != null){
+            return entityManager.createQuery(query, Double.class).getSingleResult();
         }else{
-            return Integer.MIN_VALUE;
+            return Double.MIN_VALUE;
         }
     }
     
