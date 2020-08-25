@@ -218,7 +218,7 @@ public class UserController {
             return new ModelAndView("user/register");
 
         }
-        if (!pom.getEmailToken().equals(token)) {
+        if (!pom.getPasswordToken().equals(token)) {
             return new ModelAndView("user/register");
         }
         pom.setPassword("");
@@ -240,12 +240,12 @@ public class UserController {
             model.addAttribute("invalid", "Korisnik sa tim emailom ne postoji!");
             return "user/resetPassword";
         } else {
-            pom.setEmailToken( EmailTemplateGenerator.generateRandomToken(20));
+            pom.setPasswordToken(EmailTemplateGenerator.generateRandomToken(20));
             userService.update(pom);
                         model.addAttribute("uspeh", "Mail sa linkom za promenu lozinke je poslat na vasu adresu!");
 
             try {
-                mailService.send("musicshopan@gmail.com", pom.getEmail(), "Potvrda registracije", EmailTemplateGenerator.dajEmailChangePasswordText(pom));
+                mailService.send("musicshopan@gmail.com", pom.getEmail(), "Promena lozinke", EmailTemplateGenerator.dajEmailChangePasswordText(pom));
             } catch (Exception ex) {
                 Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -262,10 +262,10 @@ public class UserController {
             model.addAttribute("invalid", "Korisnik sa tim emailom ne postoji!");
             return "enterNewPassword/submit";
         } else {
-            pom.setEmailToken(null);
+            pom.setPasswordToken(null);
             pom.setPassword(u.getPassword());
             userService.update(pom);
-                        model.addAttribute("uspeh", "Uspesno promenjena lozinka!");
+            model.addAttribute("uspeh", "Uspesno promenjena lozinka!");
 
             try {
                 mailService.send("musicshopan@gmail.com", pom.getEmail(), "Lozinka promenjena", EmailTemplateGenerator.dajEmailChangedPasswordText(pom));

@@ -27,11 +27,10 @@ public class forNonAdmins implements Filter{
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
-        
-        System.out.println("USAO U FILTER");
         UserDto pom = (UserDto) req.getSession().getAttribute("loginUser");
         if (pom == null || pom.getRoleUser() != UserEntity.UserRole.ROLE_ADMIN){
             res.sendRedirect(req.getContextPath()+ "/");
+            return;
             
         }
        

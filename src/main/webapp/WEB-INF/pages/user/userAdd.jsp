@@ -25,7 +25,7 @@
                 <h2 class="h3 mb-3 text-black">Dodadavanje novog korisnika</h2>
                 <p class="errorMsgTitle">${message}</p>
 
-                <form:form action="${pageContext.request.contextPath}/admin/user/save" method="post" modelAttribute="userToRegister">
+                <form:form action="${pageContext.request.contextPath}/adminn/user/save" method="post" modelAttribute="userToAdd">
 
 
                     <div class="p-3 p-lg-5 border">
@@ -74,7 +74,7 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="form-group row mb-5">
                             <div class="col-md-6">
@@ -90,12 +90,23 @@
                             </div>
                         </div>
 
+                        <div class="form-group row mb-5">
+                            <div class="col-md-6">
+                                                                <label for="c_phone" class="text-black">Role <span class="text-danger">*</span></label>
+
+                                <form:select class="form-control" path="roleUser">
+                                    <form:option value="" label="Izaberite ROLE" />
+                                    <form:options items="${roleList}" />
+                                </form:select>
+                            </div>
+                        </div>
+
 
 
                         <div class="form-group row mb-5">
 
                             <div class="col-md-6">
-                               <button class="btn btn-primary btn-lg btn-block">Sacuvaj korisnika</button>
+                                <button class="btn btn-primary btn-lg btn-block">Sacuvaj korisnika</button>
 
                             </div>
                         </div>

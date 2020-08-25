@@ -27,6 +27,15 @@ public class UserDto {
     private int emailConfirmed;
     private String emailToken;
 
+    public String getPasswordToken() {
+        return passwordToken;
+    }
+
+    public void setPasswordToken(String passwordToken) {
+        this.passwordToken = passwordToken;
+    }
+    private String passwordToken;
+
     public String getZip() {
         return zip;
     }

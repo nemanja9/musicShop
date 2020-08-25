@@ -63,6 +63,16 @@ public class UserEntity implements Serializable{
     
     @Column(name = "emailToken", nullable = true, length = 256)
     private String emailToken;
+    @Column(name = "passwordToken", nullable = true, length = 256)
+    private String passwordToken;
+
+    public String getPasswordToken() {
+        return passwordToken;
+    }
+
+    public void setPasswordToken(String passwordToken) {
+        this.passwordToken = passwordToken;
+    }
     
     @Column(name = "emailConfirmed", nullable = false, length = 1)
     private int emailConfirmed;

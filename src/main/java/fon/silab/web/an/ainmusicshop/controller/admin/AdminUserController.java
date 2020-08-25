@@ -3,12 +3,15 @@ package fon.silab.web.an.ainmusicshop.controller.admin;
 import fon.silab.web.an.ainmusicshop.controller.UserController;
 import fon.silab.web.an.ainmusicshop.dto.UserDto;
 import fon.silab.web.an.ainmusicshop.emailTemplates.EmailTemplateGenerator;
+import fon.silab.web.an.ainmusicshop.entity.ProductEntity;
 import fon.silab.web.an.ainmusicshop.entity.UserEntity;
 import fon.silab.web.an.ainmusicshop.service.MailService;
 import fon.silab.web.an.ainmusicshop.service.UserService;
 import fon.silab.web.an.ainmusicshop.validator.LoginValidator;
 import fon.silab.web.an.ainmusicshop.validator.RegisterValidator;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
@@ -48,26 +51,13 @@ public class AdminUserController {
     @GetMapping(path = "add")
     public ModelAndView add(){
     ModelAndView mav = new ModelAndView("/user/userAdd");
-    mav.addObject("userToRegister",new UserDto());
+    mav.addObject("userToAdd",new UserDto());
+    mav.addObject("roleList",roleLists());
     return mav;
     } 
     
-    @PostMapping(path = "/ssave")
-    public String save(@Validated @ModelAttribute(name = "userDto") UserDto userDto,
-            BindingResult result, Model model, HttpSession session,
-            RedirectAttributes redirectAttributes) throws IOException {
-         if (result.hasErrors()) {
-            model.addAttribute("message", "Niste ispravno popunili formu!");
-            return "product/productAdd";
-        } else {
-             userDto.setPassword("asdasd");
-             userDto.setRe_password("asdasd");
-             userService.save(userDto);
-            model.addAttribute("uspeh", "Uspesno ste uneli korisnika ");
-         }
-            return "/";
-        
-    }
+   
+    
      @ModelAttribute(name = "userToRegister")
     public UserDto userRegister() {
         return new UserDto();
@@ -82,32 +72,37 @@ public class AdminUserController {
     }
 
     @PostMapping(path = "/save")
-    public String signup(@ModelAttribute(name = "userToRegister") UserDto userToRegister,
+    public String saveUser(@Validated @ModelAttribute(name = "userToAdd") UserDto u,
             BindingResult result, Model model,
             RedirectAttributes redirectAttributes) {
 
+        if (userService.findByEmail(u.getEmail())!= null) // da li korisnik vec postoji
+            return "user/adminn/user/all";
+        
         if (result.hasErrors()) {
             System.out.println("Bilo je gresaka pri validaciji...");
             model.addAttribute("invalid", "Niste lepo popunili formu!");
-            return "user/register";
+            return "user/adminn/user/all";
+            
         } else {
             System.out.println("Nije bilo gresaka pri validaciji...");
-            userToRegister.setRoleUser(UserEntity.UserRole.ROLE_USER);
-            userToRegister.setEmailConfirmed(0);
-//            userToRegister.setEmailToken(generateRandomToken(20));
-            model.addAttribute("userToRegister", userToRegister);
-             userToRegister.setPassword("asdasd");
-             userToRegister.setRe_password("asdasd");
-            userService.save(userToRegister);
+            u.setEmailConfirmed(0);
+            String tempPassword = EmailTemplateGenerator.generateRandomToken(20);
+             u.setPassword(tempPassword);
+             u.setRe_password(tempPassword);
+             u.setEmailToken(EmailTemplateGenerator.generateRandomToken(20));
+             u.setPasswordToken(EmailTemplateGenerator.generateRandomToken(20));
+            userService.save(u);
             redirectAttributes.addFlashAttribute("uspeh", "Uspesno ste se registrovali! <br> Na vas email je poslat link za potvrdu naloga");
             
             try {
-//                mailService.send("musicshopan@gmail.com", userToRegister.getEmail(), "Potvrda registracije", dajEmailRegisterText(userToRegister));
+                mailService.send("musicshopan@gmail.com", u.getEmail(), "Potvrda registracije", EmailTemplateGenerator.dajEmailRegisterText(u));
+                mailService.send("musicshopan@gmail.com", u.getEmail(), "Resetovanje lozinke", EmailTemplateGenerator.dajEmailChangePasswordText(u));
             } catch (Exception ex) {
                 Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            return "redirect:/user/register";
+            return "redirect:/adminn/user/all";
         }
 
     }
@@ -155,17 +150,21 @@ public class AdminUserController {
     @GetMapping("/sendPasswordReset/{id}")
     public String sendPasswordReset(@PathVariable("id") int id, RedirectAttributes attributes, RedirectAttributes redirectAttributes) {
         UserDto pom = userService.findByNumber(id);
-        System.out.println("NADJEN OVAJ " + userService.findByNumber(id).toString());
         try {
+            pom.setPasswordToken(EmailTemplateGenerator.generateRandomToken(20));
             mailService.send("musicshopan@gmail.com", pom.getEmail(), "Resetovanje lozinke", EmailTemplateGenerator.dajEmailChangePasswordText(pom));
                         redirectAttributes.addFlashAttribute("uspeh","Uspesno Poslat mail za resetovanje lozinke!");
+                        userService.update(pom);
 
         } catch (Exception ex) {
             Logger.getLogger(AdminUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "redirect:/adminn/user/edit/"+id;
     }
-    
+      @ModelAttribute(name = "roleList")
+    public List<UserEntity.UserRole> roleLists() {
+        return Arrays.asList(UserEntity.UserRole.values());
+    }
     
     
     }
