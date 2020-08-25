@@ -133,6 +133,14 @@ public class UserController {
     public String editUserEmail(@Validated @ModelAttribute(name = "izmenjenKorisnik") UserDto userToSave,
             BindingResult result, Model model, HttpSession session,
             RedirectAttributes redirectAttributes) {
+        
+        
+        
+        if (userService.findByEmail(userToSave.getEmail())!= null){ // da li korisnik vec postoji
+            redirectAttributes.addFlashAttribute("uspeh","Korisnik sa tom adresom vec postoji, izaberite drugu adresu!");
+            return "redirect:/user/profile";
+
+        }
 
         if (result.hasErrors()) {
             System.out.println("Bilo je gresaka pri validaciji...");
