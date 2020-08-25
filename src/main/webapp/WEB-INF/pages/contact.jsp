@@ -20,15 +20,7 @@
 
 
 
-<div class="site-blocks-cover inner-page"
-      style="background-image: url('${pageContext.request.contextPath}/resursi/images/hero_2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center"
-      data-aos="fade">
-      <div class="container">
-        <div class="row">
 
-        </div>
-      </div>
-    </div>
 
     <div class="custom-border-bottom py-3">
       <div class="container">
