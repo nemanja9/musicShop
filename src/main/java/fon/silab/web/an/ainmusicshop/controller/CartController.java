@@ -55,33 +55,11 @@ public class CartController {
             return "redirect:/product/" + orderItemDto.getProduct().getProductId();
 
         } else {
-            redirectAttributes.addFlashAttribute("message", "NE ZNAMMMMMMM!");
             List<OrderItemDto> lista = (List<OrderItemDto>) session.getAttribute("cart");
             if (lista == null) {
                 lista = new ArrayList<>();
             }
-            boolean postoji = false;
-            int indexPostojeceg = -1;
-            for (int i = 0; i < lista.size(); i++) {
-                if (lista.get(i).getProduct().getProductId() == orderItemDto.getProduct().getProductId()) {
-                    postoji = true;
-                    indexPostojeceg = i;
-                    break;
-                }
-            }
-            if (postoji) {
-                int novaKolicina = -1;
-                try {
-                    novaKolicina = lista.get(indexPostojeceg).getQuantity()
-                            + orderItemDto.getQuantity();
-                } catch (Exception e) {
-                }
-                lista.get(indexPostojeceg).setQuantity(novaKolicina);
-            } else {
-                lista.add(orderItemDto);
-            }
-            session.setAttribute("cart", lista);
-            //redirectAttributes.addFlashAttribute("message", "Product is saved!");
+            session.setAttribute("cart", orderItemDto.add((ArrayList<OrderItemDto>) lista));
             redirectAttributes.addFlashAttribute("message", lista.toString());
             return "redirect:/product/" + orderItemDto.getProduct().getProductId();
         }

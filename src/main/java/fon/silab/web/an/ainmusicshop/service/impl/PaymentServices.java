@@ -74,7 +74,7 @@ public class PaymentServices {
         amount.setCurrency("EUR");
         int total = 0;
         for (OrderItemDto item : orderDetail.getOrderItems()) {
-            total += item.getQuantity() * item.getProduct().getPrice();
+            total += item.getQuantity() * item.getItemPrice();
         }
         amount.setTotal(19 + "");
         amount.setDetails(details);
@@ -112,12 +112,12 @@ public class PaymentServices {
 
         int total = 0;
         for (OrderItemDto orderItem : orderDetail.getOrderItems()) {
-            total += orderItem.getQuantity() * orderItem.getProduct().getPrice();
+            total += orderItem.getQuantity() * orderItem.getItemPrice();
         
         Item item = new Item();
         item.setCurrency("EUR");
         item.setName(orderItem.getProduct().getProductName());
-        item.setPrice(orderItem.getProduct().getPrice()+"");
+        item.setPrice(orderItem.getItemPrice()+"");
         item.setTax("0");
         item.setQuantity(String.valueOf(orderItem.getQuantity()));
         items.add(item);

@@ -34,6 +34,17 @@ public class OrderItemEntity implements Serializable{
     
     @Column(name = "quantity", nullable = false, length = 50, columnDefinition="Integer default '0'")
     private int quantity;
+    
+    @Column(name = "itemPrice", nullable = false)
+    private double itemPrice;
+
+    public double getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(double itemPrice) {
+        this.itemPrice = itemPrice;
+    }
 
     public OrderItemEntity() {
     }

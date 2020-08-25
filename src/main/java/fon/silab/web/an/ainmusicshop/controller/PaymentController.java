@@ -106,13 +106,9 @@ public class PaymentController {
         try {
             PaymentServices paymentServices = new PaymentServices();
             Payment payment = paymentServices.getPaymentDetails(paymentId);
-//            System.out.println(paymentId);
-//            System.out.println(request.getParameter("token"));
-
             PayerInfo payerInfo = payment.getPayer().getPayerInfo();
             Transaction transaction = payment.getTransactions().get(0);
             ShippingAddress shippingAddress = transaction.getItemList().getShippingAddress();
-
             request.setAttribute("payer", payerInfo);
             request.setAttribute("transaction", transaction);
             request.setAttribute("shippingAddress", shippingAddress);

@@ -5,16 +5,48 @@
  */
 package fon.silab.web.an.ainmusicshop.dto;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lj
  */
 public class OrderItemDto {
-    
+
     private int itemId;
     private int orderId;
     private ProductDto product;
     private int quantity;
+    private double itemPrice;
+
+    public ArrayList<OrderItemDto> add(ArrayList<OrderItemDto> lista) {
+        boolean postoji = false;
+        OrderItemDto pom = new OrderItemDto();
+
+        for (OrderItemDto orderItemDto : lista) {
+            if (product.getProductId() == orderItemDto.getProduct().getProductId()) {
+                postoji = true;
+                orderItemDto.setQuantity(orderItemDto.getQuantity() + quantity);
+                break;
+            }
+        }
+        if (!postoji) {
+            pom.setProduct(product);
+            pom.setQuantity(quantity);
+            pom.setItemPrice(product.getPrice());
+            lista.add(pom);
+        }
+        return lista;
+
+    }
+
+    public double getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(double itemPrice) {
+        this.itemPrice = itemPrice;
+    }
 
     public OrderItemDto() {
     }
@@ -42,8 +74,6 @@ public class OrderItemDto {
         this.orderId = orderId;
     }
 
-   
-
     public ProductDto getProduct() {
         return product;
     }
@@ -65,9 +95,4 @@ public class OrderItemDto {
         return "OrderItemDto{" + "itemId=" + itemId + ", orderId=" + orderId + ", product=" + product + ", quantity=" + quantity + '}';
     }
 
-    
-    
-    
-    
-    
 }

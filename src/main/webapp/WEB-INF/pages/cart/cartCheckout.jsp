@@ -115,7 +115,7 @@
                                     <tbody>
                                         <!-- for iz carta za sve proizovode -->
                                         <c:forEach var="i" items="${sessionScope.cart}">
-                                            <c:set var="subtotal" scope="session" value="${i.getQuantity()*i.getProduct().getPrice()}" />
+                                            <c:set var="subtotal" scope="session" value="${i.getQuantity()*i.getItemPrice()}" />
                                             <c:set var="total" scope="session" value="${total+subtotal}" />
                                             <tr>
                                                 <td>${i.getProduct().getProductName()} <strong class="mx-2">x</strong>   ${i.getQuantity()}</td>
