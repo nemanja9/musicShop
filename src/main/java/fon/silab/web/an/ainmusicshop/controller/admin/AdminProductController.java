@@ -122,7 +122,7 @@ public class AdminProductController {
     public String deleteProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
         ModelAndView modelAndView = new ModelAndView("product/edit");
         productService.delete(id);
-        return "redirect:/product/all";
+        return "redirect:/admin/product/edit";
 
     }
 

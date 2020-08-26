@@ -102,6 +102,8 @@ public class UserController {
         } else {
             System.out.println("Nije bilo gresaka pri validaciji...");
             UserDto u = userService.findByEmail(userToLogin.getEmail());
+            u.setPasswordToken(null); // ovde ponistavamo token koji je mozda postojao za resetovanje lozinke zbog sigurnosti i onemucavanja iskoriscavanja starog maila za reset lozinke kada korisnik ocigledno zna lozinku i loguje se sa njom
+            userService.update(u);
             session.setAttribute("loginUser", u);
             return "redirect:/index.jsp";
         }

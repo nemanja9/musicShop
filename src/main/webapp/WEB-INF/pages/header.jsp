@@ -93,7 +93,7 @@
                                 </li>
 
 
-                                <%--<c:if test="${sessionScope.loginUser.roleUser == 'ROLE_ADMIN'}">--%>
+                                <c:if test="${sessionScope.loginUser.roleUser == 'ROLE_ADMIN'}">
                                 
                                 <li class="has-children <c:if test="${fn:startsWith(currrentAdress, 'admin')}">active </c:if>>">
                                     <a href="<c:url value="/product/all"/>"><fmt:message key="header.admin" /></a>
@@ -123,7 +123,7 @@
                                     </ul>
                                 </li>
                                 
-                                 <%--</c:if>--%>
+                                 </c:if>
 
 
                             </ul>
