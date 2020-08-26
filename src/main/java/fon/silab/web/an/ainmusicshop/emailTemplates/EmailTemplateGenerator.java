@@ -5,7 +5,10 @@
  */
 package fon.silab.web.an.ainmusicshop.emailTemplates;
 
+import fon.silab.web.an.ainmusicshop.dto.OrderDto;
+import fon.silab.web.an.ainmusicshop.dto.OrderItemDto;
 import fon.silab.web.an.ainmusicshop.dto.UserDto;
+import java.text.SimpleDateFormat;
 import java.util.Random;
 
 /**
@@ -13,6 +16,7 @@ import java.util.Random;
  * @author Nemanja
  */
 public class EmailTemplateGenerator {
+
     public static String dajEmailRegisterText(UserDto u) {
 
         String emailText = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -253,6 +257,7 @@ public class EmailTemplateGenerator {
         return emailText;
 
     }
+
     public static String dajEmailChangeEmailText(UserDto u) {
 
         String emailText = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -493,6 +498,7 @@ public class EmailTemplateGenerator {
         return emailText;
 
     }
+
     public static String dajEmailChangePasswordText(UserDto u) {
 
         String emailText = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -733,6 +739,7 @@ public class EmailTemplateGenerator {
         return emailText;
 
     }
+
     public static String dajEmailChangedPasswordText(UserDto u) {
 
         String emailText = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
@@ -972,7 +979,336 @@ public class EmailTemplateGenerator {
         return emailText;
 
     }
- 
+
+    public static String dajEmailPotvrdaPorudzbine(OrderDto o) {
+
+        String emailText = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n"
+                + "                <html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" style=\"width:100%;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0\">\n"
+                + "                 <head> \n"
+                + "                  <meta charset=\"UTF-8\"> \n"
+                + "                  <meta content=\"width=device-width, initial-scale=1\" name=\"viewport\"> \n"
+                + "                  <meta content=\"telephone=no\" name=\"format-detection\"> \n"
+                + "                  <title>New email template 2020-08-18</title> \n"
+                + "                  <!--[if (mso 16)]>\n"
+                + "                    <style type=\"text/css\">\n"
+                + "                    a {text-decoration: none;}\n"
+                + "                    </style>\n"
+                + "                    <![endif]--> \n"
+                + "                  <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--> \n"
+                + "                  <!--[if gte mso 9]>\n"
+                + "                <xml>\n"
+                + "                    <o:OfficeDocumentSettings>\n"
+                + "                    <o:AllowPNG></o:AllowPNG>\n"
+                + "                    <o:PixelsPerInch>96</o:PixelsPerInch>\n"
+                + "                    </o:OfficeDocumentSettings>\n"
+                + "                </xml>\n"
+                + "                <![endif]--> \n"
+                + "                  <style type=\"text/css\">\n"
+                + "\n"
+                + "\n"
+                + "                @media only screen and (max-width:600px) {p, ul li, ol li, a { font-size:16px!important; line-height:150%!important } h1 { font-size:30px!important; text-align:center; line-height:120%!important } h2 { font-size:26px!important; text-align:center; line-height:120%!important } h3 { font-size:20px!important; text-align:center; line-height:120%!important } .es-menu td a { font-size:16px!important } .es-header-body p, .es-header-body ul li, .es-header-body ol li, .es-header-body a { font-size:16px!important } .es-footer-body p, .es-footer-body ul li, .es-footer-body ol li, .es-footer-body a { font-size:16px!important } .es-infoblock p, .es-infoblock ul li, .es-infoblock ol li, .es-infoblock a { font-size:12px!important } *[class=\"gmail-fix\"] { display:none!important } .es-m-txt-c { text-align:center!important } .es-m-txt-r { text-align:right!important } .es-m-txt-l { text-align:left!important } .es-m-txt-r img, .es-m-txt-c img, .es-m-txt-l img { display:inline!important } .es-button-border { display:block!important } a.es-button { font-size:20px!important; display:block!important; border-width:10px 0px 10px 0px!important } .es-btn-fw { border-width:10px 0px!important; text-align:center!important } .es-adaptive table, .es-btn-fw, .es-btn-fw-brdr, .es-left, .es-right { width:100%!important } .es-content table, .es-header table, .es-footer table, .es-content, .es-footer, .es-header { width:100%!important; max-width:600px!important } .es-adapt-td { display:block!important; width:100%!important } .adapt-img { width:100%!important; height:auto!important } .es-m-p0 { padding:0px!important } .es-m-p0r { padding-right:0px!important } .es-m-p0l { padding-left:0px!important } .es-m-p0t { padding-top:0px!important } .es-m-p0b { padding-bottom:0!important } .es-m-p20b { padding-bottom:20px!important } .es-mobile-hidden, .es-hidden { display:none!important } tr.es-desk-hidden, td.es-desk-hidden, table.es-desk-hidden { display:table-row!important; width:auto!important; overflow:visible!important; float:none!important; max-height:inherit!important; line-height:inherit!important } .es-desk-menu-hidden { display:table-cell!important } table.es-table-not-adapt, .esd-block-html table { width:auto!important } table.es-social td { display:inline-block!important } table.es-social { display:inline-block!important } }\n"
+                + "                #outlook a {\n"
+                + "                	padding:0;\n"
+                + "                }\n"
+                + "                .ExternalClass {\n"
+                + "                	width:100%;\n"
+                + "                }\n"
+                + "                .ExternalClass,\n"
+                + "                .ExternalClass p,\n"
+                + "                .ExternalClass span,\n"
+                + "                .ExternalClass font,\n"
+                + "                .ExternalClass td,\n"
+                + "                .ExternalClass div {\n"
+                + "                	line-height:100%;\n"
+                + "                }\n"
+                + "                .es-button {\n"
+                + "                	mso-style-priority:100!important;\n"
+                + "                	text-decoration:none!important;\n"
+                + "                }\n"
+                + "                a[x-apple-data-detectors] {\n"
+                + "                	color:inherit!important;\n"
+                + "                	text-decoration:none!important;\n"
+                + "                	font-size:inherit!important;\n"
+                + "                	font-family:inherit!important;\n"
+                + "                	font-weight:inherit!important;\n"
+                + "                	line-height:inherit!important;\n"
+                + "                }\n"
+                + "                .es-desk-hidden {\n"
+                + "                	display:none;\n"
+                + "                	float:left;\n"
+                + "                	overflow:hidden;\n"
+                + "                	width:0;\n"
+                + "                	max-height:0;\n"
+                + "                	line-height:0;\n"
+                + "                	mso-hide:all;\n"
+                + "                }\n"
+                + "                </style> \n"
+                + "                 </head> \n"
+                + "                 <body style=\"width:100%;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0\"> \n"
+                + "                  <div class=\"es-wrapper-color\" style=\"background-color:#CCCCCC\"> \n"
+                + "                   <!--[if gte mso 9]>\n"
+                + "                			<v:background xmlns:v=\"urn:schemas-microsoft-com:vml\" fill=\"t\">\n"
+                + "                				<v:fill type=\"tile\" color=\"#cccccc\"></v:fill>\n"
+                + "                			</v:background>\n"
+                + "                		<![endif]--> \n"
+                + "                   <table class=\"es-wrapper\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top\"> \n"
+                + "                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                      <td valign=\"top\" style=\"padding:0;Margin:0\"> \n"
+                + "                       <table cellpadding=\"0\" cellspacing=\"0\" class=\"es-content\" align=\"center\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%\"> \n"
+                + "                         <tr style=\"border-collapse:collapse\"> \n"
+                + "                          \n"
+                + "                         </tr> \n"
+                + "                       </table> \n"
+                + "                       <table cellpadding=\"0\" cellspacing=\"0\" class=\"es-header\" align=\"center\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top\"> \n"
+                + "                         <tr style=\"border-collapse:collapse\"> \n"
+                + "                          <td align=\"center\" style=\"padding:0;Margin:0\"> \n"
+                + "                           <table class=\"es-header-body\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px\"> \n"
+                + "                             <tr style=\"border-collapse:collapse\"> \n"
+                + "                              <td align=\"left\" style=\"Margin:0;padding-top:10px;padding-bottom:10px;padding-left:10px;padding-right:10px\"> \n"
+                + "                               <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                 <tr style=\"border-collapse:collapse\"> \n"
+                + "                                  <td valign=\"top\" align=\"center\" style=\"padding:0;Margin:0;width:580px\"> \n"
+                + "                                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td align=\"center\" style=\"padding:0;Margin:0;font-size:0px\"><a href=\"http://localhost:8080/musicshop/\" target=\"_blank\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:underline;color:#CCCCCC\"><img src=\"https://hwxtrn.stripocdn.email/content/guids/CABINET_1c5d359760b84be5a9f2f58cb0630393/images/63891597745475246.png\" alt=\"Smart home logo\" title=\"Smart home logo\" style=\"display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic\" height=\"48\"></a></td> \n"
+                + "                                     </tr> \n"
+                + "                                   </table></td> \n"
+                + "                                 </tr> \n"
+                + "                               </table></td> \n"
+                + "                             </tr> \n"
+                + "                             <tr style=\"border-collapse:collapse\"> \n"
+                + "                              <td style=\"padding:0;Margin:0;padding-left:5px;padding-right:5px;background-color:#EE4266\" bgcolor=\"#ee4266\" align=\"left\"> \n"
+                + "                               <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                 <tr style=\"border-collapse:collapse\"> \n"
+                + "                                  <td valign=\"top\" align=\"center\" style=\"padding:0;Margin:0;width:590px\"> \n"
+                + "                                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#ee4266\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#EE4266\" role=\"presentation\"> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td style=\"padding:0;Margin:0\"> \n"
+                + "                                       <table class=\"es-menu\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                         <tr class=\"links\" style=\"border-collapse:collapse\"> \n"
+                + "                                          <td style=\"Margin:0;padding-left:5px;padding-right:5px;padding-top:10px;padding-bottom:10px;border:0\" width=\"25.00%\" bgcolor=\"transparent\" align=\"center\"><a style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:none;display:block;color:#FFFFFF\" href=\"http://localhost:8080/musicshop\">Pocetna</a></td> \n"
+                + "                                          <td style=\"Margin:0;padding-left:5px;padding-right:5px;padding-top:10px;padding-bottom:10px;border:0\" width=\"25.00%\" bgcolor=\"transparent\" align=\"center\"><a style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:none;display:block;color:#FFFFFF\" href=\"http://localhost:8080/musicshop/product/all\">Proizvodi</a></td> \n"
+                + "                                          <td style=\"Margin:0;padding-left:5px;padding-right:5px;padding-top:10px;padding-bottom:10px;border:0\" width=\"25.00%\" bgcolor=\"transparent\" align=\"center\"><a style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:none;display:block;color:#FFFFFF\" href=\"http://localhost:8080/musicshop/contact\">Kontakt</a></td> \n"
+                + "                                          <td style=\"Margin:0;padding-left:5px;padding-right:5px;padding-top:10px;padding-bottom:10px;border:0\" width=\"25.00%\" bgcolor=\"transparent\" align=\"center\"><a style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:none;display:block;color:#FFFFFF\" href=\"http://localhost:8080/musicshop/contact\">O nama</a></td> \n"
+                + "                                         </tr> \n"
+                + "                                       </table></td> \n"
+                + "                                     </tr> \n"
+                + "                                   </table></td> \n"
+                + "                                 </tr> \n"
+                + "                               </table></td> \n"
+                + "                             </tr> \n"
+                + "                           </table></td> \n"
+                + "                         </tr> \n"
+                + "                       </table> \n"
+                + "                       <table class=\"es-content\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%\"> \n"
+                + "                         <tr style=\"border-collapse:collapse\"> \n"
+                + "                          <td align=\"center\" style=\"padding:0;Margin:0\"> \n"
+                + "                           <table class=\"es-content-body\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#ffffff\" align=\"center\"> \n"
+                + "                             <tr style=\"border-collapse:collapse\"> \n"
+                + "                              <td align=\"left\" style=\"Margin:0;padding-top:20px;padding-bottom:20px;padding-left:40px;padding-right:40px\"> \n"
+                + "                               <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                 <tr style=\"border-collapse:collapse\"> \n"
+                + "                                  <td valign=\"top\" align=\"center\" style=\"padding:0;Margin:0;width:520px\"> \n"
+                + "                                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td align=\"left\" style=\"padding:0;Margin:0\"><h1 style=\"Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:30px;font-style:normal;font-weight:normal;color:#EE4266\">Potvrda porudzbine</h1></td> \n"
+                + "                                     </tr> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td align=\"left\" style=\"padding:0;Margin:0;padding-top:5px;padding-bottom:20px;font-size:0\"> \n"
+                + "                                       <table width=\"75%\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                         <tr style=\"border-collapse:collapse\"> \n"
+                + "                                          <td style=\"padding:0;Margin:0;border-bottom:2px solid #999999;background:none 0% 0% repeat scroll#FFFFFF;height:1px;width:100%;margin:0px\"></td> \n"
+                + "                                         </tr> \n"
+                + "                                       </table></td> \n"
+                + "                                     </tr> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td align=\"left\" style=\"padding:0;Margin:0;padding-bottom:10px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:16px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:24px;color:#666666\">Zdravo,</p></td> \n"
+                + "                                     </tr> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#666666\">\n"
+                + "                                    Vasa narudzbina je uspesno poslata! Detalje mozete videti ispod. Ukoliko imate nekih problema, kontaktirajte nas.\n"
+                + "                                    </p></td> \n"
+                + "                                     </tr> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td align=\"left\" style=\"padding:0;Margin:0;padding-top:20px;margin-bottom: -20px;\"><span class=\"es-button-border\" style=\"border-style:solid;border-color:#4A7EB0;border-width:0px;display:inline-block;border-radius:0px;width:auto;margin-bottom: -30px;\">\n"
+                + "                                        \n"
+                + "                                        <table id=\"TABLE_1\" style=\"block-size: 207px;border-collapse: collapse;caret-color: rgb(140, 146, 160);color: rgb(140, 146, 160);column-rule-color: rgb(140, 146, 160);height: 207px;inline-size: 352px;margin-block-end: 48px;perspective-origin: 176px 103.5px;text-align: left;text-decoration: none solid rgb(140, 146, 160);text-size-adjust: 100%;transform-origin: 176px 103.5px;width: 450px;font: 300 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';margin: 0px 0px 48px;outline: rgb(140, 146, 160) none 0px;\">\n"
+                + "                                            <thead id=\"THEAD_2\" style=\"block-size: 51px;border-block-end-color: rgb(128, 128, 128);border-block-start-color: rgb(128, 128, 128);border-collapse: collapse;border-inline-end-color: rgb(128, 128, 128);border-inline-start-color: rgb(128, 128, 128);box-sizing: border-box;caret-color: rgb(140, 146, 160);color: rgb(140, 146, 160);column-rule-color: rgb(140, 146, 160);height: 51px;inline-size: 352px;perspective-origin: 176px 25.5px;text-align: left;text-decoration: none solid rgb(140, 146, 160);text-size-adjust: 100%;transform-origin: 176px 25.5px;width: 352px;border: 0px none rgb(128, 128, 128);border-spacing: 2px 2px;font: 300 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';outline: rgb(140, 146, 160) none 0px;\">\n"
+                + "                                                <tr id=\"TR_3\" style=\"block-size: 51px;border-block-end-color: rgb(128, 128, 128);border-block-start-color: rgb(128, 128, 128);border-collapse: collapse;border-inline-end-color: rgb(128, 128, 128);border-inline-start-color: rgb(128, 128, 128);box-sizing: border-box;caret-color: rgb(140, 146, 160);color: rgb(140, 146, 160);column-rule-color: rgb(140, 146, 160);height: 51px;inline-size: 352px;perspective-origin: 176px 25.5px;text-align: left;text-decoration: none solid rgb(140, 146, 160);text-size-adjust: 100%;transform-origin: 176px 25.5px;vertical-align: middle;width: 352px;border: 0px none rgb(128, 128, 128);border-spacing: 2px 2px;font: 300 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';outline: rgb(140, 146, 160) none 0px;\">\n"
+                + "                                                    <th id=\"TH_4\" style=\"color: #666666;block-size: 51px;border-block-end-color: rgb(222, 226, 230);border-block-end-style: solid;border-block-end-width: 1px;border-collapse: collapse;box-sizing: border-box;height: 51px;inline-size: 248px;padding-block-end: 12px;padding-block-start: 12px;padding-inline-end: 12px;padding-inline-start: 12px;perspective-origin: 124px 25.5px;text-align: left;text-size-adjust: 100%;transform-origin: 124px 25.5px;vertical-align: bottom;width: 248px;border-bottom: 1px solid rgb(222, 226, 230);border-spacing: 2px 2px;font: 700 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';padding: 12px;\">\n"
+                + "                                                        Proizvod\n"
+                + "                                                    </th>\n"
+                + "                                                    <th id=\"TH_5\" style=\"color: #666666;block-size: 51px;border-block-end-color: rgb(222, 226, 230);border-block-end-style: solid;border-block-end-width: 1px;border-collapse: collapse;box-sizing: border-box;height: 51px;inline-size: 104px;padding-block-end: 12px;padding-block-start: 12px;padding-inline-end: 12px;padding-inline-start: 12px;perspective-origin: 52px 25.5px;text-align: left;text-size-adjust: 100%;transform-origin: 52px 25.5px;vertical-align: bottom;width: 104px;border-bottom: 1px solid rgb(222, 226, 230);border-spacing: 2px 2px;font: 700 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';padding: 12px;\">\n"
+                + "                                                        Iznos\n"
+                + "                                                    </th>\n"
+                + "                                                </tr>\n"
+                + "                                            </thead>\n"
+                + "                                            <tbody id=\"TBODY_6\" style=\"block-size: 156px;border-block-end-color: rgb(128, 128, 128);border-block-start-color: rgb(128, 128, 128);border-collapse: collapse;border-inline-end-color: rgb(128, 128, 128);border-inline-start-color: rgb(128, 128, 128);box-sizing: border-box;caret-color: rgb(140, 146, 160);color: rgb(140, 146, 160);column-rule-color: rgb(140, 146, 160);height: 156px;inline-size: 352px;perspective-origin: 176px 78px;text-align: left;text-decoration: none solid rgb(140, 146, 160);text-size-adjust: 100%;transform-origin: 176px 78px;width: 352px;border: 0px none rgb(128, 128, 128);border-spacing: 2px 2px;font: 300 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';outline: rgb(140, 146, 160) none 0px;\">\n"
+                + "                                                <!-- for iz carta za sve proizovode -->\n"
+                + "                                        \n";
+        
+        
+        double ukupno = 0;
+        for (OrderItemDto item : o.getOrderItems()) {
+            ukupno += (double) item.getItemPrice()*item.getQuantity();
+            emailText +="<tr id=\"TR_7\" style=\"color: #666666;block-size: 52px;border-block-end-color: rgb(128, 128, 128);border-block-start-color: rgb(128, 128, 128);border-collapse: collapse;border-inline-end-color: rgb(128, 128, 128);border-inline-start-color: rgb(128, 128, 128);box-sizing: border-box;caret-color: rgb(140, 146, 160);color: rgb(140, 146, 160);column-rule-color: rgb(140, 146, 160);height: 52px;inline-size: 352px;perspective-origin: 176px 26px;text-align: left;text-decoration: none solid rgb(140, 146, 160);text-size-adjust: 100%;transform-origin: 176px 26px;vertical-align: middle;width: 352px;border: 0px none rgb(128, 128, 128);border-spacing: 2px 2px;font: 300 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';outline: rgb(140, 146, 160) none 0px;\">\n" +
+"                                                    <td id=\"TD_8\" style=\" color:#666666;block-size: 52px;border-block-start-color: rgb(222, 226, 230);border-block-start-style: solid;border-block-start-width: 1px;border-collapse: collapse;box-sizing: border-box;height: 52px;inline-size: 248px;padding-block-end: 12px;padding-block-start: 12px;padding-inline-end: 12px;padding-inline-start: 12px;perspective-origin: 124px 26px;text-align: left;text-size-adjust: 100%;transform-origin: 124px 26px;vertical-align: top;width: 248px;border-top: 1px solid rgb(222, 226, 230);border-spacing: 2px 2px;font: 300 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';padding: 12px;\">\n" +
+"                                                        "+ item.getProduct().getProductName()+" <strong id=\"STRONG_9\" style=\"  color:#666666; border-collapse: collapse;box-sizing: border-box;margin-inline-end: 8px;margin-inline-start: 8px;perspective-origin: 0px 0px;text-align: left;text-size-adjust: 100%;transform-origin: 0px 0px;border-spacing: 2px 2px;font: 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';margin: 0px 8px;\">x</strong> "+item.getQuantity()+"\n" +
+"                                                    </td>\n" +
+"                                                    <td id=\"TD_10\" style=\" color:#666666;block-size: 52px;border-block-start-color: rgb(222, 226, 230);border-block-start-style: solid;border-block-start-width: 1px;border-collapse: collapse;box-sizing: border-box;height: 52px;inline-size: 104px;padding-block-end: 12px;padding-block-start: 12px;padding-inline-end: 12px;padding-inline-start: 12px;perspective-origin: 52px 26px;text-align: left;text-size-adjust: 100%;transform-origin: 52px 26px;vertical-align: top;width: 104px;border-top: 1px solid rgb(222, 226, 230);border-spacing: 2px 2px;font: 300 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';padding: 12px;\">\n" +
+"                                                        "+(item.getItemPrice()*item.getQuantity())+" EUR \n" +
+"                                                    </td>\n" +
+"                                                </tr>";
+            
+        }
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("DD.MM.YYYY");
+        
+                emailText+= "                         <tr id=\"TR_15\" style=\"color: #666666;block-size: 52px;border-block-end-color: rgb(128, 128, 128);border-block-start-color: rgb(128, 128, 128);border-collapse: collapse;border-inline-end-color: rgb(128, 128, 128);border-inline-start-color: rgb(128, 128, 128);box-sizing: border-box;caret-color: rgb(140, 146, 160);color: rgb(140, 146, 160);column-rule-color: rgb(140, 146, 160);height: 52px;inline-size: 352px;perspective-origin: 176px 26px;text-align: left;text-decoration: none solid rgb(140, 146, 160);text-size-adjust: 100%;transform-origin: 176px 26px;vertical-align: middle;width: 352px;border: 0px none rgb(128, 128, 128);border-spacing: 2px 2px;font: 300 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';outline: rgb(140, 146, 160) none 0px;\">\n"
+                + "                                                    <td id=\"TD_16\" style=\"block-size: 52px;border-block-start-color: rgb(222, 226, 230);border-block-start-style: solid;border-block-start-width: 1px;border-collapse: collapse;box-sizing: border-box;height: 52px;inline-size: 248px;padding-block-end: 12px;padding-block-start: 12px;padding-inline-end: 12px;padding-inline-start: 12px;perspective-origin: 124px 26px;text-align: left;text-size-adjust: 100%;transform-origin: 124px 26px;vertical-align: top;width: 248px;border-top: 1px solid rgb(222, 226, 230);border-spacing: 2px 2px;font: 700 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';padding: 12px;\">\n"
+                + "                                                        <strong id=\"STRONG_17\" style=\" color:#666666;border-collapse: collapse;box-sizing: border-box;perspective-origin: 0px 0px;text-align: left;text-size-adjust: 100%;transform-origin: 0px 0px;border-spacing: 2px 2px;font: 900 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';\">Ukupno</strong>\n"
+                + "                                                    </td>\n"
+                + "                                                    <td id=\"TD_18\" style=\"block-size: 52px;border-block-start-color: rgb(222, 226, 230);border-block-start-style: solid;border-block-start-width: 1px;border-collapse: collapse;box-sizing: border-box;height: 52px;inline-size: 104px;padding-block-end: 12px;padding-block-start: 12px;padding-inline-end: 12px;padding-inline-start: 12px;perspective-origin: 52px 26px;text-align: left;text-size-adjust: 100%;transform-origin: 52px 26px;vertical-align: top;width: 104px;border-top: 1px solid rgb(222, 226, 230);border-spacing: 2px 2px;font: 700 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';padding: 12px;\">\n"
+                + "                                                        <strong id=\"STRONG_19\" style=\" color:#666666; border-collapse: collapse;box-sizing: border-box;perspective-origin: 0px 0px;text-align: left;text-size-adjust: 100%;transform-origin: 0px 0px;border-spacing: 2px 2px;font: 900 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';\">"+ukupno+" EUR</strong>\n"
+                + "                                                    </td>\n"
+                + "                                                </tr>\n"
+                + "                                            </tbody>\n"
+                + "                                        </table>\n"
+                + "                                    </span></td> \n"
+                + "                                     </tr> \n"
+                + "\n"
+                + "\n"
+                + "\n"
+                + "\n"
+                + "\n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                                <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#666666\">\n"
+                + "                                                    Ime: "+o.getUserDto().getFirstname()+" "+o.getUserDto().getLastname()+"\n"
+                + "                                              </p></td> \n"
+                + "                                               </tr> \n"
+                + "\n"
+                + "\n"
+                + "                                               <tr style=\"border-collapse:collapse\"> \n"
+                + "                                                <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#666666\">\n"
+                + "                                                    Adresa za dostavu: "+o.getUserDto().getAdress()+", "+o.getUserDto().getCity()+", " + o.getUserDto().getZip()+"\n"
+                + "                                              </p></td> \n"
+                + "                                               </tr> \n"
+                + "\n"
+                + "                                               <tr style=\"border-collapse:collapse\"> \n"
+                + "                                                <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#666666\">\n"
+                + "                                                    Kontakt telefon: " +o.getUserDto().getPhoneNumber()+"\n"
+                + "                                              </p></td> \n"
+                + "                                               </tr> \n"
+                + "\n"
+                + "                                               <tr style=\"border-collapse:collapse\"> \n"
+                + "                                                <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#666666\">\n"
+                + "                                                    Nacin placanja: "+(o.getPaymentId()==null?"POUZECEM":"PAYPAL")+"\n"
+                + "                                              </p></td> \n"
+                + "                                               </tr> \n";
+                        if(o.getPaymentId()!=null){
+                            emailText+="<tr style=\"border-collapse:collapse\"> \n" +
+"                                                <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#666666\">\n" +
+"                                                    Broj uplate: "+o.getPaymentId().split("PAYID-")[1]+"\n" +
+"                                              </p></td> \n" +
+"                                               </tr> ";
+                        }
+                emailText += "                                               <tr style=\"border-collapse:collapse\"> \n"
+                + "                                                <td align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#666666\">\n"
+                + "                                                    Datum porudzbine: "+sdf.format(o.getOrderDate())+"\n"
+                + "                                              </p></td> \n"
+                + "                                               </tr> \n"
+                + "\n"
+                
+                + "                                   </table></td> \n"
+                + "                                 </tr> \n"
+                + "                               </table></td> \n"
+                + "                             </tr> \n"
+                + "                             <tr style=\"border-collapse:collapse\"> \n"
+                + "                              <td align=\"left\" style=\"Margin:0;padding-top:20px;padding-bottom:20px;padding-left:40px;padding-right:40px\"> \n"
+                + "                               <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                 <tr style=\"border-collapse:collapse\"> \n"
+                + "                                  <td valign=\"top\" align=\"center\" style=\"padding:0;Margin:0;width:520px\"> \n"
+                + "                                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td align=\"center\" style=\"padding:0;Margin:0;padding-right:5px;padding-top:20px;padding-bottom:20px;font-size:0\"> \n"
+                + "                                       <table width=\"100%\" height=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                         <tr style=\"border-collapse:collapse\"> \n"
+                + "                                          <td style=\"padding:0;Margin:0;border-bottom:1px solid #FFFFFF;background:#FFFFFFnone repeat scroll 0% 0%;height:1px;width:100%;margin:0px\"></td> \n"
+                + "                                         </tr> \n"
+                + "                                       </table></td> \n"
+                + "                                     </tr> \n"
+                + "                                   </table></td> \n"
+                + "                                 </tr> \n"
+                + "                               </table></td> \n"
+                + "                             </tr> \n"
+                + "                           </table></td> \n"
+                + "                         </tr> \n"
+                + "                       </table> \n"
+                + "                       <table cellpadding=\"0\" cellspacing=\"0\" class=\"es-footer\" align=\"center\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top\"> \n"
+                + "                         <tr style=\"border-collapse:collapse\"> \n"
+                + "                          <td align=\"center\" style=\"padding:0;Margin:0\"> \n"
+                + "                           <table class=\"es-footer-body\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#EFEFEF;width:600px\"> \n"
+                + "                             <tr style=\"border-collapse:collapse\"> \n"
+                + "                              <td align=\"left\" style=\"padding:20px;Margin:0\"> \n"
+                + "                               <!--[if mso]><table style=\"width:560px\" cellpadding=\"0\" cellspacing=\"0\"><tr><td style=\"width:194px\"><![endif]--> \n"
+                + "                               <table class=\"es-left\" cellspacing=\"0\" cellpadding=\"0\" align=\"left\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left\"> \n"
+                + "                                 <tr style=\"border-collapse:collapse\"> \n"
+                + "                                  <td class=\"es-m-p0r es-m-p20b\" align=\"center\" style=\"padding:0;Margin:0;width:174px\"> \n"
+                + "                                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td class=\"es-m-p0l\" align=\"center\" style=\"padding:0;Margin:0;padding-bottom:10px;font-size:0px\"><a href=\"http://localhost:8080/musicshop/\" target=\"_blank\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:underline;color:#333333\"><img src=\"https://hwxtrn.stripocdn.email/content/guids/CABINET_1c5d359760b84be5a9f2f58cb0630393/images/10221597745409018.png\" alt width=\"163\" style=\"display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic\"></a></td> \n"
+                + "                                     </tr> \n"
+                + "                                   </table></td> \n"
+                + "                                  <td class=\"es-hidden\" style=\"padding:0;Margin:0;width:20px\"></td> \n"
+                + "                                 </tr> \n"
+                + "                               </table> \n"
+                + "                               <!--[if mso]></td><td style=\"width:173px\"><![endif]--> \n"
+                + "                               <table class=\"es-left\" cellspacing=\"0\" cellpadding=\"0\" align=\"left\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left\"> \n"
+                + "                                 <tr style=\"border-collapse:collapse\"> \n"
+                + "                                  <td class=\"es-m-p0r es-m-p20b\" align=\"center\" style=\"padding:0;Margin:0;width:173px\"> \n"
+                + "                                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td align=\"center\" style=\"padding:0;Margin:0;display:none\"></td> \n"
+                + "                                     </tr> \n"
+                + "                                   </table></td> \n"
+                + "                                 </tr> \n"
+                + "                               </table> \n"
+                + "                               <!--[if mso]></td><td style=\"width:20px\"></td><td style=\"width:173px\"><![endif]--> \n"
+                + "                               <table class=\"es-right\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right\"> \n"
+                + "                                 <tr style=\"border-collapse:collapse\"> \n"
+                + "                                  <td class=\"es-m-p0r es-m-p20b\" align=\"center\" style=\"padding:0;Margin:0;width:173px\"> \n"
+                + "                                   <table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" role=\"presentation\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px\"> \n"
+                + "                                     <tr style=\"border-collapse:collapse\"> \n"
+                + "                                      <td esdev-links-color=\"#333333\" align=\"left\" style=\"padding:0;Margin:0\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:21px;color:#333333\"><a target=\"_blank\" href=\"http://localhost:8080/musicshop/\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:underline;color:#333333\"></a><a href=\"tel://23923929210\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;font-size:14px;text-decoration:underline;color:#333333\">+381 11 689 901<br>office@AINmusic.com<br>Jove Ilica 154, Vozdovac</a><br></p></td> \n"
+                + "                                     </tr> \n"
+                + "                                   </table></td> \n"
+                + "                                 </tr> \n"
+                + "                               </table> \n"
+                + "                               <!--[if mso]></td></tr></table><![endif]--></td> \n"
+                + "                             </tr> \n"
+                + "                           </table></td> \n"
+                + "                         </tr> \n"
+                + "                       </table> \n"
+                + "                       <table class=\"es-content\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%\"> \n"
+                + "                         <tr style=\"border-collapse:collapse\"> \n"
+                + "                          <td align=\"center\" style=\"padding:0;Margin:0\"> \n"
+                + "                           <table class=\"es-content-body\" style=\"mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;width:600px\" cellspacing=\"0\" cellpadding=\"0\" align=\"center\"> \n"
+                + "                             <tr style=\"border-collapse:collapse\"> \n"
+                + "                              \n"
+                + "                             </tr> \n"
+                + "                           </table></td> \n"
+                + "                         </tr> \n"
+                + "                       </table></td> \n"
+                + "                     </tr> \n"
+                + "                   </table> \n"
+                + "                  </div>  \n"
+                + "                 </body>\n"
+                + "                </html>";
+
+        return emailText;
+
+    }
+
     public static String generateRandomToken(int duzina) {
         int leftLimit = 97; // letter 'a'
         int rightLimit = 122; // letter 'z'

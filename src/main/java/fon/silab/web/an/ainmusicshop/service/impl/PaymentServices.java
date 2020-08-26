@@ -63,56 +63,16 @@ public class PaymentServices {
 
     }
 
-    private List<Transaction> getTransactionInformation1(OrderDto orderDetail) {
-        Details details = new Details();
-        details.setShipping(orderDetail.getUserDto().getAdress());
-
-        details.setSubtotal(10 + "");
-        details.setTax(11 + "");
-
-        Amount amount = new Amount();
-        amount.setCurrency("EUR");
-        int total = 0;
-        for (OrderItemDto item : orderDetail.getOrderItems()) {
-            total += item.getQuantity() * item.getItemPrice();
-        }
-        amount.setTotal(19 + "");
-        amount.setDetails(details);
-
-        Transaction transaction = new Transaction();
-        transaction.setAmount(amount);
-        transaction.setDescription(orderDetail.getOrderItems().get(0).getProduct().getProductName());
-
-        ItemList itemList = new ItemList();
-        List<Item> items = new ArrayList<>();
-
-        Item item = new Item();
-        item.setCurrency("USD");
-        item.setName(orderDetail.getOrderItems().get(0).getProduct().getProductName());
-        item.setPrice("12");
-        item.setTax("13");
-        item.setQuantity("1");
-
-        items.add(item);
-        itemList.setItems(items);
-        transaction.setItemList(itemList);
-
-        List<Transaction> listTransaction = new ArrayList<>();
-        listTransaction.add(transaction);
-
-        return listTransaction;
-
-    }
-
+   
     private List<Transaction> getTransactionInformation(OrderDto orderDetail) {
        
 
         ItemList itemList = new ItemList();
         List<Item> items = new ArrayList<>();
 
-        int total = 0;
+        double total = 0;
         for (OrderItemDto orderItem : orderDetail.getOrderItems()) {
-            total += orderItem.getQuantity() * orderItem.getItemPrice();
+            total +=  (double) orderItem.getQuantity() * orderItem.getItemPrice();
         
         Item item = new Item();
         item.setCurrency("EUR");
