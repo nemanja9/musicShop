@@ -116,7 +116,7 @@ public class UserController {
         if (result.hasErrors()) {
             System.out.println("Bilo je gresaka pri validaciji...");
             model.addAttribute("invalid", "Niste ispravno popunili formu!");
-            return "user/login";
+            return "user/profile";
         } else {
             System.out.println("Nije bilo gresaka pri validaciji...");
             userToSave.setUserId(((UserDto) session.getAttribute("loginUser")).getUserId());

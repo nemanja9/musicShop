@@ -106,6 +106,7 @@
                         <form:hidden value="${sessionScope.loginUser.email}" path="email" id="email"/>
                         <form:hidden value="${sessionScope.loginUser.password}" path="password" id="password"/>
                         <form:hidden value="${sessionScope.loginUser.roleUser}" path="roleUser" id="roleUser"/>
+                        <form:hidden value="${sessionScope.loginUser.emailConfirmed}" path="emailConfirmed" id="emailConfirmed"/>
                                         </s:form>
                     </div>
             </div>
