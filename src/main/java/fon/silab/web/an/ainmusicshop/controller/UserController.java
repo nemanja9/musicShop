@@ -201,12 +201,16 @@ public class UserController {
 
     @GetMapping(path = "confirmEmail")
     public ModelAndView confirmEmail(@RequestParam String email, @RequestParam String token) {
-        ModelAndView modelAndView = new ModelAndView("user/emailConfirmed");
+        ModelAndView modelAndView;
         UserDto user = userService.findByEmail(email);
-        if (user.getEmailToken().equals(token)) {
+        if (user != null && user.getEmailConfirmed() == 0 && user.getEmailToken().equals(token)) {
+            modelAndView = new ModelAndView("user/emailConfirmSuccess");
             user.setEmailConfirmed(1);
             user.setEmailToken(null);
             userService.update(user);
+        }
+        else {
+        modelAndView = new ModelAndView("user/emailConfirmError");
         }
         return modelAndView;
     }

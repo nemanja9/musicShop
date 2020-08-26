@@ -137,7 +137,8 @@ public class AdminUserController {
     @GetMapping("/sendEmailConfirmation/{id}")
     public String sendEmailConfirmation(@PathVariable("id") int id, RedirectAttributes attributes, RedirectAttributes redirectAttributes) {
         UserDto pom = userService.findByNumber(id);
-        System.out.println("NADJEN OVAJ " + userService.findByNumber(id).toString());
+        pom.setEmailConfirmed(0);
+        pom.setEmailToken(EmailTemplateGenerator.generateRandomToken(20));
         try {
             mailService.send("musicshopan@gmail.com", pom.getEmail(), "Potvrda email adrese", EmailTemplateGenerator.dajEmailChangeEmailText(pom));
                         redirectAttributes.addFlashAttribute("uspeh","Uspesno Poslat mail za potvrdu naloga!");
@@ -145,6 +146,8 @@ public class AdminUserController {
         } catch (Exception ex) {
             Logger.getLogger(AdminUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
+                userService.update(pom);
+
         return "redirect:/adminn/user/edit/"+id;
     }
     @GetMapping("/sendPasswordReset/{id}")
