@@ -2,10 +2,15 @@ package fon.silab.web.an.ainmusicshop.controller.admin;
 
 import fon.silab.web.an.ainmusicshop.dto.OrderDto;
 import fon.silab.web.an.ainmusicshop.dto.UserDto;
+import fon.silab.web.an.ainmusicshop.emailTemplates.EmailTemplateGenerator;
+import fon.silab.web.an.ainmusicshop.entity.OrderEntity;
+import fon.silab.web.an.ainmusicshop.service.MailService;
 import fon.silab.web.an.ainmusicshop.service.OrderItemService;
 import fon.silab.web.an.ainmusicshop.service.OrderService;
 import fon.silab.web.an.ainmusicshop.service.UserService;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -31,7 +36,8 @@ public class AdminOrderController {
         this.orderService = orderService;
         this.userService = userService;
     }
-    
+     @Autowired
+    private MailService mailService;
     
      @GetMapping(path = "/all")
     public ModelAndView allOrders(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
@@ -76,6 +82,14 @@ public class AdminOrderController {
         pom.setOrderStatusInt(novStatus);
                 orderService.update(pom);
            attributes.addFlashAttribute("uspeh", "Status porudzbine sa ID <b>" + id + "</b> uspesno promenjen na <b>" + pom.getOrderStatus()+ "</b>");
+           
+        try {
+            if(novStatus == OrderEntity.Status.POSLATO.ordinal())
+            mailService.send("musicshopan@gmail.com", pom.getUserDto().getEmail(), "Porudzbina poslata", EmailTemplateGenerator.dajEmailPromenaStatusaPorudzbine(pom));
+        } catch (Exception ex) {
+            Logger.getLogger(AdminOrderController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("USLI U CATCH!!!");
+        }
 
         return "redirect:/adminn/orders/all";
 
