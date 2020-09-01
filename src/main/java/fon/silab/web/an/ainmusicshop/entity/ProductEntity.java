@@ -56,7 +56,7 @@ public class ProductEntity implements Serializable{
     
 
     
-    @Column(name = "description", nullable = true, length = 256)
+    @Column(name = "description", nullable = true, length = 3000)
     private String description;
     @Transient
     private MultipartFile img;

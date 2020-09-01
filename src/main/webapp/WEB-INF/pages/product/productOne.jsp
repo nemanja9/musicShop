@@ -28,7 +28,7 @@
             <div class="col-md-6">
                 <!--<p>${message}</p>-->
                 <h2 class="text-black">${requestScope.productDto.getProductName()}</h2>
-                <p> <b>OPIS:</b><br>
+                
                 ${requestScope.productDto.getDescription()}
                 </p>
                 <p class="mb-4"><b>PROIZVOĐAĆ:</b><br>

@@ -59,7 +59,7 @@
                             <div class="product-details">
                                 <span class="product-catagory">${p.getCategory()}</span>
                                 <h4><a href="${pageContext.request.contextPath}/product/${p.getProductId()}">${p.getProductName()} </a></h4>
-                                <p>${p.getDescription()}</p>
+                               
                                 <div class="product-bottom-details">
                                     <div class="product-price">${p.getPrice()} €</div>
                                     <div class="product-links">
