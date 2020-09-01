@@ -16,9 +16,17 @@
                         <div class="float-md-left">
                             <h2 class="text-black h5">Svi proizvodi</h2>
                         </div>
+                        
                         <div class="d-flex">
                             <div class="dropdown mr-1 ml-md-auto">
+                                <c:if test="${!empty paramValues}">
+                                <a href="http://localhost:8080/musicshop/product/all">
+                                <button type="button" class="btn btn-white btn-sm px-4">Resetuj filtere</button>
+                                </a>
+                                </c:if>
                             </div>
+                            
+                            
                             <div class="btn-group">
                                 <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuReference"
                                         data-toggle="dropdown">Sortirtaj po</button>

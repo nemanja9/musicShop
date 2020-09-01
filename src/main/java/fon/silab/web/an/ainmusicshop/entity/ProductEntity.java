@@ -176,7 +176,10 @@ public class ProductEntity implements Serializable{
         KLAVIJATURE,
         MIKSETE,
         DUVACKI,
-        GITARE
+        GITARE,
+        Gitare,
+        Klavijature,
+        Ozvucenje
     }
     
 
