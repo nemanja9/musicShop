@@ -31,7 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/adminn/user")
+@RequestMapping("/admin/user")
 public class AdminUserController {
 
     private final UserService userService;
@@ -77,12 +77,12 @@ public class AdminUserController {
             RedirectAttributes redirectAttributes) {
 
         if (userService.findByEmail(u.getEmail())!= null) // da li korisnik vec postoji
-            return "user/adminn/user/all";
+            return "user/admin/user/all";
         
         if (result.hasErrors()) {
             System.out.println("Bilo je gresaka pri validaciji...");
             model.addAttribute("invalid", "Niste lepo popunili formu!");
-            return "user/adminn/user/all";
+            return "user/admin/user/all";
             
         } else {
             System.out.println("Nije bilo gresaka pri validaciji...");
@@ -102,7 +102,7 @@ public class AdminUserController {
                 Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            return "redirect:/adminn/user/all";
+            return "redirect:/admin/user/all";
         }
 
     }
@@ -120,7 +120,7 @@ public class AdminUserController {
     @GetMapping("/deleteUser/{id}")
     public String deleteProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
         userService.delete(id);
-        return "redirect:/adminn/user/all";
+        return "redirect:/admin/user/all";
 
     }
     
@@ -148,7 +148,7 @@ public class AdminUserController {
         }
                 userService.update(pom);
 
-        return "redirect:/adminn/user/edit/"+id;
+        return "redirect:/admin/user/edit/"+id;
     }
     @GetMapping("/sendPasswordReset/{id}")
     public String sendPasswordReset(@PathVariable("id") int id, RedirectAttributes attributes, RedirectAttributes redirectAttributes) {
@@ -162,7 +162,7 @@ public class AdminUserController {
         } catch (Exception ex) {
             Logger.getLogger(AdminUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "redirect:/adminn/user/edit/"+id;
+        return "redirect:/admin/user/edit/"+id;
     }
       @ModelAttribute(name = "roleList")
     public List<UserEntity.UserRole> roleLists() {

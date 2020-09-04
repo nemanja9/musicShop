@@ -46,11 +46,11 @@
 
                         <td style="text-align:center">
                             <button type="button" class="btn btn-warning" style="width: 115px;" data-toggle="modal" 
-                                        onClick="window.location = '${pageContext.request.contextPath}/adminn/user/edit/${u.userId}'">
+                                        onClick="window.location = '${pageContext.request.contextPath}/admin/user/edit/${u.userId}'">
                                 <i class="fas fa-user-edit"></i> vise opcija
                             </button>
                          
-                            <a href="${pageContext.request.contextPath}/adminn/user/deleteUser/${u.userId}">
+                            <a href="${pageContext.request.contextPath}/admin/user/deleteUser/${u.userId}">
                                 <button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Are you sure you want to delete this user?')">
                                     <i class="fas fa-user-minus"></i> Obriši</button></a>
                         </td>

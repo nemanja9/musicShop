@@ -119,13 +119,13 @@
             <h2 class="h3 mb-3 text-black">Jos akcija</h2>
             <div class="p-4 border mb-3">
                 <div class="block-5 mb-5" id="paddingGornji">
-                    <button class="btn btn-primary btn-lg" onclick="window.location='${pageContext.request.contextPath}/adminn/user/sendEmailConfirmation/${u.userId}'">posalji email za potvrdu naloga</button>
+                    <button class="btn btn-primary btn-lg" onclick="window.location='${pageContext.request.contextPath}/admin/user/sendEmailConfirmation/${u.userId}'">posalji email za potvrdu naloga</button>
                     <br>
                     <br>
-                    <button class="btn btn-primary btn-lg" onclick="window.location='${pageContext.request.contextPath}/adminn/user/sendPasswordReset/${u.userId}'">Posalji email za reset lozinke</button>
+                    <button class="btn btn-primary btn-lg" onclick="window.location='${pageContext.request.contextPath}/admin/user/sendPasswordReset/${u.userId}'">Posalji email za reset lozinke</button>
                     <br>
                     <br>
-                    <button class="btn btn-primary btn-lg" onclick="window.location='${pageContext.request.contextPath}/adminn/orders/all/${u.userId}'">Pogledaj sve porudzbine korisnika</button>
+                    <button class="btn btn-primary btn-lg" onclick="window.location='${pageContext.request.contextPath}/admin/orders/all/${u.userId}'">Pogledaj sve porudzbine korisnika</button>
                                   
 
                 </div>

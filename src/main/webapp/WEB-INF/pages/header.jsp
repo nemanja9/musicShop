@@ -109,14 +109,14 @@
                                         <li class="has-children">
                                             <a href="#">Korisnici</a>
                                             <ul class="dropdown">
-                                                <li><a href="${pageContext.request.contextPath}/adminn/user/add">Dodavanje korisnici</a></li>
-                                                <li><a href="${pageContext.request.contextPath}/adminn/user/all">Izmena korisnici</a></li>
+                                                <li><a href="${pageContext.request.contextPath}/admin/user/add">Dodavanje korisnici</a></li>
+                                                <li><a href="${pageContext.request.contextPath}/admin/user/all">Izmena korisnici</a></li>
                                             </ul>
                                         </li>
                                         <li class="has-children">
                                             <a href="#">Porudzbine</a>
                                             <ul class="dropdown">
-                                                <li><a href="${pageContext.request.contextPath}/adminn/orders/all">Sve porudzbine </a></li>
+                                                <li><a href="${pageContext.request.contextPath}/admin/orders/all">Sve porudzbine </a></li>
                                             </ul>
                                         </li>
 

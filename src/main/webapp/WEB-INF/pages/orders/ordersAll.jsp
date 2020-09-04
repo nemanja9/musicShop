@@ -82,10 +82,10 @@
 
 
                         <td style="text-align:center">
-                            <a href="${pageContext.request.contextPath}/adminn/orders/edit/${o.getOrderId()}">
+                            <a href="${pageContext.request.contextPath}/admin/orders/edit/${o.getOrderId()}">
                             <button type="button" class="btn btn-warning" onclick="" style="width: 115px;"> <i class="fas fa-user-minus"></i> izmeni status</button>
                             </a>
-                            <a href="${pageContext.request.contextPath}/adminn/orders/deleteOrder/${o.getOrderId()}">
+                            <a href="${pageContext.request.contextPath}/admin/orders/deleteOrder/${o.getOrderId()}">
                                 <button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Ako obrišete ovu porudžbinu, obrisaće se i sve njene stavke. Da li ste sigurni?')">
                                     <i class="fas fa-user-minus"></i> Obriši</button></a>
 

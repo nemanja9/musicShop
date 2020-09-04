@@ -157,7 +157,7 @@
                             <div class="collapse" id="collapsecheque">
                                 <div class="py-2">
                                     <br>
-                                    <form method="post" action="${pageContext.request.contextPath}/adminn/orders/updateStatus">
+                                    <form method="post" action="${pageContext.request.contextPath}/admin/orders/updateStatus">
                                         <label for="novStatus">Izaberite nov status: </label>
                                         <select id="cars" name="novStatus">
                                             <option value="0">Neplaceno</option>

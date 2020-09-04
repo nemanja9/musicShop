@@ -26,7 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
-@RequestMapping("/adminn/orders")
+@RequestMapping("/admin/orders")
 public class AdminOrderController {
     private final OrderService orderService;
     private final UserService userService; 
@@ -72,7 +72,7 @@ public class AdminOrderController {
     @GetMapping("/deleteOrder/{id}")
     public String editOrder(@PathVariable("id") int id, RedirectAttributes attributes) {
         orderService.delete(id);
-        return "redirect:/adminn/orders/all";
+        return "redirect:/admin/orders/all";
 
     }
     @PostMapping(path = "/updateStatus")
@@ -91,7 +91,7 @@ public class AdminOrderController {
             System.out.println("USLI U CATCH!!!");
         }
 
-        return "redirect:/adminn/orders/all";
+        return "redirect:/admin/orders/all";
 
     }
     
