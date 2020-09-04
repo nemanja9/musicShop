@@ -66,7 +66,6 @@ public class UserController {
         binder.setValidator(registerValidator);
     }
 
-
     @ModelAttribute(name = "roleList")
     public List<UserRole> categoryLists() {
         return Arrays.asList(UserRole.values());
@@ -125,7 +124,7 @@ public class UserController {
             userService.update(userToSave);
             session.setAttribute("loginUser", userToSave);
             session.removeAttribute("nedostajuciPodaci");
-            redirectAttributes.addFlashAttribute("uspeh","Uspesno sacuvane promene!");
+            redirectAttributes.addFlashAttribute("uspeh", "Uspesno sacuvane promene!");
             return "redirect:/index.jsp";
         }
 
@@ -135,11 +134,9 @@ public class UserController {
     public String editUserEmail(@Validated @ModelAttribute(name = "izmenjenKorisnik") UserDto userToSave,
             BindingResult result, Model model, HttpSession session,
             RedirectAttributes redirectAttributes) {
-        
-        
-        
-        if (userService.findByEmail(userToSave.getEmail())!= null){ // da li korisnik vec postoji
-            redirectAttributes.addFlashAttribute("uspeh","Korisnik sa tom adresom vec postoji, izaberite drugu adresu!");
+
+        if (userService.findByEmail(userToSave.getEmail()) != null) { // da li korisnik vec postoji
+            redirectAttributes.addFlashAttribute("uspeh", "Korisnik sa tom adresom vec postoji, izaberite drugu adresu!");
             return "redirect:/user/profile";
 
         }
@@ -153,7 +150,7 @@ public class UserController {
             UserDto pom = ((UserDto) session.getAttribute("loginUser"));
             pom.setEmail(userToSave.getEmail());
             pom.setEmailConfirmed(0);
-            pom.setEmailToken( EmailTemplateGenerator.generateRandomToken(20));
+            pom.setEmailToken(EmailTemplateGenerator.generateRandomToken(20));
             userService.update(pom);
             try {
                 mailService.send("musicshopan@gmail.com", pom.getEmail(), "Potvrda email adrese", EmailTemplateGenerator.dajEmailChangeEmailText(pom));
@@ -210,9 +207,8 @@ public class UserController {
             user.setEmailConfirmed(1);
             user.setEmailToken(null);
             userService.update(user);
-        }
-        else {
-        modelAndView = new ModelAndView("user/emailConfirmError");
+        } else {
+            modelAndView = new ModelAndView("user/emailConfirmError");
         }
         return modelAndView;
     }
@@ -228,7 +224,7 @@ public class UserController {
         } catch (Exception e) {
             return new ModelAndView("user/register");
         }
-        if (pom == null) {
+        if (pom == null || pom.getPasswordToken() == null) {
             return new ModelAndView("user/register");
 
         }
@@ -256,7 +252,7 @@ public class UserController {
         } else {
             pom.setPasswordToken(EmailTemplateGenerator.generateRandomToken(20));
             userService.update(pom);
-                        model.addAttribute("uspeh", "Mail sa linkom za promenu lozinke je poslat na vasu adresu!");
+            model.addAttribute("uspeh", "Mail sa linkom za promenu lozinke je poslat na vasu adresu!");
 
             try {
                 mailService.send("musicshopan@gmail.com", pom.getEmail(), "Promena lozinke", EmailTemplateGenerator.dajEmailChangePasswordText(pom));
@@ -268,14 +264,21 @@ public class UserController {
 
         return "user/resetPassword";
     }
+
     @PostMapping(path = "enterNewPassword/submit")
-    public String submitNewPassword(@Validated @ModelAttribute(name = "userToChangePass") UserDto u,Model model) {
+    public String submitNewPassword(@Validated @ModelAttribute(name = "userToChangePass") UserDto u, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
 
         UserDto pom = userService.findByEmail(u.getEmail());
+
         if (pom == null) {
             model.addAttribute("invalid", "Korisnik sa tim emailom ne postoji!");
             return "enterNewPassword/submit";
+        } else if (result.hasErrors()) {
+            redirectAttributes.addAttribute("email", pom.getEmail());
+            redirectAttributes.addAttribute("token", pom.getPasswordToken());
+            return "redirect:/user/resetPassword/enterNewPassword";
         } else {
+
             pom.setPasswordToken(null);
             pom.setPassword(u.getPassword());
             userService.update(pom);
@@ -310,7 +313,7 @@ public class UserController {
             System.out.println("Nije bilo gresaka pri validaciji...");
             userToRegister.setRoleUser(UserEntity.UserRole.ROLE_USER);
             userToRegister.setEmailConfirmed(0);
-            userToRegister.setEmailToken( EmailTemplateGenerator.generateRandomToken(20));
+            userToRegister.setEmailToken(EmailTemplateGenerator.generateRandomToken(20));
             model.addAttribute("userToRegister", userToRegister);
             userService.save(userToRegister);
             redirectAttributes.addFlashAttribute("uspeh", "Uspesno ste se registrovali! <br> Na vas email je poslat link za potvrdu naloga");
@@ -325,7 +328,4 @@ public class UserController {
 
     }
 
-    
-
-  
 }
