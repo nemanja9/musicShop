@@ -100,23 +100,23 @@
                                     <ul class="dropdown">
 
                                         <li class="has-children">
-                                            <a href="#">Proizvodi</a>
+                                            <a href="#"><fmt:message key="header.proizvodi" /></a>
                                             <ul class="dropdown">
                                                 <li><a href="${pageContext.request.contextPath}/admin/product/add"><fmt:message key="header.dodavanjeProizvoda" /></a></li>
                                                 <li><a href="${pageContext.request.contextPath}/admin/product/edit"><fmt:message key="header.izmenaProizvoda" /></a></li>
                                             </ul>
                                         </li>
                                         <li class="has-children">
-                                            <a href="#">Korisnici</a>
+                                            <a href="#"><fmt:message key="header.korisnici" /></a>
                                             <ul class="dropdown">
-                                                <li><a href="${pageContext.request.contextPath}/admin/user/add">Dodavanje korisnici</a></li>
-                                                <li><a href="${pageContext.request.contextPath}/admin/user/all">Izmena korisnici</a></li>
+                                                <li><a href="${pageContext.request.contextPath}/admin/user/add"><fmt:message key="header.dodavanjeKorisnika" /></a></li>
+                                                <li><a href="${pageContext.request.contextPath}/admin/user/all"><fmt:message key="header.izmenaKorisnika" /></a></li>
                                             </ul>
                                         </li>
                                         <li class="has-children">
-                                            <a href="#">Porudzbine</a>
+                                            <a href="#"><fmt:message key="header.porudzbine" /></a>
                                             <ul class="dropdown">
-                                                <li><a href="${pageContext.request.contextPath}/admin/orders/all">Sve porudzbine </a></li>
+                                                <li><a href="${pageContext.request.contextPath}/admin/orders/all"><fmt:message key="header.svePorudzbine" /> </a></li>
                                             </ul>
                                         </li>
 
