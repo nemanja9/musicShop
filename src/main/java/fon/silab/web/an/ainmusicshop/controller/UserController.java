@@ -12,6 +12,8 @@ import fon.silab.web.an.ainmusicshop.entity.UserEntity.UserRole;
 import fon.silab.web.an.ainmusicshop.service.MailService;
 import fon.silab.web.an.ainmusicshop.service.UserService;
 import fon.silab.web.an.ainmusicshop.validator.LoginValidator;
+import fon.silab.web.an.ainmusicshop.validator.PasswordValidator;
+import fon.silab.web.an.ainmusicshop.validator.ProfileValidator;
 import fon.silab.web.an.ainmusicshop.validator.RegisterValidator;
 import java.util.Arrays;
 import java.util.List;
@@ -45,12 +47,16 @@ public class UserController {
     private final UserService userService;
     private final LoginValidator loginValidator;
     private final RegisterValidator registerValidator;
+    private final ProfileValidator profileValidator;
+    private final PasswordValidator passwordValidator;
 
     @Autowired
-    public UserController(UserService userService, RegisterValidator registerValidator, LoginValidator loginValidator) {
+    public UserController(UserService userService, RegisterValidator registerValidator, LoginValidator loginValidator, ProfileValidator profileValidator, PasswordValidator passwordValidator) {
         this.userService = userService;
         this.registerValidator = registerValidator;
         this.loginValidator = loginValidator;
+        this.profileValidator = profileValidator;
+        this.passwordValidator = passwordValidator;
     }
 
     @Autowired
@@ -59,6 +65,21 @@ public class UserController {
     @InitBinder("userToLogin")
     protected void initLoginBinder(WebDataBinder binder) {
         binder.setValidator(loginValidator);
+    }
+    
+    @InitBinder("izmenjenKorisnik")
+    protected void initProfileBinder(WebDataBinder binder) {
+        binder.setValidator(profileValidator);
+    }
+    
+    @InitBinder("userToChangePass")
+    protected void initPassFBinder(WebDataBinder binder) {
+        binder.setValidator(passwordValidator);
+    }
+    
+    @InitBinder("izmenjenaSifra")
+    protected void initPassBinder(WebDataBinder binder) {
+        binder.setValidator(passwordValidator);
     }
 
     @InitBinder("userToRegister")
@@ -86,6 +107,16 @@ public class UserController {
 
     @ModelAttribute(name = "userToLogin")
     public UserDto userLogin() {
+        return new UserDto();
+    }
+    
+    @ModelAttribute(name = "izmenjenaSifra")
+    public UserDto userSifra() {
+        return new UserDto();
+    }
+    
+    @ModelAttribute(name = "izmenjenKorisnik")
+    public UserDto userKor() {
         return new UserDto();
     }
 
@@ -164,14 +195,14 @@ public class UserController {
     }
 
     @PostMapping(path = "/edit/submitPassword")
-    public String editUserPassword(@Validated @ModelAttribute(name = "izmenjenKorisnik") UserDto userToSave,
+    public String editUserPassword(@Validated @ModelAttribute(name = "izmenjenaSifra") UserDto userToSave,
             BindingResult result, Model model, HttpSession session,
             RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
             System.out.println("Bilo je gresaka pri validaciji...");
             model.addAttribute("invalid", "Niste ispravno popunili formu!");
-            return "user/login";
+            return "user/profile";
         } else {
             System.out.println("Nije bilo gresaka pri validaciji...");
             UserDto pom = ((UserDto) session.getAttribute("loginUser"));
@@ -273,6 +304,7 @@ public class UserController {
         if (pom == null) {
             model.addAttribute("invalid", "Korisnik sa tim emailom ne postoji!");
             return "enterNewPassword/submit";
+            
         } else if (result.hasErrors()) {
             redirectAttributes.addAttribute("email", pom.getEmail());
             redirectAttributes.addAttribute("token", pom.getPasswordToken());
@@ -289,7 +321,6 @@ public class UserController {
             } catch (Exception ex) {
                 Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         }
 
         return "user/login";

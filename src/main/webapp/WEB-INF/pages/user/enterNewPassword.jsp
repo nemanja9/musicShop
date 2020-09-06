@@ -36,20 +36,22 @@
                                 <p class="errorMsgTitle">${invalid}</p>
                             </c:if>
                             <form:form action="${pageContext.request.contextPath}/user/enterNewPassword/submit" method="post" modelAttribute="userToChangePass" class="register-form" id="register-form">
-                               
-                               
-                              
+
+
+
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                         <form:input type="password" path="password" id="password" placeholder="Nova lozinka" />
-                                </div>
-                                <div><form:errors path="password" class="errorMsg"></form:errors></div>
-                                <div class="form-group">
-                                    <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                        <form:errors path="password" class="errorMsg"></form:errors>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                                         <form:input type="password" path="re_password" id="re_password" placeholder="Ponovite lozinku" />
-                                        <form:hidden path="email" id="email" />
-                                </div>
-                                <div><form:errors path="re_password" class="errorMsg"></form:errors></div>
+                                        <form:errors path="re_password" class="errorMsg"></form:errors>
+
+                                    </div>
+                                <form:hidden path="email" id="email" />
                                 <div class="form-group form-button">
                                     <input type="submit" name="signup" id="signup" class="form-submit" value="Promeni lozinku"/>
                                 </div>

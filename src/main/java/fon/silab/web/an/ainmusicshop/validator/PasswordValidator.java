@@ -17,18 +17,16 @@ import org.springframework.validation.Validator;
  *
  * @author lj
  */
-
 @Component
-public class RegisterValidator implements Validator{
+public class PasswordValidator implements Validator {
 
     private final UserService userService;
 
     @Autowired
-    public RegisterValidator(UserService userService) {
+    public PasswordValidator(UserService userService) {
         this.userService = userService;
     }
-    
-    
+
     @Override
     public boolean supports(Class<?> type) {
         return UserDto.class.equals(type);
@@ -37,33 +35,21 @@ public class RegisterValidator implements Validator{
     @Override
     public void validate(Object o, Errors errors) {
         UserDto userDto = (UserDto) o;
-        System.out.println("Validate user: "+userDto);
-        
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "userDto.email.empty", "userDto.email.empty = Default message");
+        System.out.println("Validate user: " + userDto);
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "userDto.password.empty", "userDto.password.empty = Default message");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "re_password", "userDto.re_password.empty", "userDto.re_password.empty = Default message");
-        
-        if(errors.hasErrors()){
+
+        if (errors.hasErrors()) {
             return;
         }
-        
-        if(userService.findByEmail(userDto.getEmail()) != null){
-            errors.rejectValue("email", "userDto.email.exist", "userDto.email.exist = Default message" );
-        }
-        
-        if(!userDto.getPassword().equals(userDto.getRe_password())){
-            errors.rejectValue("re_password", "userDto.pass.retype", "userDto.pass.retype = Default message" );
-        }
-        
-        if(!userDto.getEmail().contains("@") || !userDto.getEmail().contains(".")){
-            errors.rejectValue("email", "userDto.email.form", "userDto.email.form = Default message" );
-        }
-        
-        if(userDto.getPassword().length() < 6){
-            errors.rejectValue("password", "userDto.pass.form", "userDto.pass.form = Default message" );
+
+        if (!userDto.getPassword().equals(userDto.getRe_password())) {
+            errors.rejectValue("re_password", "userDto.pass.retype", "userDto.pass.retype = Default message");
         }
 
-        
+        if (userDto.getPassword().length() < 6) {
+            errors.rejectValue("password", "userDto.pass.form", "userDto.pass.form = Default message");
+        }
     }
-    
 }
