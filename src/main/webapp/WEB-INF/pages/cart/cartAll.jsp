@@ -67,7 +67,7 @@
                                     <td>
 
 
-                                        <form:form method="post" action="${pageContext.request.contextPath}/cart/remove" modelAttribute="orderItemDto">
+                                        <form:form method="post" action="${pageContext.request.contextPath}/cart" modelAttribute="orderItemDto">
                                             <form:hidden value="${i.getProduct().getProductId()}" path="product.productId" />
                                             <button class="btn btn-primary height-auto btn-sm">X</button>
                                         </form:form>
