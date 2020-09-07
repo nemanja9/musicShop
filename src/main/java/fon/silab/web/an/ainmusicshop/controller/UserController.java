@@ -312,6 +312,9 @@ public class UserController {
         } else if (result.hasErrors()) {
             redirectAttributes.addAttribute("email", pom.getEmail());
             redirectAttributes.addAttribute("token", pom.getPasswordToken());
+            model.addAttribute("invalid", "Niste lepo uneli lozinke!");
+            redirectAttributes.addFlashAttribute("invalid", "Niste ispravno popunili formu!");
+
             return "redirect:/user/resetPassword/enterNewPassword";
         } else {
 
