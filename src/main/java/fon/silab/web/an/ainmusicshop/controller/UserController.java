@@ -17,7 +17,6 @@ import fon.silab.web.an.ainmusicshop.validator.ProfileValidator;
 import fon.silab.web.an.ainmusicshop.validator.RegisterValidator;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
@@ -66,17 +65,17 @@ public class UserController {
     protected void initLoginBinder(WebDataBinder binder) {
         binder.setValidator(loginValidator);
     }
-    
+
     @InitBinder("izmenjenKorisnik")
     protected void initProfileBinder(WebDataBinder binder) {
         binder.setValidator(profileValidator);
     }
-    
+
     @InitBinder("userToChangePass")
     protected void initPassFBinder(WebDataBinder binder) {
         binder.setValidator(passwordValidator);
     }
-    
+
     @InitBinder("izmenjenaSifra")
     protected void initPassBinder(WebDataBinder binder) {
         binder.setValidator(passwordValidator);
@@ -109,12 +108,12 @@ public class UserController {
     public UserDto userLogin() {
         return new UserDto();
     }
-    
+
     @ModelAttribute(name = "izmenjenaSifra")
     public UserDto userSifra() {
         return new UserDto();
     }
-    
+
     @ModelAttribute(name = "izmenjenKorisnik")
     public UserDto userKor() {
         return new UserDto();
@@ -156,7 +155,8 @@ public class UserController {
             session.setAttribute("loginUser", userToSave);
             session.removeAttribute("nedostajuciPodaci");
             redirectAttributes.addFlashAttribute("uspeh", "Uspesno sacuvane promene!");
-            return "redirect:/index.jsp";
+            return "redirect:/user/profile";
+
         }
 
     }
@@ -175,7 +175,8 @@ public class UserController {
         if (result.hasErrors()) {
             System.out.println("Bilo je gresaka pri validaciji...");
             model.addAttribute("invalid", "Niste ispravno popunili formu!");
-            return "user/login";
+            return "redirect:/user/profile";
+
         } else {
             System.out.println("Nije bilo gresaka pri validaciji...");
             UserDto pom = ((UserDto) session.getAttribute("loginUser"));
@@ -189,7 +190,8 @@ public class UserController {
                 Logger.getLogger(UserController.class.getName()).log(Level.SEVERE, null, ex);
             }
             session.setAttribute("loginUser", null);
-            return "redirect:/index.jsp";
+            return "redirect:/user/profile";
+
         }
 
     }
@@ -211,7 +213,9 @@ public class UserController {
 
             userService.update(pom);
             session.setAttribute("loginUser", pom);
-            return "redirect:/index.jsp";
+            redirectAttributes.addFlashAttribute("uspeh", "Uspesno promenjena lozinka!");
+            return "redirect:/user/profile";
+
         }
 
     }
@@ -304,7 +308,7 @@ public class UserController {
         if (pom == null) {
             model.addAttribute("invalid", "Korisnik sa tim emailom ne postoji!");
             return "enterNewPassword/submit";
-            
+
         } else if (result.hasErrors()) {
             redirectAttributes.addAttribute("email", pom.getEmail());
             redirectAttributes.addAttribute("token", pom.getPasswordToken());
