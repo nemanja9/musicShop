@@ -5,6 +5,7 @@ import fon.silab.web.an.ainmusicshop.dto.UserDto;
 import fon.silab.web.an.ainmusicshop.emailTemplates.EmailTemplateGenerator;
 import fon.silab.web.an.ainmusicshop.entity.ProductEntity;
 import fon.silab.web.an.ainmusicshop.entity.UserEntity;
+import fon.silab.web.an.ainmusicshop.hashing.PasswordGenerator;
 import fon.silab.web.an.ainmusicshop.service.MailService;
 import fon.silab.web.an.ainmusicshop.service.UserService;
 import fon.silab.web.an.ainmusicshop.validator.LoginValidator;
@@ -88,8 +89,10 @@ public class AdminUserController {
             System.out.println("Nije bilo gresaka pri validaciji...");
             u.setEmailConfirmed(0);
             String tempPassword = EmailTemplateGenerator.generateRandomToken(20);
-             u.setPassword(tempPassword);
-             u.setRe_password(tempPassword);
+             u.setPassword(PasswordGenerator.generateHashedPass(tempPassword));
+             u.setRe_password(u.getPassword());
+             
+            
              u.setEmailToken(EmailTemplateGenerator.generateRandomToken(20));
              u.setPasswordToken(EmailTemplateGenerator.generateRandomToken(20));
             userService.save(u);

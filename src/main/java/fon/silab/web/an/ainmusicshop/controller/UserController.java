@@ -9,6 +9,7 @@ import fon.silab.web.an.ainmusicshop.dto.UserDto;
 import fon.silab.web.an.ainmusicshop.emailTemplates.EmailTemplateGenerator;
 import fon.silab.web.an.ainmusicshop.entity.UserEntity;
 import fon.silab.web.an.ainmusicshop.entity.UserEntity.UserRole;
+import fon.silab.web.an.ainmusicshop.hashing.PasswordGenerator;
 import fon.silab.web.an.ainmusicshop.service.MailService;
 import fon.silab.web.an.ainmusicshop.service.UserService;
 import fon.silab.web.an.ainmusicshop.validator.LoginValidator;
@@ -208,8 +209,9 @@ public class UserController {
         } else {
             System.out.println("Nije bilo gresaka pri validaciji...");
             UserDto pom = ((UserDto) session.getAttribute("loginUser"));
-            pom.setPassword(userToSave.getPassword());
-            pom.setRe_password(userToSave.getRe_password());
+            pom.setPassword(PasswordGenerator.generateHashedPass(userToSave.getPassword()));
+            pom.setRe_password(PasswordGenerator.generateHashedPass(userToSave.getRe_password()));
+           
 
             userService.update(pom);
             session.setAttribute("loginUser", pom);
@@ -319,7 +321,7 @@ public class UserController {
         } else {
 
             pom.setPasswordToken(null);
-            pom.setPassword(u.getPassword());
+            pom.setPassword(PasswordGenerator.generateHashedPass(u.getPassword()));
             userService.update(pom);
             model.addAttribute("uspeh", "Uspesno promenjena lozinka!");
 
@@ -349,6 +351,7 @@ public class UserController {
             return "user/register";
         } else {
             System.out.println("Nije bilo gresaka pri validaciji...");
+            userToRegister.setPassword(PasswordGenerator.generateHashedPass(userToRegister.getPassword()));
             userToRegister.setRoleUser(UserEntity.UserRole.ROLE_USER);
             userToRegister.setEmailConfirmed(0);
             userToRegister.setEmailToken(EmailTemplateGenerator.generateRandomToken(20));

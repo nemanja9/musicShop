@@ -1,7 +1,3 @@
-- Validacija za profil
-- Validacija mora sve odjednom kaze dule
-- U metodi submitNewPassword nema validacije da sifre treba da se poklapaju, kao i minimum 6 karaktera
 - Prevesti ostatak sajta
-- Dependency injection za modelMapper
 - srediti proizvode na pocetnoj strani
-- dati neku naznaku da je proizvod uspesno dodat u cart 
+- dati neku naznaku da je proizvod uspesno dodat u cart

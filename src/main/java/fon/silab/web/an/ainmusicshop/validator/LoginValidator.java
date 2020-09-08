@@ -6,6 +6,7 @@
 package fon.silab.web.an.ainmusicshop.validator;
 
 import fon.silab.web.an.ainmusicshop.dto.UserDto;
+import fon.silab.web.an.ainmusicshop.hashing.PasswordGenerator;
 import fon.silab.web.an.ainmusicshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -61,9 +62,12 @@ public class LoginValidator implements Validator{
         }
         
         
-        if(!userDto.getPassword().equals(userService.findByEmail(userDto.getEmail()).getPassword())){
-            errors.rejectValue("password", "userDto.password.wrong", "userDto.password.wrong = Default message" );
-        }
+//        if(!userDto.getPassword().equals(userService.findByEmail(userDto.getEmail()).getPassword())){
+//            errors.rejectValue("password", "userDto.password.wrong", "userDto.password.wrong = Default message" );
+//        }
+           if(!PasswordGenerator.checkPass(userDto.getPassword(), userService.findByEmail(userDto.getEmail()).getPassword()))
+                                        errors.rejectValue("password", "userDto.password.wrong", "userDto.password.wrong = Default message" );
+
     }
     
 }
