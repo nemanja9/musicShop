@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-@WebFilter(filterName = "LoggedOutUsers", urlPatterns = { "/cart/checkout/*","/PayPal/*","/user/profile/*","/user/edit/*" })
+@WebFilter(filterName = "LoggedOutUsers", urlPatterns = { "/cart/checkout/*","/PayPal/*","/user/profile/*","/user/edit/*","/orders/all/*" })
 public class forLoggedOutUsers implements Filter{
 
     @Override
