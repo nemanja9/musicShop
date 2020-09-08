@@ -1,6 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="messages"/>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,8 +43,8 @@
         <!--DO MODAL-->
         <div class="custom-border-bottom py-3" id="backHome">
             <div>
-                <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Registracija</strong></div>
+                <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}"><fmt:message key="nav.pocetna"/></a> <span class="mx-2 mb-0">/</span> <strong
+                        class="text-black"><fmt:message key="nav.registracija"/></strong></div>
             </div>
         </div>
         <div class="container">
@@ -46,7 +52,7 @@
                 <div class="column">
                     <div class="polovina">
                         <div class="signin-form">
-                            <h2 class="form-title">Registracija</h2>
+                            <h2 class="form-title"><fmt:message key="register.registracija"/></h2>
                             <p class="errorMsgTitle">${message}</p>
                             <c:if test="${not empty invalid}">
                                 <p class="errorMsgTitle">${invalid}</p>
@@ -62,24 +68,26 @@
 
                                     <div class="form-group">
                                         <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                        <form:input type="password" path="password" id="password" placeholder="Lozinka" />
+                                    <fmt:message key="register.lozinka" var="lozinka"/>
+                                    <fmt:message key="register.ponoviteLozinku" var="lozinkaa"/>
+                                        <form:input type="password" path="password" id="password" placeholder="${lozinka}" />
                                 </div>
                                 <div><form:errors path="password" class="errorMsg"></form:errors></div>
                                     <div class="form-group">
                                         <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                        <form:input type="password" path="re_password" id="re_password" placeholder="Ponovite lozinku" />
+                                        <form:input type="password" path="re_password" id="re_password" placeholder="${lozinkaa}" />
                                 </div>
                                 <div><form:errors path="re_password" class="errorMsg"></form:errors></div>
                                     <div class="form-group">
                                         <input type="checkbox" name="agree-term" id="agree-term" class="agree-term custom-control-label" onclick="checkbox()"/>
-                                        <label for="agree-term" class="label-agree-term">Slažem se sa <a href="javascript:alert('Nema uslova koriscenja trenutno!');" class="term-service">uslovima korišćenja</a></label>
+                                        <label for="agree-term" class="label-agree-term"><fmt:message key="register.slazemSeSa"/> <a href="javascript:alert('Nema uslova koriscenja trenutno!');" class="term-service"><fmt:message key="register.uslovimaKoriscenja"/> </a></label>
                                     </div>
                                     <div class="form-group form-button">
-                                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register" onclick="registracija(event)"/>
+                                        <input type="submit" name="signup" id="signup" class="form-submit" value="<fmt:message key="register.registracija"/>" onclick="registracija(event)"/>
                                     </div>
                             </form:form>
                             <br>
-                            <a href="${pageContext.request.contextPath}/user/login"><p>Već imate nalog? Prijavite se ovde</p></a>
+                            <a href="${pageContext.request.contextPath}/user/login"><p><fmt:message key="register.vecImateNalog"/></p></a>
 
                         </div>
                     </div>

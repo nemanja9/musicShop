@@ -10,9 +10,9 @@
         <div class="row">
           <div class="col-md-6 ml-auto order-md-2 align-self-start">
             <div class="site-block-cover-content">
-              <h2 class="sub-title">Novi duvački instrumenti</h2>
-              <h1>Letnja rasprodaja</h1>
-              <p><a href="${pageContext.request.contextPath}/product/all?category=DUVACKI" class="btn btn-black rounded-0">Detaljnije</a></p>
+              <h2 class="sub-title"><fmt:message key="index.noviDuvackiInstrumenti"/></h2>
+              <h1><fmt:message key="index.letnjaRasprodaja"/></h1>
+              <p><a href="${pageContext.request.contextPath}/product/all?category=DUVACKI" class="btn btn-black rounded-0"><fmt:message key="index.detaljnije" /></a></p>
             </div>
           </div>
           <div class="col-md-6 order-1 align-self-end">
@@ -30,7 +30,7 @@
       <div class="container">
         <div class="row">
           <div class="title-section mb-5 col-12">
-            <h2 class="text-uppercase">Popularni proizvodi</h2>
+            <h2 class="text-uppercase"><fmt:message key="index.najpopularnijiProizvodi"/></h2>
           </div>
         </div>
         <div class="row">
@@ -70,8 +70,8 @@
           <div class="col-md-6 ml-auto order-md-2 align-self-start">
             <div class="site-block-cover-content">
               <h2 class="sub-title"></h2>
-              <h1>Muzika nas pokreće</h1>
-              <p><a href="${pageContext.request.contextPath}/contact" class="btn btn-black rounded-0">Pogledaj više</a></p>
+              <h1><fmt:message key="index.muzikaNasPokrece"/></h1>
+              <p><a href="${pageContext.request.contextPath}/contact" class="btn btn-black rounded-0"><fmt:message key="index.pogledajVise"/></a></p>
             </div>
           </div>
           <div class="col-md-6 order-1 align-self-end">

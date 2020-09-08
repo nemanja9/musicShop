@@ -7,7 +7,7 @@
 <div class="bg-light py-3">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <a href="${pageContext.request.contextPath}/product/all">Proizvodi</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">${requestScope.productDto.getProductName()}</strong></div>
+            <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}"><fmt:message key="nav.pocetna"/></a> <span class="mx-2 mb-0">/</span> <a href="${pageContext.request.contextPath}/product/all"><fmt:message key="nav.proizvodi"/></a> <span class="mx-2 mb-0">/</span> <strong class="text-black">${requestScope.productDto.getProductName()}</strong></div>
         </div>
     </div>
 </div>  
@@ -31,7 +31,7 @@
                 
                 ${requestScope.productDto.getDescription()}
                 </p>
-                <p class="mb-4"><b>PROIZVOĐAĆ:</b><br>
+                <p class="mb-4"><b><fmt:message key="products.one.proizvodjac"/></b><br>
                                 ${requestScope.productDto.getManufacturer()}
 
                 </p>
@@ -56,7 +56,7 @@
                         <form:hidden value="${requestScope.productDto.getPrice()}" path="product.price"/>
                         <form:hidden value="${requestScope.productDto.getDescription()}" path="product.description"/>
                         <form:hidden value="${requestScope.productDto.getManufacturer()}" path="product.manufacturer"/>
-                        <button class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" id="save">Dodaj u korpu</button>
+                        <button class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" id="save"><fmt:message key="products.one.dodajUKorpu"/></button>
                     </form:form> 
 
 

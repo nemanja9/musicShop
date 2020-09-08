@@ -5,6 +5,8 @@
 <%@include file="../header.jsp" %>
 
 
+
+
 <div class="site-section">
     <div class="container">
 
@@ -14,14 +16,14 @@
                 <div class="row align">
                     <div class="col-md-12 mb-5">
                         <div class="float-md-left">
-                            <h2 class="text-black h5">Svi proizvodi</h2>
+                            <h2 class="text-black h5"><fmt:message key="products.all.sviProizvodi"/></h2>
                         </div>
                         
                         <div class="d-flex">
                             <div class="dropdown mr-1 ml-md-auto">
                                 <c:if test="${!empty paramValues}">
                                 <a href="http://localhost:8080/musicshop/product/all">
-                                <button type="button" class="btn btn-white btn-sm px-4">Resetuj filtere</button>
+                                <button type="button" class="btn btn-white btn-sm px-4"><fmt:message key="products.all.resetujFiltere"/></button>
                                 </a>
                                 </c:if>
                             </div>
@@ -29,12 +31,12 @@
                             
                             <div class="btn-group">
                                 <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuReference"
-                                        data-toggle="dropdown">Sortirtaj po</button>
+                                        data-toggle="dropdown"><fmt:message key="products.all.sortirajPo"/></button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                                    <a class="dropdown-item" onclick="setGetParameter('orderby', 'name.asc')" href="#">Nazivu A-Z</a>                                    
-                                    <a class="dropdown-item" onclick="setGetParameter('orderby', 'name.desc')" href="#">Nazivu Z-A</a>
-                                    <a class="dropdown-item" onclick="setGetParameter('orderby', 'price.asc')" href="#">Ceni, rastuće</a>
-                                    <a class="dropdown-item" onclick="setGetParameter('orderby', 'price.desc')" href="#">Ceni, opadajuće</a>
+                                    <a class="dropdown-item" onclick="setGetParameter('orderby', 'name.asc')" href="#"><fmt:message key="products.all.nazivuAZ"/></a>                                    
+                                    <a class="dropdown-item" onclick="setGetParameter('orderby', 'name.desc')" href="#"><fmt:message key="products.all.nazivuZA"/></a>
+                                    <a class="dropdown-item" onclick="setGetParameter('orderby', 'price.asc')" href="#"><fmt:message key="products.all.ceniRastuce"/></a>
+                                    <a class="dropdown-item" onclick="setGetParameter('orderby', 'price.desc')" href="#"><fmt:message key="products.all.ceniOpadajuce"/></a>
                                 </div>
                             </div>
                         </div>
@@ -44,8 +46,11 @@
                 <c:if test="${requestScope.allProducts.size()==0}">
                     <div class="site-blocks-cover inner-page round-me-blur-me"style="background-repeat: no-repeat; background-size: cover; background-position: center"
                          data-aos="fade">
-                        <a href="http://localhost:8080/musicshop/product/all" class="product-category-center404">Izgleda da nema proizvoda koji odgovaraju vašim kriterijumima! Da uklonite filtere kliknite <b>OVDE</b></a>
-
+                        <a href="http://localhost:8080/musicshop/product/all" class="product-category-center404">
+                            
+                        <fmt:message key="products.all.nemaProizvoda"/>
+                        </a>
+                            
                         <div class="container">
                             <div class="row">
                                 <img class="small-me" src="${pageContext.request.contextPath}/resursi/images/404.png">
@@ -93,7 +98,7 @@
                 <div class="col-md-3 order-2 mb-5 mb-md-0">
                     <!--kategorije-->
                     <div class="border p-4 rounded mb-4">
-                        <h3 class="mb-3 h6 text-uppercase text-black d-block">Kategorije</h3>
+                        <h3 class="mb-3 h6 text-uppercase text-black d-block"><fmt:message key="products.all.kategorije"/></h3>
                         <ul class="list-unstyled mb-0">
                             <c:forEach items="${kategorije}" var="k">
 
@@ -107,7 +112,7 @@
 
                     <!--proizvodjaci-->
                     <div class="border p-4 rounded mb-4">
-                        <h3 class="mb-3 h6 text-uppercase text-black d-block">Proizvođači</h3>
+                        <h3 class="mb-3 h6 text-uppercase text-black d-block"><fmt:message key="products.all.proizvodjaci"/></h3>
                         <ul class="list-unstyled mb-0">
                             <c:forEach items="${proizvodjaci}" var="k">
 
@@ -120,7 +125,7 @@
 
                     <div class="border p-4 rounded mb-4">
                         <div class="mb-4">
-                            <h3 class="mb-3 h6 text-uppercase text-black d-block">Filtriraj po ceni</h3>
+                            <h3 class="mb-3 h6 text-uppercase text-black d-block"><fmt:message key="products.all.cena"/></h3>
                             <div id="slider-range" class="border-primary"></div>
                             <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
                             <div id="najmanjaCena" style="display: none">132</div>

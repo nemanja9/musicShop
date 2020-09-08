@@ -27,32 +27,32 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>ID porudžbine</th>
-                    <th>Status</th>
-                    <th>Datum porudžbine</th>
-                    <th>Datum plaćanja</th>
-                    <th>Datum slanja</th>
-                    <th>ID plaćanja</th>
-                    <th>Token plaćanja</th>
-                    <th>Korisnik</th>
-                    <th>Stavke</th>
-                    <th>Ukupan iznos</th>
-                    <th>Opcije</th>
+                    <th><fmt:message key="orders.id"/></th>
+                    <th><fmt:message key="orders.status"/></th>
+                    <th><fmt:message key="orders.datumPorudzbine"/></th>
+                    <th><fmt:message key="orders.datumPlacanja"/></th>
+                    <th><fmt:message key="orders.datumSlanja"/></th>
+                    <th><fmt:message key="orders.idPlacanja"/></th>
+                    <th><fmt:message key="orders.tokenPlacanja"/></th>
+                    <th><fmt:message key="orders.korisnik"/></th>
+                    <th><fmt:message key="orders.stavke"/></th>
+                    <th><fmt:message key="orders.ukupanIznos"/></th>
+                    <th><fmt:message key="orders.opcije"/></th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                    <th>ID porudžbine</th>
-                                        <th>Status</th>
-                    <th>Datum porudžbine</th>
-                    <th>Datum plaćanja</th>
-                    <th>Datum slanja</th>
-                    <th>ID plaćanja</th>
-                    <th>Token plaćanja</th>
-                    <th>Korisnik</th>
-                    <th>Stavke</th>
-                    <th>Ukupan iznos</th>
-                    <th>Opcije</th>
+                    <th><fmt:message key="orders.id"/></th>
+                    <th><fmt:message key="orders.status"/></th>
+                    <th><fmt:message key="orders.datumPorudzbine"/></th>
+                    <th><fmt:message key="orders.datumPlacanja"/></th>
+                    <th><fmt:message key="orders.datumSlanja"/></th>
+                    <th><fmt:message key="orders.idPlacanja"/></th>
+                    <th><fmt:message key="orders.tokenPlacanja"/></th>
+                    <th><fmt:message key="orders.korisnik"/></th>
+                    <th><fmt:message key="orders.stavke"/></th>
+                    <th><fmt:message key="orders.ukupanIznos"/></th>
+                    <th><fmt:message key="orders.opcije"/></th>
                 </tr>
             </tfoot>
             <tbody>
@@ -83,11 +83,11 @@
 
                         <td style="text-align:center">
                             <a href="${pageContext.request.contextPath}/admin/orders/edit/${o.getOrderId()}">
-                            <button type="button" class="btn btn-warning" onclick="" style="width: 115px;"> <i class="fas fa-user-minus"></i> izmeni status</button>
+                            <button type="button" class="btn btn-warning" onclick="" style="width: 115px;"> <i class="fas fa-user-minus"></i> <fmt:message key="orders.izmeniStatus"/></button>
                             </a>
                             <a href="${pageContext.request.contextPath}/admin/orders/deleteOrder/${o.getOrderId()}">
                                 <button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Ako obrišete ovu porudžbinu, obrisaće se i sve njene stavke. Da li ste sigurni?')">
-                                    <i class="fas fa-user-minus"></i> Obriši</button></a>
+                                    <i class="fas fa-user-minus"></i> <fmt:message key="orders.obrisi"/></button></a>
 
 
                         </td>

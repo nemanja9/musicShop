@@ -3,7 +3,7 @@
 <div class="site-section">
       <div class="container">
         <div class="title-section mb-5">
-          <h2 class="text-uppercase"><span class="d-block">Najpopularnije</span> Kategorije</h2>
+          <h2 class="text-uppercase"><span class="d-block"></span> <fmt:message key="index.najpopularnijeKategorije"/></h2>
         </div>
         <div class="row align-items-stretch">
           <div class="col-lg-8">

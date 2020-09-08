@@ -1,6 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="messages"/>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -41,7 +46,7 @@
 
         <div class="custom-border-bottom py-3" id="backHome">
             <div>
-                <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <strong
+                <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}"><fmt:message key="nav.pocetna"/></a> <span class="mx-2 mb-0">/</span> <strong
                         class="text-black">Login</strong></div>
             </div>
         </div>
@@ -53,7 +58,7 @@
                 <div class="column">
                     <div class="polovina">
                         <div class="signin-form">
-                            <h2 class="form-title">Prijavljivanje</h2>
+                            <h2 class="form-title"><fmt:message key="login.prijavljivanje"/></h2>
                             <p class="errorMsgTitle">${message}</p>
                             <c:if test="${not empty invalid}">
                                 <p  class="errorMsgTitle">${invalid}</p>
@@ -64,21 +69,22 @@
                                         <form:input type="text" name="email" id="email" path = "email" placeholder="Email" />
                                     <div><form:errors path="email" class="errorMsg"></form:errors></div>
                                     </div>
+                                    <fmt:message key='login.lozinka' var="lozinka"/>
                                     <div class="form-group">
                                         <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                        <form:input type="password" name="password" id="password" path="password" placeholder="Lozinka" />
+                                        <form:input type="password" name="password" id="password" path="password" placeholder="${lozinka}" />
                                     <div><form:errors path="password" class="errorMsg"></form:errors></div>
                                     </div>
                                     <div class="form-group">
 
                                     </div>
                                     <div class="form-group form-button">
-                                        <input type="submit" name="login" id="login" class="form-submit" value="Prijava" />
+                                        <input type="submit" name="login" id="login" class="form-submit" value="<fmt:message key='login.prijavljivanje'/>" />
                                     </div>
                             </form:form>
                             <br>
-                            <a href="${pageContext.request.contextPath}/user/register"><p>Nemate nalog? Registrujte se ovde</p></a>
-                            <a href="${pageContext.request.contextPath}/user/resetPassword"><p>Zaboravljena lozinka</p></a>
+                            <a href="${pageContext.request.contextPath}/user/register"><p><fmt:message key="login.nemateNalog"/></p></a>
+                            <a href="${pageContext.request.contextPath}/user/resetPassword"><p><fmt:message key="login.zaboravljenaLozinka"/></p></a>
 
                         </div>
                     </div>
