@@ -8,26 +8,24 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                      <th>ID</th>
-                      <th>Naziv</th>
-                      <th>Cena</th>
-                      <th>Slika</th>
-                      <th>Kategorija</th>
-                      <th>Opis</th>
-                      <th>Proizvodjac</th>
-                      <th>Opcije</th>
+                      <th><fmt:message key="products.id"/></th>
+                      <th><fmt:message key="products.naziv"/></th>
+                      <th><fmt:message key="products.cena"/></th>
+                      <th><fmt:message key="products.slika"/></th>
+                      <th><fmt:message key="products.kategorija"/></th>
+                      <th><fmt:message key="products.proizvodjac"/></th>
+                      <th><fmt:message key="orders.opcije"/></th>
                     </tr>
                     </thead>
                      <tfoot>
                     <tr>
-                      <th>ID</th>
-                      <th>Naziv</th>
-                      <th>Cena</th>
-                      <th>Slika</th>
-                      <th>Kategorija</th>
-                      <th>Opis</th>
-                      <th>Proizvodjac</th>
-                      <th>Opcije</th>
+                      <th><fmt:message key="products.id"/></th>
+                      <th><fmt:message key="products.naziv"/></th>
+                      <th><fmt:message key="products.cena"/></th>
+                      <th><fmt:message key="products.slika"/></th>
+                      <th><fmt:message key="products.kategorija"/></th>
+                      <th><fmt:message key="products.proizvodjac"/></th>
+                      <th><fmt:message key="orders.opcije"/></th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -39,12 +37,11 @@
                       <td><img src="${pageContext.request.contextPath}/resursi/images${p.getImgPath()}" alt="Image" class="img-fluid"></td>
                       <td>${p.category}</td>
                       <td>${p.manufacturer}</td>
-                      <td>${p.description}</td>
                     
                       <td style="text-align:center">
-                          <button type="button" class="btn btn-warning" style="width: 115px;" data-toggle="modal" onClick="window.location='${pageContext.request.contextPath}/admin/product/edit/${p.productId}'"><i class="fas fa-user-edit"></i> Izmeni</button>
+                          <button type="button" class="btn btn-warning" style="width: 115px;" data-toggle="modal" onClick="window.location='${pageContext.request.contextPath}/admin/product/edit/${p.productId}'"><i class="fas fa-user-edit"></i> <fmt:message key="products.edit.izmeni"/></button>
                       <a href="${pageContext.request.contextPath}/admin/product/deleteProduct/${p.productId}"><button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Are you sure you want to delete this product?')">
-                              <i class="fas fa-user-minus"></i> Obriši</button></a></td>
+                              <i class="fas fa-user-minus"></i> <fmt:message key="products.edit.obrisi"/></button></a></td>
                     </tr>
                     
                     

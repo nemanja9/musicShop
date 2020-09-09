@@ -1,6 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="messages"/>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,8 +26,8 @@
     <body>
         <div class="custom-border-bottom py-3" id="backHome">
             <div>
-                <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Promena lozinke</strong></div>
+                <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}"><fmt:message key="nav.pocetna"/></a> <span class="mx-2 mb-0">/</span> <strong
+                        class="text-black"><fmt:message key="nav.resetLozinke"/></strong></div>
             </div>
         </div>
         <div class="container">
@@ -30,7 +35,7 @@
                 <div class="column">
                     <div class="polovina">
                         <div class="signin-form">
-                            <h2 class="form-title">Unesite novu lozinku</h2>
+                            <h2 class="form-title"><fmt:message key="resetPassword.unesiteNovu"/></h2>
                             <p class="errorMsgTitle">${message}</p>
                             <c:if test="${not empty invalid}">
                                 <p class="errorMsgTitle">${invalid}</p>
@@ -41,19 +46,21 @@
 
                                 <div class="form-group">
                                     <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                        <form:input type="password" path="password" id="password" placeholder="Nova lozinka" />
+                                        <fmt:message key="resetPassword.novaLozinka" var="novaL"/>
+                                        <form:input type="password" path="password" id="password" placeholder="${novaL}" />
                                         <form:errors path="password" class="errorMsg"></form:errors>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                        <form:input type="password" path="re_password" id="re_password" placeholder="Ponovite lozinku" />
-                                        <form:errors path="re_password" class="errorMsg"></form:errors>
+                                         <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                    <fmt:message key="resetPassword.ponoviteNovuLozinku" var="pon"/>
+                                    <form:input type="password" path="re_password" id="re_password" placeholder="${pon}" />
+                                    <form:errors path="re_password" class="errorMsg"></form:errors>
 
                                     </div>
                                 <form:hidden path="email" id="email" />
                                 <div class="form-group form-button">
-                                    <input type="submit" name="signup" id="signup" class="form-submit" value="Promeni lozinku"/>
+                                    <input type="submit" name="signup" id="signup" class="form-submit" value="<fmt:message key="resetPassword.promeniLozinku"/>"/>
                                 </div>
                             </form:form>
                             <br>

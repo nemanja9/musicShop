@@ -1,6 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="messages"/>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,8 +31,8 @@
     <body>
         <div class="custom-border-bottom py-3" id="backHome">
             <div>
-                <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Potvrda email adrese</strong></div>
+                <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}"><fmt:message key="nav.pocetna"/></a> <span class="mx-2 mb-0">/</span> <strong
+                        class="text-black"> <b> <fmt:message key="nav.potvrdaEmailAdrese"/></b></strong></div>
             </div>
         </div>
         <div class="container">
@@ -35,10 +40,10 @@
                 <div class="center-email-conf">
                     <img src="${pageContext.request.contextPath}/resursi/images/ok.png" alt="" class="potvrdjenEmailSlika">
                     <br>
-                    <h2 class="display-3 text-black">Imejl adresa uspesno potvrdjena!</h2>         
+                    <h2 class="display-3 text-black"><fmt:message key="emailConfSucces.succes"/></h2>         
                     <div class="asdasdasd">
                         <a href="${pageContext.request.contextPath}/user/login">
-                            <input type="button" name="login" id="login" class="form-submit-email-conf" value="Prijavljivanje" />
+                            <input type="button" name="login" id="login" class="form-submit-email-conf" value="<fmt:message key="emailConf.prijavljivanje"/>" />
                         </a>
                     </div>
                     

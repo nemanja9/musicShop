@@ -1,6 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<fmt:setLocale value="${cookie['lang'].value}"/>
+<fmt:setBundle basename="messages"/>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,20 +13,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Login</title>
-
         <!-- Font Icon -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/fonts/material-icon/css/material-design-iconic-font.min.css">
-
-
         <!-- Main css -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/login.style.css">
-
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/bootstrap.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resursi/css/modal.css">
-
-        
-        
-
     </head>
 
     <body>
@@ -37,15 +34,11 @@
         </div>
          </c:if>
         <!--DO MODAL-->
-      
-        				
-
-        
         
         <div class="custom-border-bottom py-3" id="backHome">
             <div>
-                <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Reset lozinke</strong></div>
+                <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}"><fmt:message key="nav.pocetna"/></a> <span class="mx-2 mb-0">/</span> <strong
+                        class="text-black"><fmt:message key="nav.resetLozinke"/></strong></div>
             </div>
         </div>
         <div class="container">
@@ -56,7 +49,7 @@
                 <div class="column">
                     <div class="polovina">
                         <div class="signin-form">
-                            <h2 class="form-title">Resetovanje lozinke</h2>
+                            <h2 class="form-title"><fmt:message key="resetPassword.resetovanjeLozinke"/></h2>
                             <br>
                             
                           <c:if test="${not empty invalid}">
@@ -70,10 +63,10 @@
                                     
                                    
                                     <div class="form-group form-button">
-                                        <input type="submit" name="login" id="login" class="form-submit" value="Posalji email" />
+                                        <input type="submit" name="login" id="login" class="form-submit" value="<fmt:message key="resetPassword.posaljiEmail"/>" />
                                     </div>
                             <br>
-                            <a href="${pageContext.request.contextPath}/user/login"><p>Nazad na prijavljivanje</p></a>
+                            <a href="${pageContext.request.contextPath}/user/login"><p><fmt:message key="resetPassword.nazadNaPrijavljivanje"/></p></a>
 
                         </div>
                             </form>

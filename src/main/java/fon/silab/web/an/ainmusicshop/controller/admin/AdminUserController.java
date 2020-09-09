@@ -63,10 +63,6 @@ public class AdminUserController {
     public UserDto userRegister() {
         return new UserDto();
     }
-    
-    
-    
-    
       @InitBinder("userToRegister")
     protected void initRegisterBinder(WebDataBinder binder) {
         binder.setValidator(registerValidator);
@@ -79,7 +75,7 @@ public class AdminUserController {
 
         if (userService.findByEmail(u.getEmail())!= null) // da li korisnik vec postoji
             return "user/admin/user/all";
-        
+      
         if (result.hasErrors()) {
             System.out.println("Bilo je gresaka pri validaciji...");
             model.addAttribute("invalid", "Niste lepo popunili formu!");
@@ -109,9 +105,6 @@ public class AdminUserController {
         }
 
     }
-    
-    
-    
    @GetMapping(path = "all")
     public ModelAndView all(){
     ModelAndView mav = new ModelAndView("/user/userAll");
@@ -170,6 +163,34 @@ public class AdminUserController {
       @ModelAttribute(name = "roleList")
     public List<UserEntity.UserRole> roleLists() {
         return Arrays.asList(UserEntity.UserRole.values());
+    }
+    
+    @PostMapping(path = "/edit/saveEdited")
+    public String saveChanges(@Validated @ModelAttribute(name = "userToAdd") UserDto u,
+            BindingResult result, Model model,
+            RedirectAttributes redirectAttributes){
+        UserDto stari = userService.findByNumber(u.getUserId());
+        if (!stari.getEmail().equals(u.getEmail())){
+            if (userService.findByEmail(u.getEmail())!=null){ // ovde se pitamo da li taj nov unet email vec pripada nekom nalogu. ako pripada baci gresku
+                redirectAttributes.addFlashAttribute("uspeh", "Ta adresa vec pripada nekom nalogu!");
+                return "redirect:/admin/user/all";
+            }
+            u.setEmailToken(EmailTemplateGenerator.generateRandomToken(20));
+            u.setEmailConfirmed(0);
+            try {
+                mailService.send("musicshopan@gmail.com", u.getEmail(), "Potvrda email adrese", EmailTemplateGenerator.dajEmailRegisterText(u));
+            } catch (Exception ex) {
+                Logger.getLogger(AdminUserController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        u.setEmailToken(stari.getEmailToken());
+        u.setPassword(stari.getPassword());
+        u.setPasswordToken(stari.getPasswordToken());
+        userService.update(u);
+        redirectAttributes.addFlashAttribute("uspeh", "Uspesno izmenjen korisnik!");
+        return "redirect:/admin/user/all";
+
+        
     }
     
     

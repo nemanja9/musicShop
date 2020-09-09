@@ -5,8 +5,8 @@
 <div class="bg-light py-3">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}">Početna</a> <span
-                    class="mx-2 mb-0">/</span> <strong class="text-black">Korpa</strong></div>
+            <div class="col-md-12 mb-0"><a href="${pageContext.request.contextPath}"><fmt:message key="nav.pocetna"/></a> <span
+                    class="mx-2 mb-0">/</span> <strong class="text-black"><fmt:message key="nav.korpa"/></strong></div>
         </div>
     </div>
 </div>
@@ -19,12 +19,12 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th class="product-thumbnail">Proizvod</th>
-                                <th class="product-name">Naziv</th>
-                                <th class="product-price">Cena</th>
-                                <th class="product-quantity">Količina</th>
-                                <th class="product-total">Ukupno</th>
-                                <th class="product-remove">Brisanje</th>
+                                <th class="product-thumbnail"><fmt:message key="products.proizvod"/></th>
+                                <th class="product-name"><fmt:message key="products.naziv"/></th>
+                                <th class="product-price"><fmt:message key="products.cena"/></th>
+                                <th class="product-quantity"><fmt:message key="products.kolicina"/></th>
+                                <th class="product-total"><fmt:message key="products.ukupno"/></th>
+                                <th class="product-remove"><fmt:message key="cart.brisanje"/></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,7 +93,7 @@
 
                     <div class="col-md-6">
                         <a href="${pageContext.request.contextPath}/product/all">
-                            <button class="btn btn-outline-primary btn-sm btn-block">Nastavi kupovinu</button></a>
+                            <button class="btn btn-outline-primary btn-sm btn-block"><fmt:message key="cart.nastaviKupovinu"/></button></a>
                     </div>
                 </div>
                 <div class="row">
@@ -106,12 +106,12 @@
                     <div class="col-md-7">
                         <div class="row">
                             <div class="col-md-12 text-right border-bottom mb-5">
-                                <h3 class="text-black h4 text-uppercase">Za uplatu</h3>
+                                <h3 class="text-black h4 text-uppercase"><fmt:message key="cart.zaUplatu"/></h3>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <span class="text-black">Ukupno</span>
+                                <span class="text-black"><fmt:message key="cart.ukupno"/></span>
                             </div>
                             <div class="col-md-6 text-right">
                                 <strong class="text-black">
@@ -121,7 +121,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <button class="btn btn-primary btn-lg btn-block"
-                                        onclick="window.location = '${pageContext.request.contextPath}/cart/checkout'" <c:if test = "${sessionScope.cart == null || sessionScope.cart.size() < 1}">disabled="true"</c:if>>Nastavi</button>
+                                        onclick="window.location = '${pageContext.request.contextPath}/cart/checkout'" <c:if test = "${sessionScope.cart == null || sessionScope.cart.size() < 1}">disabled="true"</c:if>><fmt:message key="cart.zavrsiKupovinu"/></button>
 
                                 </div>
                             </div>
