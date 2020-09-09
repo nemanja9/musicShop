@@ -61,6 +61,8 @@ public class CartController {
             }
             session.setAttribute("cart", orderItemDto.add((ArrayList<OrderItemDto>) lista));
             redirectAttributes.addFlashAttribute("message", lista.toString());
+            redirectAttributes.addFlashAttribute("uspeh", "Proizvod uspesno dodat u korpu!");
+            
             return "redirect:/product/" + orderItemDto.getProduct().getProductId();
         }
 
