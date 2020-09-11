@@ -70,7 +70,7 @@
                             </button>
 
                             <a href="${pageContext.request.contextPath}/admin/user/deleteUser/${u.userId}">
-                                <button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Are you sure you want to delete this user?')">
+                                <button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Are you sure you want to delete ${u.firstname} ${u.lastname}?')">
                                     <i class="fas fa-user-minus"></i> <fmt:message key="users.obrisi"/></button></a>
                         </td>
                     </tr>

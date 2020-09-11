@@ -29,15 +29,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 @Controller
 @RequestMapping("/admin/product")
 public class AdminProductController {
-    
-    
-    
-    
-     private final ProductService productService;
+
+    private final ProductService productService;
     private final ProductValidator productValidator;
     private final OrderItemValidator orderItemValidator;
     private final ProductEditValidator productEditValidator;
@@ -49,12 +45,12 @@ public class AdminProductController {
         this.orderItemValidator = orderItemValidator;
         this.productEditValidator = productEditValidator;
     }
-    
-    
+
     @InitBinder("productDto")
     protected void initProductBinder(WebDataBinder binder) {
         binder.setValidator(productValidator);
     }
+
     @InitBinder("product")
     protected void initProductEditBinder(WebDataBinder binder) {
         binder.setValidator(productEditValidator);
@@ -64,24 +60,22 @@ public class AdminProductController {
     protected void initItemBinder(WebDataBinder binder) {
         binder.setValidator(orderItemValidator);
     }
-    
-    
-    
+
     @GetMapping(value = "/edit")
     public ModelAndView edit() {
         ModelAndView modelAndView = new ModelAndView("product/productEdit");
         modelAndView.addObject("allProducts", productService.getAll());
         return modelAndView;
     }
-    
-     @GetMapping(value = "/add")
+
+    @GetMapping(value = "/add")
     public ModelAndView add() {
         ModelAndView modelAndView = new ModelAndView("product/productAdd", "productDto", new ProductDto());
         return modelAndView;
     }
-    
-       @PostMapping(path = "/save")
-    public String save(@Validated @ModelAttribute(name = "productDto") ProductDto productDto,
+
+    @PostMapping(path = "/save")
+    public String saveProduct(@Validated @ModelAttribute(name = "productDto") ProductDto productDto,
             BindingResult result, Model model, HttpSession session,
             RedirectAttributes redirectAttributes) throws IOException {
 
@@ -121,7 +115,13 @@ public class AdminProductController {
     @GetMapping("/deleteProduct/{id}")
     public String deleteProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
         ModelAndView modelAndView = new ModelAndView("product/edit");
-        productService.delete(id);
+        
+        try{
+            productService.delete(id);
+            attributes.addFlashAttribute("uspeh", "Uspesno ste izbrisali željeni proizvod!");
+        }catch (Exception e){
+            attributes.addFlashAttribute("uspeh", "Niste uspeli da obrisete zeljeni proizvod!");
+        }
         return "redirect:/admin/product/edit";
 
     }
@@ -135,53 +135,53 @@ public class AdminProductController {
         return modelAndView;
 
     }
-       @ModelAttribute(name = "categoryList")
+
+    @ModelAttribute(name = "categoryList")
     public List<ProductEntity.Category> categoryLists() {
         return Arrays.asList(ProductEntity.Category.values());
     }
-     @PostMapping(path = "/edit/saveEdit")
+
+    @PostMapping(path = "/edit/saveEdit")
     public String saveEdited(@Validated @ModelAttribute(name = "product") ProductDto productDto,
             BindingResult result, Model model, HttpSession session,
-            RedirectAttributes redirectAttributes) throws IOException {
+            RedirectAttributes attributes) throws IOException {
 
         if (result.hasErrors()) {
             model.addAttribute("message", "Niste ispravno popunili formu!");
             return "product/productEditOne";
         } else {
-            
-            
+
             MultipartFile image = productDto.getImg();
-        
-            if (image.getOriginalFilename().length()>0){
-            String rootDirectory = session.getServletContext().getRealPath("/");
-            Path path = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + ".png");
-            Path zaBrisanje = Paths.get(rootDirectory + "/resursi/images" + productDto.getImgPath());
-            new File(zaBrisanje.toString()).delete();
+            
+            if (image.getOriginalFilename().length() > 0) {
+                String rootDirectory = session.getServletContext().getRealPath("/");
+                Path path = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + ".png");
+                Path zaBrisanje = Paths.get(rootDirectory + "/resursi/images" + productDto.getImgPath());
+                new File(zaBrisanje.toString()).delete();
                 System.out.println("Trebao se obrisati fajl " + zaBrisanje.toString());
 
-            if (new File(path.toString()).exists()) {
-                for (int i = 1; i < Integer.MAX_VALUE; i++) {
-                    Path tesan = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + "(" + i + ")" + ".png");
-                    if (!new File(tesan.toString()).exists()) {
-                        path = tesan;
-                        break;
+                if (new File(path.toString()).exists()) {
+                    for (int i = 1; i < Integer.MAX_VALUE; i++) {
+                        Path tesan = Paths.get(rootDirectory + "/resursi/images/" + productDto.getProductName() + "(" + i + ")" + ".png");
+                        if (!new File(tesan.toString()).exists()) {
+                            path = tesan;
+                            break;
+                        }
                     }
                 }
-            }
 
-            File file = new File(path.toString());
-            image.transferTo(file);
-            productDto.setImgPath(path.toString().split("images")[1]);
+                File file = new File(path.toString());
+                image.transferTo(file);
+                productDto.setImgPath(path.toString().split("images")[1]);
 
-            
             }
             
             productService.update(productDto);
-            
+            attributes.addFlashAttribute("uspeh", "Uspesno izmenjen proizvod" + productDto.getProductName());
             return "redirect:/product/all";
 
         }
 
     }
-    
+
 }
