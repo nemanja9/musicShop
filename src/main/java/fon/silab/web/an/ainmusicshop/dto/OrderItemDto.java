@@ -92,7 +92,7 @@ public class OrderItemDto {
 
     @Override
     public String toString() {
-        return "OrderItemDto{" + "itemId=" + itemId + ", orderId=" + orderId + ", product=" + product + ", quantity=" + quantity + '}';
+        return product + ", quantity=" + quantity + '.';
     }
 
 }

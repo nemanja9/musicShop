@@ -114,8 +114,13 @@ public class AdminUserController {
 
     
     @GetMapping("/deleteUser/{id}")
-    public String deleteProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
-        userService.delete(id);
+    public String deleteUser(@PathVariable("id") int id, RedirectAttributes attributes) {
+        try{
+            userService.delete(id);
+            attributes.addFlashAttribute("uspeh", "Uspesno ste izbrisali željenog korisnika!");
+        }catch(Exception e){
+            attributes.addFlashAttribute("uspeh", "Niste uspeli da obrisete željenog korisnika!");
+        }
         return "redirect:/admin/user/all";
 
     }

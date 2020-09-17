@@ -92,7 +92,7 @@
                             <button type="button" class="btn btn-warning" onclick="" style="width: 115px;"> <i class="fas fa-user-minus"></i> <fmt:message key="orders.izmeniStatus"/></button>
                             </a>
                             <a href="${pageContext.request.contextPath}/admin/orders/deleteOrder/${o.getOrderId()}">
-                                <button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Ako obrišete ovu porudžbinu, obrisaće se i sve njene stavke. Da li ste sigurni?')">
+                                <button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Ako obrišete ovu porudžbinu, obrisaće se i sve njene stavke. Da li ste sigurni?  ${o.getOrderItems()}')">
                                     <i class="fas fa-user-minus"></i> <fmt:message key="orders.obrisi"/></button></a>
 
 

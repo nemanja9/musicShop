@@ -3,6 +3,17 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<c:if test="${not empty uspeh}">
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>${uspeh}</p>
+        </div>
+
+    </div>
+</c:if>
+
  <c:if test="${!empty allProducts}">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -40,7 +51,7 @@
                     
                       <td style="text-align:center">
                           <button type="button" class="btn btn-warning" style="width: 115px;" data-toggle="modal" onClick="window.location='${pageContext.request.contextPath}/admin/product/edit/${p.productId}'"><i class="fas fa-user-edit"></i> <fmt:message key="products.edit.izmeni"/></button>
-                      <a href="${pageContext.request.contextPath}/admin/product/deleteProduct/${p.productId}"><button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Are you sure you want to delete this product?')">
+                      <a href="${pageContext.request.contextPath}/admin/product/deleteProduct/${p.productId}"><button type="button" class="btn btn-danger" style="width: 115px;" onclick="return confirm('Are you sure you want to delete ${p.productName}?')">
                               <i class="fas fa-user-minus"></i> <fmt:message key="products.edit.obrisi"/></button></a></td>
                     </tr>
                     

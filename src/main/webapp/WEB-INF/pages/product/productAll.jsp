@@ -5,7 +5,16 @@
 <%@include file="../header.jsp" %>
 
 
+<c:if test="${not empty uspeh}">
+    <div id="myModal" class="modal">
 
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>${uspeh}</p>
+        </div>
+
+    </div>
+</c:if>
 
 <div class="site-section">
     <div class="container">

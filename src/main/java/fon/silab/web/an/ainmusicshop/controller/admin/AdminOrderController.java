@@ -24,68 +24,78 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 @Controller
 @RequestMapping("/admin/orders")
 public class AdminOrderController {
+
     private final OrderService orderService;
-    private final UserService userService; 
-    
+    private final UserService userService;
+
     @Autowired
     public AdminOrderController(OrderService orderService, OrderItemService orderItemService, UserService userService) {
         this.orderService = orderService;
         this.userService = userService;
     }
-     @Autowired
+    @Autowired
     private MailService mailService;
-    
-     @GetMapping(path = "/all")
-    public ModelAndView allOrders(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+
+    @GetMapping(path = "/all")
+    public ModelAndView allOrders(HttpServletRequest request, HttpServletResponse response, HttpSession session, RedirectAttributes attributes) {
         ModelAndView modelAndView = new ModelAndView("orders/ordersAll");
-        
-         List<OrderDto> list = orderService.getAll();
-         
+
+        List<OrderDto> list = orderService.getAll();
+        if(list.isEmpty()){
+            attributes.addFlashAttribute("uspeh", "Sistem nije uspeo da pronadje porudzbine!");
+        }
+                
         modelAndView.addObject("orders", list);
         return modelAndView;
     }
-     @GetMapping(path = "/all/{id}")
+
+    @GetMapping(path = "/all/{id}")
     public ModelAndView allOrdersForUser(@PathVariable("id") int id, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("orders/ordersAll");
-                
-         List<OrderDto> list = orderService.getAllForUser(id);
-        
-         
+
+        List<OrderDto> list = orderService.getAllForUser(id);
+
         modelAndView.addObject("orders", list);
         return modelAndView;
     }
-    
+
     @GetMapping("/edit/{id}")
     public ModelAndView deleteProduct(@PathVariable("id") int id, RedirectAttributes attributes) {
         ModelAndView modelAndView = new ModelAndView("orders/orderEdit");
-       
+
         modelAndView.addObject("order", orderService.findByNumber(id));
-        
-        
+
         return modelAndView;
 
     }
+
     @GetMapping("/deleteOrder/{id}")
     public String editOrder(@PathVariable("id") int id, RedirectAttributes attributes) {
-        orderService.delete(id);
+        try {
+            orderService.delete(id);
+            attributes.addFlashAttribute("uspeh", "Uspesno ste izbrisali željenu porudzbinu!");
+        } catch (Exception e) {
+            attributes.addFlashAttribute("uspeh", "Niste uspeli da obrisete zeljenu porudzbinu!");
+        }
         return "redirect:/admin/orders/all";
 
     }
+
     @PostMapping(path = "/updateStatus")
-    public String updateStatus(@RequestParam int id,@RequestParam int novStatus, RedirectAttributes attributes) {
-        
+    public String updateStatus(@RequestParam int id, @RequestParam int novStatus, RedirectAttributes attributes) {
+
         OrderDto pom = orderService.findByNumber(id);
         pom.setOrderStatusInt(novStatus);
-                orderService.update(pom);
-           attributes.addFlashAttribute("uspeh", "Status porudzbine sa ID <b>" + id + "</b> uspesno promenjen na <b>" + pom.getOrderStatus()+ "</b>");
-           
+        orderService.update(pom);
+        attributes.addFlashAttribute("uspeh", "Status porudzbine sa ID <b>" + id + "</b> uspesno promenjen na <b>" + pom.getOrderStatus() + "</b>");
+
         try {
-            if(novStatus == OrderEntity.Status.POSLATO.ordinal())
-            mailService.send("musicshopan@gmail.com", pom.getUserDto().getEmail(), "Porudzbina poslata", EmailTemplateGenerator.dajEmailPromenaStatusaPorudzbine(pom));
+            if (novStatus == OrderEntity.Status.POSLATO.ordinal()) {
+                mailService.send("musicshopan@gmail.com", pom.getUserDto().getEmail(), "Porudzbina poslata", EmailTemplateGenerator.dajEmailPromenaStatusaPorudzbine(pom));
+            }
         } catch (Exception ex) {
             Logger.getLogger(AdminOrderController.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("USLI U CATCH!!!");
@@ -94,5 +104,5 @@ public class AdminOrderController {
         return "redirect:/admin/orders/all";
 
     }
-    
+
 }
