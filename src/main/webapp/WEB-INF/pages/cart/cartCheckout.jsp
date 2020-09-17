@@ -127,7 +127,15 @@
                                         </c:forEach>
                                         <tr>
                                             <td class="text-black font-weight-bold"><strong><fmt:message key="cart.zaUplatu"/></strong></td>
-                                            <td class="text-black font-weight-bold"><strong><c:out value="${total}" /> € </strong></td>
+                                            <!--<td class="text-black font-weight-bold"><strong><c:out value="${total}" /> € </strong></td>-->
+                                            <td class="text-black font-weight-bold">
+                                            
+                                            <strong class="text-black">
+                                    <!-- <c:out value="${total}" /> €</strong> -->
+                                    <fmt:formatNumber type = "number" 
+                                  maxFractionDigits = "2" value = "${total}" />
+                                    €</strong>
+                                    </td>
                                         </tr>
                                     </tbody>
                                 </table>

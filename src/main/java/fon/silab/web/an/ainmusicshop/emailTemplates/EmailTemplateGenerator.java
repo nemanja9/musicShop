@@ -8,6 +8,7 @@ package fon.silab.web.an.ainmusicshop.emailTemplates;
 import fon.silab.web.an.ainmusicshop.dto.OrderDto;
 import fon.silab.web.an.ainmusicshop.dto.OrderItemDto;
 import fon.silab.web.an.ainmusicshop.dto.UserDto;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Random;
 
@@ -1171,13 +1172,15 @@ public class EmailTemplateGenerator {
             }
         
         SimpleDateFormat sdf = new SimpleDateFormat("DD.MM.YYYY");
+        DecimalFormat df = new DecimalFormat("###.###");
         
                 emailText+= "                         <tr id=\"TR_15\" style=\"color: #666666;block-size: 52px;border-block-end-color: rgb(128, 128, 128);border-block-start-color: rgb(128, 128, 128);border-collapse: collapse;border-inline-end-color: rgb(128, 128, 128);border-inline-start-color: rgb(128, 128, 128);box-sizing: border-box;caret-color: rgb(140, 146, 160);color: rgb(140, 146, 160);column-rule-color: rgb(140, 146, 160);height: 52px;inline-size: 352px;perspective-origin: 176px 26px;text-align: left;text-decoration: none solid rgb(140, 146, 160);text-size-adjust: 100%;transform-origin: 176px 26px;vertical-align: middle;width: 352px;border: 0px none rgb(128, 128, 128);border-spacing: 2px 2px;font: 300 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';outline: rgb(140, 146, 160) none 0px;\">\n"
                 + "                                                    <td id=\"TD_16\" style=\"block-size: 52px;border-block-start-color: rgb(222, 226, 230);border-block-start-style: solid;border-block-start-width: 1px;border-collapse: collapse;box-sizing: border-box;height: 52px;inline-size: 248px;padding-block-end: 12px;padding-block-start: 12px;padding-inline-end: 12px;padding-inline-start: 12px;perspective-origin: 124px 26px;text-align: left;text-size-adjust: 100%;transform-origin: 124px 26px;vertical-align: top;width: 248px;border-top: 1px solid rgb(222, 226, 230);border-spacing: 2px 2px;font: 700 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';padding: 12px;\">\n"
                 + "                                                        <strong id=\"STRONG_17\" style=\" color:#666666;border-collapse: collapse;box-sizing: border-box;perspective-origin: 0px 0px;text-align: left;text-size-adjust: 100%;transform-origin: 0px 0px;border-spacing: 2px 2px;font: 900 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';\">Ukupno</strong>\n"
                 + "                                                    </td>\n"
                 + "                                                    <td id=\"TD_18\" style=\"block-size: 52px;border-block-start-color: rgb(222, 226, 230);border-block-start-style: solid;border-block-start-width: 1px;border-collapse: collapse;box-sizing: border-box;height: 52px;inline-size: 104px;padding-block-end: 12px;padding-block-start: 12px;padding-inline-end: 12px;padding-inline-start: 12px;perspective-origin: 52px 26px;text-align: left;text-size-adjust: 100%;transform-origin: 52px 26px;vertical-align: top;width: 104px;border-top: 1px solid rgb(222, 226, 230);border-spacing: 2px 2px;font: 700 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';padding: 12px;\">\n"
-                + "                                                        <strong id=\"STRONG_19\" style=\" color:#666666; border-collapse: collapse;box-sizing: border-box;perspective-origin: 0px 0px;text-align: left;text-size-adjust: 100%;transform-origin: 0px 0px;border-spacing: 2px 2px;font: 900 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';\">"+ukupno+" EUR</strong>\n"
+                + "                                                        <strong id=\"STRONG_19\" style=\" color:#666666; border-collapse: collapse;box-sizing: border-box;perspective-origin: 0px 0px;text-align: left;text-size-adjust: 100%;transform-origin: 0px 0px;border-spacing: 2px 2px;font: 900 16px / 27.2px Mukta, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';\">"
+                        +df.format(ukupno)+" EUR</strong>\n"
                 + "                                                    </td>\n"
                 + "                                                </tr>\n"
                 + "                                            </tbody>\n"
@@ -1317,6 +1320,7 @@ public class EmailTemplateGenerator {
         return emailText;
 
     }
+    
     public static String dajEmailPromenaStatusaPorudzbine(OrderDto o) {
 
                 SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.YYYY");

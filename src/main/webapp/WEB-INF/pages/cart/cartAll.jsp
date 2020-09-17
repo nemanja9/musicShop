@@ -114,8 +114,11 @@
                                 <span class="text-black"><fmt:message key="cart.ukupno"/></span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">
-                                    <c:out value="${total}" /> €</strong>
+                               <strong class="text-black">
+                                    <!-- <c:out value="${total}" /> €</strong> -->
+                                    <fmt:formatNumber type = "number" 
+                                  maxFractionDigits = "2" value = "${total}" />
+                                    €</strong>
                             </div>
                         </div>
                         <div class="row">
