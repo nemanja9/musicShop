@@ -170,16 +170,15 @@ public class ProductEntity implements Serializable{
     
 
     public enum Category{
-        KLAVIRI,
-        BUBNJEVI, 
-        POJACALA,
-        KLAVIJATURE,
-        MIKSETE,
-        DUVACKI,
-        GITARE,
+        Bubnjevi, 
+        Pojačala,
+        Miksete,
+        Duvački,
         Gitare,
+        Klaviri,
         Klavijature,
-        Ozvucenje
+        Ozvučenje,
+        Mikrofoni
     }
     
 

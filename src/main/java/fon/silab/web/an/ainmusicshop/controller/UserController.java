@@ -173,7 +173,7 @@ public class UserController {
 
         }
 
-        if (result.hasErrors()) {
+        if (!result.hasErrors()) {
             System.out.println("Bilo je gresaka pri validaciji...");
             model.addAttribute("invalid", "Niste ispravno popunili formu!");
             return "redirect:/user/profile";

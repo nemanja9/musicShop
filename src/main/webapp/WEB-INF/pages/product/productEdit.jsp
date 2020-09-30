@@ -3,6 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!--OD MODAL-->
 <c:if test="${not empty uspeh}">
     <div id="myModal" class="modal">
 
@@ -10,9 +11,9 @@
             <span class="close">&times;</span>
             <p>${uspeh}</p>
         </div>
-
     </div>
 </c:if>
+<!--DO MODAL-->
 
  <c:if test="${!empty allProducts}">
               <div class="table-responsive">

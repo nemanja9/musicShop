@@ -105,7 +105,7 @@ public class AdminProductController {
             System.out.println("IMG PATH JE " + productDto.getImgPath());
 
             productService.save(productDto);
-            model.addAttribute("uspeh", "Uspesno ste uneli proizvod " + productDto.getProductName() + "!");
+            model.addAttribute("uspeh", "Uspešno unet proizvod " + productDto.getProductName() + "!");
 
             return "product/productAdd";
         }
@@ -118,7 +118,7 @@ public class AdminProductController {
         
         try{
             productService.delete(id);
-            attributes.addFlashAttribute("uspeh", "Uspesno ste izbrisali željeni proizvod!");
+            attributes.addFlashAttribute("uspeh", "Uspešno izbrisan proizvod!");
         }catch (Exception e){
             attributes.addFlashAttribute("uspeh", "Niste uspeli da obrisete zeljeni proizvod!");
         }
@@ -177,7 +177,7 @@ public class AdminProductController {
             }
             
             productService.update(productDto);
-            attributes.addFlashAttribute("uspeh", "Uspesno izmenjen proizvod" + productDto.getProductName());
+            attributes.addFlashAttribute("uspeh", "Uspešno izmenjen proizvod " + productDto.getProductName());
             return "redirect:/product/all";
 
         }

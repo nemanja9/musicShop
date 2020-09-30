@@ -45,7 +45,7 @@ public class AdminOrderController {
 
         List<OrderDto> list = orderService.getAll();
         if(list.isEmpty()){
-            attributes.addFlashAttribute("uspeh", "Sistem nije uspeo da pronadje porudzbine!");
+            attributes.addFlashAttribute("uspeh", "Sistem nije uspeo da pronađe porudžbine!");
         }
                 
         modelAndView.addObject("orders", list);
@@ -76,7 +76,7 @@ public class AdminOrderController {
     public String editOrder(@PathVariable("id") int id, RedirectAttributes attributes) {
         try {
             orderService.delete(id);
-            attributes.addFlashAttribute("uspeh", "Uspesno ste izbrisali željenu porudzbinu!");
+            attributes.addFlashAttribute("uspeh", "Uspešno obrisana porudžbina!");
         } catch (Exception e) {
             attributes.addFlashAttribute("uspeh", "Niste uspeli da obrisete zeljenu porudzbinu!");
         }
@@ -90,7 +90,7 @@ public class AdminOrderController {
         OrderDto pom = orderService.findByNumber(id);
         pom.setOrderStatusInt(novStatus);
         orderService.update(pom);
-        attributes.addFlashAttribute("uspeh", "Status porudzbine sa ID <b>" + id + "</b> uspesno promenjen na <b>" + pom.getOrderStatus() + "</b>");
+        attributes.addFlashAttribute("uspeh", "Status porudžbine sa ID <b>" + id + "</b> ušpesno promenjen na <b>" + pom.getOrderStatus() + "</b>");
 
         try {
             if (novStatus == OrderEntity.Status.POSLATO.ordinal()) {
