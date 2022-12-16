@@ -14,7 +14,7 @@
         
         <persistence.version>2.2</persistence.version>
         <eclipselink.version>2.5.2</eclipselink.version>
-        <spring.version>5.2.5.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
     </properties>
     
     <dependencies>
